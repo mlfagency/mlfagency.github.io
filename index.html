@@ -16,17 +16,19 @@
     header {
       background-color: #000;
       color: white; 
-      padding: 5px 20px 10px; 
+      padding: 10px 20px 10px; 
       text-align: center; 
     }
 
     header img {
-      max-width: 1000px; /* logo plus grand */
+      max-width: 700px;
       display: block;
-      margin: 0 auto 0px;
+      margin: 0 auto;
     }
 
-    header a {
+    section a#openPopup {
+      display: inline-block;
+      margin-top: 20px;
       color: white;
       text-decoration: none;
       font-size: 1.2em;
@@ -36,7 +38,7 @@
       transition: 0.3s;
     }
 
-    header a:hover {
+    section a#openPopup:hover {
       background-color: white;
       color: black;
     }
@@ -50,7 +52,7 @@
     h2 {
       color: #fff;
       padding-bottom: 5px;
-      border: none; /* suppression de la ligne bleue */
+      border: none;
     }
 
     /* --- POPUP --- */
@@ -135,7 +137,7 @@
       color: #fff;
       border: 1px solid #333;
       padding: 10px 18px;
-      border-radius: 20px; /* coins arrondis */
+      border-radius: 20px;
       cursor: pointer;
       font-size: 1em;
       transition: all 0.3s ease;
@@ -145,14 +147,14 @@
     .tab-btn:hover {
       background: #222;
       transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* surbrillance au hover */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
 
     .tab-btn.active {
-      background: #333; /* léger fond différent pour actif */
+      background: #333;
       color: #fff;
       transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.6); /* effet surbrillance */
+      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
     }
 
     .tab-content {
@@ -169,8 +171,13 @@
 
 <header>
   <img src="logo.svg" alt="Logo MLF Agency">
-  <a href="#" id="openPopup">SOUMETTRE SON PROJET</a>
 </header>
+
+<section>
+  <p><em>Nous accompagnons les artistes indépendants dans la sortie et le développement de leurs projets — sans prise de droits, sans engagement, en toute transparence.</em></p>
+  <p>Nous apportons l’organisation et le sérieux d’un label.</p>
+  <a href="#" id="openPopup">SOUMETTRE SON PROJET</a>
+</section>
 
 <!-- POPUP FORMULAIRE -->
 <div class="popup" id="contactPopup">
@@ -179,20 +186,15 @@
     <h3>Contact MLF Agency</h3>
     <h6><em>Notre équipe reviendra vers vous d’ici 48 heures.</em></h6>
     <form action="https://formspree.io/f/xanlvwld" method="POST">
-      <input type="text" name="Nom du projet" placeholder="Nom du projet *" required>
-      <input type="email" name="Adresse mail" placeholder="Adresse mail *" required>
-      <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone *" required>
+      <input type="text" name="Nom du projet" placeholder="Nom du projet*" required>
+      <input type="email" name="Adresse mail" placeholder="Adresse mail*" required>
+      <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone*" required>
       <input type="url" name="Lien" placeholder="Lien (optionnel)">
-      <input type="message" name="Message" placeholder="Message (optionnel)">
+      <textarea name="Message" placeholder="Message (optionnel)"></textarea>
       <button type="submit">Envoyer</button>
     </form>
   </div>
 </div>
-
-<section>
-  <p><em>Nous accompagnons les artistes indépendants dans la sortie et le développement de leurs projets — sans prise de droits, sans engagement, en toute transparence.</em></p>
-  <p>Nous apportons l’organisation et le sérieux d’un label.</p>
-</section>
 
 <section>
   <h2>Nos Services</h2>
