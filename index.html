@@ -13,17 +13,54 @@
       line-height: 1.6;
     }
 
+    /* --- HEADER DYNAMIQUE --- */
     header {
       background-color: #000;
       color: white; 
-      padding: 10px 20px 10px; 
+      padding: 20px 0;
       text-align: center; 
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.4s ease;
+    }
+
+    header.shrink {
+      padding: 8px 0;
+      background-color: rgba(0, 0, 0, 0.95);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
 
     header img {
-      max-width: 700px;
+      max-width: 600px;
+      transition: all 0.4s ease;
+    }
+
+    header.shrink img {
+      max-width: 150px;
+    }
+
+    .envelope-icon {
+      display: none;
+      font-size: 1.6em;
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    header.shrink .envelope-icon {
       display: block;
-      margin: 0 auto;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 180px auto 40px; /* espace pour le header fixe */
+      padding: 0 20px;
+      text-align: center;
     }
 
     section a#openPopup {
@@ -43,12 +80,6 @@
       color: black;
     }
 
-    section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
     h2 {
       color: #fff;
       padding-bottom: 5px;
@@ -66,6 +97,7 @@
       background: rgba(0,0,0,0.8);
       justify-content: center;
       align-items: center;
+      z-index: 2000;
     }
 
     .popup-content {
@@ -152,7 +184,6 @@
 
     .tab-btn.active {
       background: #333;
-      color: #fff;
       transform: scale(1.05);
       box-shadow: 0 6px 15px rgba(0,0,0,0.6);
     }
@@ -169,8 +200,9 @@
 </head>
 <body>
 
-<header>
+<header id="mainHeader">
   <img src="logo.svg" alt="Logo MLF Agency">
+  <span class="envelope-icon" id="iconPopup">✉️</span>
 </header>
 
 <section>
@@ -198,13 +230,12 @@
 
 <section>
   <h2>Nos Services</h2>
-
   <div class="tabs">
     <div class="tab-buttons">
-      <button class="tab-btn active" data-tab="tab1"> Direction Artistique</button>
-      <button class="tab-btn" data-tab="tab2"> Label Services</button>
-      <button class="tab-btn" data-tab="tab3"> Conseil & Carrière</button>
-      <button class="tab-btn" data-tab="tab4"> Distribution & Sortie</button>
+      <button class="tab-btn active" data-tab="tab1">Direction Artistique</button>
+      <button class="tab-btn" data-tab="tab2">Label Services</button>
+      <button class="tab-btn" data-tab="tab3">Conseil & Carrière</button>
+      <button class="tab-btn" data-tab="tab4">Distribution & Sortie</button>
     </div>
 
     <div class="tab-content active" id="tab1">
@@ -223,33 +254,37 @@
 </section>
 
 <script>
+  // --- POPUP ---
   const popup = document.getElementById('contactPopup');
   const openBtn = document.getElementById('openPopup');
+  const iconPopup = document.getElementById('iconPopup');
   const closeBtn = document.getElementById('closePopup');
 
-  openBtn.addEventListener('click', (e) => {
+  function openPopup(e) {
     e.preventDefault();
     popup.style.display = 'flex';
+  }
+
+  openBtn.addEventListener('click', openPopup);
+  iconPopup.addEventListener('click', openPopup);
+  closeBtn.addEventListener('click', () => popup.style.display = 'none');
+  window.addEventListener('click', (e) => { if (e.target === popup) popup.style.display = 'none'; });
+
+  // --- HEADER SHRINK ---
+  const header = document.getElementById('mainHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 150) header.classList.add('shrink');
+    else header.classList.remove('shrink');
   });
 
-  closeBtn.addEventListener('click', () => {
-    popup.style.display = 'none';
-  });
-
-  window.addEventListener('click', (e) => {
-    if (e.target === popup) popup.style.display = 'none';
-  });
-
+  // --- TABS ---
   const tabButtons = document.querySelectorAll(".tab-btn");
   const tabContents = document.querySelectorAll(".tab-content");
-
   tabButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       const target = btn.getAttribute("data-tab");
-
       tabButtons.forEach(b => b.classList.remove("active"));
       tabContents.forEach(c => c.classList.remove("active"));
-
       btn.classList.add("active");
       document.getElementById(target).classList.add("active");
     });
