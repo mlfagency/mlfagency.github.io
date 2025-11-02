@@ -145,13 +145,30 @@
 
 <section>
   <h2>Nos Services</h2>
-  <ul>
-    <li><strong>Stratégie & Direction Artistique :</strong> Comprendre le business, faire les bons choix et développer une vision long terme. Aide à la construction d’une vision de ton projet.</li>
-    <li><strong>Label Services :</strong> Cohérence de ton image, identité artistique claire, forte et fidèle à toi-même.</li>
-    <li><strong>Conseil & Gestion de Carrière :</strong> Notre expérience sur les droits, les royalties, l’édition et la structuration.</li>
-    <li><strong>Distribution & Sortie :</strong> Aide à la planification, pitch playlists, stratégies de sortie, coordination avec les plateformes (Spotify, Apple, Deezer…). On t’évite les erreurs et on optimise ta visibilité.</li>
-  </ul>
+
+  <div class="tabs">
+    <div class="tab-buttons">
+      <button class="tab-btn active" data-tab="tab1">🎯 Direction Artistique</button>
+      <button class="tab-btn" data-tab="tab2">💼 Label Services</button>
+      <button class="tab-btn" data-tab="tab3">🧠 Conseil & Carrière</button>
+      <button class="tab-btn" data-tab="tab4">🚀 Distribution & Sortie</button>
+    </div>
+
+    <div class="tab-content active" id="tab1">
+      <p>Comprendre le business, faire les bons choix et développer une vision long terme. Aide à la construction d’une vision de ton projet.</p>
+    </div>
+    <div class="tab-content" id="tab2">
+      <p>Cohérence de ton image, identité artistique claire, forte et fidèle à toi-même.</p>
+    </div>
+    <div class="tab-content" id="tab3">
+      <p>Notre expérience sur les droits, les royalties, l’édition et la structuration.</p>
+    </div>
+    <div class="tab-content" id="tab4">
+      <p>Aide à la planification, pitch playlists, stratégies de sortie, coordination avec les plateformes (Spotify, Apple, Deezer…). On t’évite les erreurs et on optimise ta visibilité.</p>
+    </div>
+  </div>
 </section>
+
 
 <script>
   const popup = document.getElementById('contactPopup');
