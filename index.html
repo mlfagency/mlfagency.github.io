@@ -216,6 +216,40 @@
   font-size: 1.1em;
   line-height: 1.8;
 }
+    /* --- SECTION INTRO --- */
+.intro {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 160px 20px 80px; /* plus d’espace sous le header fixe */
+}
+
+.intro-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.intro p {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.intro a#openPopup {
+  display: inline-block;
+  margin-top: 25px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  border: 1px solid white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.intro a#openPopup:hover {
+  background-color: white;
+  color: black;
+}
   </style>
 </head>
 <body>
@@ -225,11 +259,15 @@
   <span class="envelope-icon" id="iconPopup">✉️</span>
 </header>
 
-<section>
-  <p><em>Nous accompagnons les artistes indépendants dans la sortie et le développement de leurs projets — sans prise de droits, sans engagement, en toute transparence.</em></p>
-  <p>Nous apportons l’organisation et le sérieux d’un label.</p>
-  <a href="#" id="openPopup">SOUMETTRE SON PROJET</a>
+<!-- SECTION INTRO -->
+<section class="intro">
+  <div class="intro-content">
+    <p><em>Nous accompagnons les artistes indépendants dans la sortie et le développement de leurs projets — sans prise de droits, sans engagement, en toute transparence.</em></p>
+    <p>Nous apportons l’organisation et le sérieux d’un label.</p>
+    <a href="#" id="openPopup">SOUMETTRE SON PROJET</a>
+  </div>
 </section>
+
 
 <!-- POPUP FORMULAIRE -->
 <div class="popup" id="contactPopup">
