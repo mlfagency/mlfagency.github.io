@@ -8,62 +8,109 @@
       font-family: Arial, sans-serif; 
       margin: 0; 
       padding: 0; 
-      background-color: #000000; /* fond noir */
-      color: #ffffff; /* texte blanc */
-      line-height: 1.6; 
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
     }
 
     header {
-      background-color: #000000; /* bannière noire */
+      background-color: #000;
       color: white; 
       padding: 40px 20px; 
       text-align: center; 
     }
 
     header img {
-      max-width: 500px; /* taille logo */
-      display: block; 
-      margin: 0 auto 20px; 
+      max-width: 500px; /* logo plus grand */
+      display: block;
+      margin: 0 auto 20px;
     }
 
-    header h1 {
-      margin: 0; 
-      font-size: 2.5em; 
+    header a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+      border: 1px solid white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: 0.3s;
     }
 
-    header p {
-      font-size: 1.2em; 
-      margin-top: 10px;
+    header a:hover {
+      background-color: white;
+      color: black;
     }
 
     section {
-      max-width: 900px; 
-      margin: 40px auto; 
-      padding: 0 20px; 
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
     h2 {
-      color: #ffffff; /* titres blancs */
-      border-bottom: 2px solid #1a73e8; /* accent bleu */
-      padding-bottom: 5px; 
+      color: #fff;
+      padding-bottom: 5px;
+      border: none; /* suppression de la ligne bleue */
     }
 
-    p, li {
-      color: #ffffff; /* texte blanc */
+    ul { padding-left: 20px; }
+
+    /* --- POPUP --- */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
     }
 
-    ul {
-      list-style-type: disc; 
-      padding-left: 20px; 
+    .popup-content {
+      background: #111;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
     }
 
-    a {
-      color: #1a73e8; 
-      text-decoration: none;
+    .popup-content h3 {
+      text-align: center;
+      margin-bottom: 20px;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .popup-content input, .popup-content textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 5px;
+      background: #222;
+      color: white;
+    }
+
+    .popup-content button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1em;
+      transition: 0.3s;
+    }
+
+    .popup-content button:hover {
+      background: #0d57b5;
+    }
+
+    .close-btn {
+      text-align: right;
+      cursor: pointer;
+      font-size: 1.5em;
     }
   </style>
 </head>
@@ -71,8 +118,23 @@
 
 <header>
   <img src="logo.svg" alt="Logo MLF Agency">
-  <p>Contactez-nous : <a href="mailto:contact@mlfagency.fr">contact@mlfagency.fr</a></p>
+  <a href="#" id="openPopup">Formulaire de contact</a>
 </header>
+
+<!-- POPUP FORMULAIRE -->
+<div class="popup" id="contactPopup">
+  <div class="popup-content">
+    <div class="close-btn" id="closePopup">&times;</div>
+    <h3>Contact MLF Agency</h3>
+    <form action="https://formspree.io/f/xxxxxx" method="POST">
+      <input type="text" name="Nom du projet" placeholder="Nom du projet" required>
+      <input type="email" name="Adresse mail" placeholder="Adresse mail" required>
+      <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone">
+      <input type="url" name="Lien YouTube" placeholder="Lien YouTube (optionnel)">
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+</div>
 
 <section>
   <h2>Notre Mission</h2>
@@ -89,6 +151,25 @@
     <li><strong>Distribution & Sortie :</strong> Aide à la planification, pitch playlists, stratégies de sortie, coordination avec les plateformes (Spotify, Apple, Deezer…). On t’évite les erreurs et on optimise ta visibilité.</li>
   </ul>
 </section>
+
+<script>
+  const popup = document.getElementById('contactPopup');
+  const openBtn = document.getElementById('openPopup');
+  const closeBtn = document.getElementById('closePopup');
+
+  openBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    popup.style.display = 'flex';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === popup) popup.style.display = 'none';
+  });
+</script>
 
 </body>
 </html>
