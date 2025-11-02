@@ -196,26 +196,29 @@
     .tab-content.active {
       display: block;
     }
-    .about {
+.about {
   background-color: #fff;
   color: #000;
-  padding: 80px 20px;
-  text-align: center;
-  margin-top: 60px;
+  padding: 80px 20px; /* espace en haut et bas */
+  width: 100%;          /* prend toute la largeur */
+  box-sizing: border-box;
 }
 
 .about h2 {
   color: #000;
   margin-bottom: 20px;
   font-size: 2em;
+  text-align: center;
 }
 
 .about p {
-  max-width: 800px;
-  margin: 10px auto;
+  max-width: 900px;    /* limite la largeur du texte pour rester lisible */
+  margin: 0 auto 20px; /* centrer le texte et espacer les paragraphes */
   font-size: 1.1em;
   line-height: 1.8;
+  text-align: center;
 }
+
     /* --- SECTION INTRO --- */
 .intro {
   background-color: #000;
