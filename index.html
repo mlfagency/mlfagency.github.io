@@ -97,36 +97,6 @@
       color: black;
     }
 
-/* --- BANDE BLANCHE ALIGNÉE AVEC LE CADRE --- */
-.about {
-  display: flex;
-  justify-content: center;
-  background-color: #fff;
-  color: #000;
-  padding: 80px 0;
-}
-
-.about-inner {
-  max-width: 950px;  /* même largeur que .services */
-  width: 100%;
-  border-radius: 0 0 16px 16px; /* même arrondi que le cadre */
-  padding: 0 30px;   /* mêmes marges internes */
-  box-sizing: border-box;
-}
-
-.about-inner h2 {
-  text-align: center;
-  font-size: 2em;
-  margin-bottom: 25px;
-}
-
-.about-inner p {
-  font-size: 1.1em;
-  line-height: 1.8;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
     /* --- NOS SERVICES --- */
     .tabs {
       margin-top: 20px;
@@ -227,7 +197,6 @@
   border-top: 1px solid rgba(255,255,255,0.2);
 }
     
-
     /* --- POPUP --- */
     .popup {
       display: none;
@@ -437,7 +406,76 @@
   border: none;
   border-radius: 16px 16px 0 0;
 }
-    
+
+    /* --- SECTION QUI SOMMES-NOUS : VIDÉO FOND FLOUTÉE --- */
+.about {
+  position: relative;
+  color: #fff;
+  padding: 140px 30px;
+  text-align: center;
+  overflow: hidden;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-radius: 0 0 16px 16px;
+  background: #000;
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(40%) blur(4px);
+  z-index: 0;
+}
+
+.about-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 50px 40px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  animation: floatText 6s ease-in-out infinite alternate;
+}
+
+.about-inner h2 {
+  font-size: 2.4em;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+.about-inner p {
+  font-size: 1.15em;
+  line-height: 1.8;
+  color: #ddd;
+  margin-bottom: 15px;
+}
+
+/* Animation douce du texte */
+@keyframes floatText {
+  from { transform: translateY(0); }
+  to { transform: translateY(-6px); }
+}
+
+/* Stop vidéo sur mobile pour performance */
+@media (max-width: 768px) {
+  .bg-video {
+    display: none;
+  }
+  .about {
+    background: linear-gradient(180deg, #000 0%, #111 100%);
+  }
+}
+
   </style>
 </head>
 <body>
@@ -520,7 +558,12 @@
     </div>
   </section>
 
+  <!-- SECTION QUI SOMMES-NOUS AVEC VIDÉO DE FOND -->
   <section class="about">
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="mlf_team.mp4" type="video/mp4">
+    </video>
+
     <div class="about-inner">
       <h2>Qui sommes-nous</h2>
       <p>
@@ -533,6 +576,7 @@
       </p>
     </div>
   </section>
+
 
 </div>
   
