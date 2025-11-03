@@ -172,6 +172,40 @@
   margin-right: 0;
 }
 
+/* --- CADRE AUTOUR DE LA SECTION SERVICES --- */
+.services {
+  position: relative;
+  max-width: 950px;
+  margin: 60px auto 0;
+  padding: 50px 30px 70px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* cadre blanc fin et doux */
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 100%);
+  box-shadow: 0 0 25px rgba(255,255,255,0.05);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* effet au survol pour un style moderne */
+.services:hover {
+  border-color: rgba(255,255,255,0.6);
+  box-shadow: 0 0 35px rgba(255,255,255,0.1);
+}
+
+/* titre stylé */
+.services h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2em;
+  color: white;
+}
+
+/* fond visuel harmonieux avec le “Qui sommes-nous” */
+.about {
+  margin-top: 0;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+    
+
     /* --- POPUP --- */
     .popup {
       display: none;
@@ -373,7 +407,7 @@
 
 
 <!-- NOS SERVICES -->
-<section>
+<section class="services">
   <h2>Nos Services</h2>
   <div class="tabs">
     <div class="tab-buttons">
