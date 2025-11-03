@@ -97,17 +97,21 @@
       color: black;
     }
 
-    /* --- BANDE BLANCHE PLEINE LARGEUR --- */
+/* --- BANDE BLANCHE ALIGNÉE AVEC LE CADRE --- */
 .about {
+  display: flex;
+  justify-content: center;
   background-color: #fff;
   color: #000;
   padding: 80px 0;
 }
 
 .about-inner {
-  max-width: 950px; /* même largeur que .services */
-  margin: 0 auto;
-  padding: 0 30px; /* mêmes marges internes */
+  max-width: 950px;  /* même largeur que .services */
+  width: 100%;
+  border-radius: 0 0 16px 16px; /* même arrondi que le cadre */
+  padding: 0 30px;   /* mêmes marges internes */
+  box-sizing: border-box;
 }
 
 .about-inner h2 {
@@ -122,8 +126,6 @@
   margin-bottom: 15px;
   text-align: center;
 }
-
-    }
 
     /* --- NOS SERVICES --- */
     .tabs {
@@ -182,11 +184,15 @@
   max-width: 950px;
   margin: 60px auto 0;
   padding: 50px 30px 70px;
-  border: 1px solid rgba(255, 255, 255, 0.3); /* cadre blanc fin et doux */
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 16px;
   background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 100%);
   box-shadow: 0 0 25px rgba(255,255,255,0.05);
   transition: border-color 0.4s ease, box-shadow 0.4s ease;
+
+  /* Option bonus : harmonise la transition avec la bande blanche */
+  border-bottom: none;
+  border-radius: 16px 16px 0 0;
 }
 
 /* effet au survol pour un style moderne */
