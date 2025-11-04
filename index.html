@@ -4,6 +4,38 @@
   <meta charset="UTF-8">
   <title>MLF Agency</title>
   <style>
+    /* --- VIDÉO D’ARRIÈRE-PLAN --- */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  background-color: #000;
+}
+
+/* --- VOILE NOIR PAR-DESSUS LA VIDÉO --- */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55); /* Ajuste ici l'opacité selon ta vidéo */
+  z-index: -1;
+}
+
+/* Compatibilité mobile */
+@media (max-width: 768px) {
+  #background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+}
+    
     body { 
       font-family: Arial, sans-serif; 
       margin: 0; 
@@ -470,7 +502,16 @@
   </style>
 </head>
 <body>
+  <!-- VIDÉO D’ARRIÈRE-PLAN -->
+  <video autoplay muted loop playsinline id="background-video">
+    <source src="video-mlf.mp4" type="video/mp4">
+    <!-- Image de secours si la vidéo ne charge pas -->
+    <img src="fallback.jpg" alt="MLF Background">
+  </video>
 
+  <!-- VOILE NOIR POUR LISIBILITÉ -->
+  <div class="video-overlay"></div>
+  
 <header id="mainHeader">
   <img src="logo.svg" alt="Logo MLF Agency">
   <span class="envelope-icon" id="iconPopup">✉️</span>
