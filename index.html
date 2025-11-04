@@ -5,295 +5,354 @@
   <title>MLF Agency</title>
   <style>
     /* --- VIDÉO D’ARRIÈRE-PLAN --- */
-#background-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
-  background-color: #000;
-}
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      background-color: #000;
+    }
 
-/* --- VOILE NOIR PAR-DESSUS LA VIDÉO --- */
-.video-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.55);
-  z-index: -1;
-}
+    /* --- VOILE NOIR PAR-DESSUS LA VIDÉO --- */
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.55);
+      z-index: -1;
+    }
 
-/* Compatibilité mobile */
-@media (max-width: 768px) {
-  #background-video {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-  }
-}
+    /* Compatibilité mobile */
+    @media (max-width: 768px) {
+      #background-video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+      }
+    }
     
-body { 
-  font-family: Arial, sans-serif; 
-  margin: 0; 
-  padding: 0; 
-  background-color: #000;
-  color: #fff;
-  line-height: 1.6;
-}
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 0; 
+      padding: 0; 
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
+    }
 
-/* --- HEADER DYNAMIQUE --- */
-header {
-  background-color: #000;
-  color: white; 
-  padding: 15px 0;
-  text-align: center; 
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.5s ease;
-}
+    /* --- HEADER DYNAMIQUE --- */
+    header {
+      background-color: #000;
+      color: white; 
+      padding: 15px 0;
+      text-align: center; 
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.5s ease;
+    }
 
-header.shrink {
-  padding: 6px 0;
-  background-color: rgba(0, 0, 0, 0.95);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.6);
-}
+    header.shrink {
+      padding: 6px 0;
+      background-color: rgba(0, 0, 0, 0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    }
 
-header img {
-  max-width: 400px;
-  transition: transform 0.5s ease, max-width 0.5s ease;
-}
+    header img {
+      max-width: 400px;
+      transition: transform 0.5s ease, max-width 0.5s ease;
+    }
 
-header.shrink img {
-  max-width: 120px;
-  transform: scale(0.9);
-}
+    header.shrink img {
+      max-width: 120px;
+      transform: scale(0.9);
+    }
 
-.envelope-icon {
-  display: none;
-  font-size: 1.6em;
-  position: absolute;
-  right: 30px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-}
+    .envelope-icon {
+      display: none;
+      font-size: 1.6em;
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
 
-header.shrink .envelope-icon {
-  display: block;
-}
+    header.shrink .envelope-icon {
+      display: block;
+    }
 
-/* --- SECTION INTRO --- */
-.intro {
-  text-align: center;
-  padding: 220px 20px 50px;
-  color: #fff;
-  position: relative;
-  z-index: 1;
-}
+    /* --- SECTION INTRO --- */
+    .intro {
+      text-align: center;
+      padding: 220px 20px 40px;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+    }
 
-.intro-content {
-  max-width: 900px;
-  margin: 0 auto;
-}
+    .intro-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-.intro p {
-  font-size: 1.2em;
-  margin: 10px 0;
-}
+    .intro p {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
 
-.btn {
-  display: inline-block;
-  margin-top: 25px;
-  color: white;
-  text-decoration: none;
-  font-size: 1.1em;
-  border: 1px solid white;
-  padding: 12px 25px;
-  border-radius: 8px;
-  transition: 0.3s;
-  cursor: pointer;
-  background: none;
-}
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.1em;
+      border: 1px solid white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      transition: 0.3s;
+      cursor: pointer;
+      background: none;
+    }
 
-.btn:hover {
-  background-color: white;
-  color: black;
-}
+    .btn:hover {
+      background-color: white;
+      color: black;
+    }
 
-/* --- NOS SERVICES --- */
-.tabs {
-  margin-top: 20px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 20px;
-}
+    /* --- CARROUSEL FLUIDE INFINI --- */
+    .about-carousel {
+      overflow: hidden;
+      width: 100%;
+      padding: 20px 0 40px;
+      position: relative;
+      z-index: 1;
+    }
 
-.tab-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 20px;
-  gap: 10px;
-}
+    .carousel-track {
+      display: flex;
+      width: max-content;
+      animation: scroll 25s linear infinite;
+    }
 
-.tab-btn {
-  font-family: inherit;
-  font-size: 1.1em;
-  padding: 12px 25px;
-  border-radius: 8px;
-  border: 1px solid white;
-  color: white;
-  background: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
+    .carousel-track img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin: 0 10px;
+      transition: transform 0.3s ease;
+    }
 
-.tab-btn:hover, .tab-btn.active {
-  background-color: white;
-  color: black;
-}
+    .carousel-track img:hover {
+      transform: scale(1.05);
+    }
 
-.tab-content {
-  display: none;
-  text-align: left;
-  padding: 0 30px;
-}
+    /* Animation infinie */
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
 
-.tab-content.active {
-  display: block;
-}
+    /* Responsive carrousel */
+    @media (max-width: 900px) {
+      .carousel-track img {
+        width: 220px;
+        height: 220px;
+      }
+    }
 
-/* --- CADRE AUTOUR DE LA SECTION SERVICES --- */
-.services {
-  position: relative;
-  max-width: 950px;
-  margin: 60px auto 0;
-  padding: 50px 30px 70px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 100%);
-  box-shadow: 0 0 25px rgba(255,255,255,0.05);
-  transition: border-color 0.4s ease, box-shadow 0.4s ease;
-  border-bottom: none;
-  border-radius: 16px 16px 0 0;
-}
+    @media (max-width: 600px) {
+      .carousel-track img {
+        width: 180px;
+        height: 180px;
+      }
+    }
 
-.services:hover {
-  border-color: rgba(255,255,255,0.6);
-  box-shadow: 0 0 35px rgba(255,255,255,0.1);
-}
+    /* --- CADRE AUTOUR DE LA SECTION SERVICES --- */
+    .services {
+      position: relative;
+      max-width: 950px;
+      margin: 40px auto 0;
+      padding: 50px 30px 70px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 100%);
+      box-shadow: 0 0 25px rgba(255,255,255,0.05);
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+      border-bottom: none;
+      border-radius: 16px 16px 0 0;
+      z-index: 1;
+    }
 
-.services h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2em;
-  color: white;
-}
+    .services:hover {
+      border-color: rgba(255,255,255,0.6);
+      box-shadow: 0 0 35px rgba(255,255,255,0.1);
+    }
 
-/* --- SECTION QUI SOMMES-NOUS --- */
-.about {
-  background: transparent;
-  position: relative;
-  z-index: 1;
-  padding: 80px 30px;
-  text-align: center;
-}
+    .services h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2em;
+      color: white;
+    }
 
-.about-inner {
-  max-width: 850px;
-  margin: 0 auto;
-}
+    /* --- TABS --- */
+    .tabs {
+      margin-top: 20px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 20px;
+    }
 
-.about-inner h2 {
-  color: #fff;
-  font-size: 2.4em;
-  margin-bottom: 25px;
-  text-shadow: 0 0 8px rgba(255,255,255,0.3);
-}
+    .tab-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+      gap: 10px;
+    }
 
-.about-inner p {
-  color: #ddd;
-  font-size: 1.15em;
-  line-height: 1.8;
-  margin-bottom: 15px;
-}
+    .tab-btn {
+      font-family: inherit;
+      font-size: 1.1em;
+      padding: 12px 25px;
+      border-radius: 8px;
+      border: 1px solid white;
+      color: white;
+      background: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-/* --- POPUP --- */
-.popup {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
+    .tab-btn:hover, .tab-btn.active {
+      background-color: white;
+      color: black;
+    }
 
-.popup-content {
-  background: #111;
-  padding: 30px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 400px;
-}
+    .tab-content {
+      display: none;
+      text-align: left;
+      padding: 0 30px;
+    }
 
-.popup-content h3 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+    .tab-content.active {
+      display: block;
+    }
 
-.popup-content h6 {
-  text-align: center;
-  font-style: italic;
-  margin-bottom: 15px;
-}
+    .tab-content p,
+    .tab-content h3 {
+      margin-left: 0;
+      margin-right: 0;
+    }
 
-.popup-content input, .popup-content textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 5px;
-  background: #222;
-  color: white;
-}
+    /* --- SECTION QUI SOMMES-NOUS --- */
+    .about {
+      background: transparent;
+      position: relative;
+      z-index: 1;
+      padding: 80px 30px 100px;
+      text-align: center;
+    }
 
-.popup-content button {
-  background: #1a73e8;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 1em;
-  transition: 0.3s;
-}
+    .about-inner {
+      max-width: 850px;
+      margin: 0 auto;
+    }
 
-.popup-content button:hover {
-  background: #0d57b5;
-}
+    .about-inner h2 {
+      color: #fff;
+      font-size: 2.4em;
+      margin-bottom: 25px;
+      text-shadow: 0 0 8px rgba(255,255,255,0.3);
+    }
 
-.close-btn {
-  text-align: right;
-  cursor: pointer;
-  font-size: 1.5em;
-}
+    .about-inner p {
+      color: #ddd;
+      font-size: 1.15em;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
 
+    /* --- POPUP --- */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .popup-content {
+      background: #111;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .popup-content h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .popup-content h6 {
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    .popup-content input, .popup-content textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 5px;
+      background: #222;
+      color: white;
+    }
+
+    .popup-content button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1em;
+      transition: 0.3s;
+    }
+
+    .popup-content button:hover {
+      background: #0d57b5;
+    }
+
+    .close-btn {
+      text-align: right;
+      cursor: pointer;
+      font-size: 1.5em;
+    }
   </style>
 </head>
 <body>
@@ -305,111 +364,151 @@ header.shrink .envelope-icon {
   </video>
   <div class="video-overlay"></div>
 
-<header id="mainHeader">
-  <img src="logo.svg" alt="Logo MLF Agency">
-  <span class="envelope-icon" id="iconPopup">✉️</span>
-</header>
+  <header id="mainHeader">
+    <img src="logo.svg" alt="Logo MLF Agency">
+    <span class="envelope-icon" id="iconPopup">✉️</span>
+  </header>
 
-<section class="intro">
-  <div class="intro-content">
-    <p><em>Nous accompagnons les artistes indépendants dans la sortie et le développement de leurs projets — sans prise de droits, sans engagement, en toute transparence.</em></p>
-    <p>Nous apportons l’organisation et le sérieux d’un label.</p>
-    <a href="#" id="openPopup" class="btn">SOUMETTRE SON PROJET</a>
-  </div>
-</section>
-
-<section class="services">
-  <h2>Nos Services</h2>
-  <div class="tabs">
-    <div class="tab-buttons">
-      <button class="tab-btn active" data-tab="tab1">Direction Artistique</button>
-      <button class="tab-btn" data-tab="tab2">Label Services</button>
-      <button class="tab-btn" data-tab="tab3">Conseil & Carrière</button>
-      <button class="tab-btn" data-tab="tab4">Distribution & Sortie</button>
+  <!-- INTRO -->
+  <section class="intro">
+    <div class="intro-content">
+      <p><em>Nous accompagnons les artistes indépendants dans la sortie et le développement de leurs projets — sans prise de droits, sans engagement, en toute transparence.</em></p>
+      <p>Nous apportons l’organisation et le sérieux d’un label.</p>
+      <a href="#" id="openPopup" class="btn">SOUMETTRE SON PROJET</a>
     </div>
+  </section>
 
-    <div class="tab-content active" id="tab1">
-      <p><em>La direction artistique, c’est l’étape où ton projet prend forme.</em></p>
-      <p>Chez MLF, on t’aide à construire une vision claire et cohérente, pour que chaque choix artistique serve ton identité et ton impact.</p>
-      <h3>Ce que nous faisons concrètement :</h3>
-      <p>- Analyse du projet et positionnement</p>
-      <p>- Étude de ton style, ton univers et ton public.</p>
-      <p>- Définition de la signature artistique unique qui te distingue.</p>
-      <p>- Cohérence musicale et visuelle.</p>
-      <p>- Choix des sons, beats, flows, arrangements.</p>
-      <p>- Définition de l’image visuelle : clips, photos, charte graphique.</p>
-      <p>- Plan de développement artistique</p>
-      <p>- Feuille de route pour ton projet : singles, EPs, collaborations.</p>
-      <p>- Structuration du calendrier de sorties et du storytelling autour de ton projet.</p>
-      <p>- Accompagnement créatif.</p>
-      <p>- Suggestions stratégiques basées sur l’expérience MLF.</p>
-      <p><strong>Pourquoi c’est important ?</strong><br>Un artiste sans direction artistique, c’est comme un son sans beat : ça manque de structure et d’impact.  
-      Avec MLF, ton talent devient lisible, ton identité devient forte, et ton projet prêt à marquer les esprits.</p>
+  <!-- CARROUSEL / GALERIE -->
+  <div class="about-carousel">
+    <div class="carousel-track">
+      <img src="imageteam1.jpg" alt="Équipe MLF 1">
+      <img src="imageteam2.jpg" alt="Équipe MLF 2">
+      <img src="imageteam3.jpg" alt="Équipe MLF 3">
+      <img src="imageteam4.jpg" alt="Équipe MLF 4">
+      <img src="imageteam5.jpg" alt="Équipe MLF 5">
+      <img src="imageteam6.jpg" alt="Équipe MLF 6">
+
+      <!-- duplication pour continuité -->
+      <img src="imageteam1.jpg" alt="Équipe MLF 1">
+      <img src="imageteam2.jpg" alt="Équipe MLF 2">
+      <img src="imageteam3.jpg" alt="Équipe MLF 3">
+      <img src="imageteam4.jpg" alt="Équipe MLF 4">
+      <img src="imageteam5.jpg" alt="Équipe MLF 5">
+      <img src="imageteam6.jpg" alt="Équipe MLF 6">
     </div>
   </div>
-</section>
 
-<section class="about">
-  <div class="about-inner">
-    <h2>Qui sommes-nous</h2>
-    <p>MLF Agency est dédié à l’accompagnement des artistes indépendants. 
-    Notre mission : offrir la structure, la stratégie et le réseau d’un label, sans en prendre les contraintes.</p>
-    <p>Nous collaborons avec des studios, compositeurs, ingénieurs son, distributeurs, créatifs visuels et attachés de presse — 
-    pour aider chaque artiste à structurer son projet, définir son identité et maximiser son impact.</p>
+  <!-- NOS SERVICES -->
+  <section class="services">
+    <h2>Nos Services</h2>
+    <div class="tabs">
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="tab1">Direction Artistique</button>
+        <button class="tab-btn" data-tab="tab2">Label Services</button>
+        <button class="tab-btn" data-tab="tab3">Conseil & Carrière</button>
+        <button class="tab-btn" data-tab="tab4">Distribution & Sortie</button>
+      </div>
+
+      <div class="tab-content active" id="tab1">
+        <p><em>La direction artistique, c’est l’étape où ton projet prend forme.</em></p>
+        <p>Chez MLF, on t’aide à construire une vision claire et cohérente, pour que chaque choix artistique serve ton identité et ton impact.</p>
+        <h3>Ce que nous faisons concrètement :</h3>
+        <p>- Analyse du projet et positionnement</p>
+        <p>- Étude de ton style, ton univers et ton public.</p>
+        <p>- Définition de la signature artistique unique qui te distingue.</p>
+        <p>- Cohérence musicale et visuelle.</p>
+        <p>- Choix des sons, beats, flows, arrangements.</p>
+        <p>- Définition de l’image visuelle : clips, photos, charte graphique.</p>
+        <p>- Plan de développement artistique</p>
+        <p>- Feuille de route pour ton projet : singles, EPs, collaborations.</p>
+        <p>- Structuration du calendrier de sorties et du storytelling autour de ton projet.</p>
+        <p>- Accompagnement créatif.</p>
+        <p>- Suggestions stratégiques basées sur l’expérience MLF.</p>
+        <p><strong>Pourquoi c’est important ?</strong><br>Un artiste sans direction artistique, c’est comme un son sans beat : ça manque de structure et d’impact.  
+        Avec MLF, ton talent devient lisible, ton identité devient forte, et ton projet prêt à marquer les esprits.</p>
+      </div>
+
+      <div class="tab-content" id="tab2">
+        <p>Cohérence de ton image, identité artistique claire, forte et fidèle à toi-même.</p>
+      </div>
+      <div class="tab-content" id="tab3">
+        <p>Notre expérience sur les droits, les royalties, l’édition et la structuration.</p>
+      </div>
+      <div class="tab-content" id="tab4">
+        <p>Aide à la planification, pitch playlists, stratégies de sortie, coordination avec les plateformes (Spotify, Apple, Deezer…). On t’évite les erreurs et on optimise ta visibilité.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUI SOMMES-NOUS -->
+  <section class="about">
+    <div class="about-inner">
+      <h2>Qui sommes-nous</h2>
+      <p>
+        MLF Agency est dédié à l’accompagnement des artistes indépendants. 
+        Notre mission : offrir la structure, la stratégie et le réseau d’un label, sans en prendre les contraintes.
+      </p>
+      <p>
+        Nous collaborons avec des studios, compositeurs, ingénieurs son, distributeurs, créatifs visuels et attachés de presse — 
+        pour aider chaque artiste à structurer son projet, définir son identité et maximiser son impact.
+      </p>
+    </div>
+  </section>
+
+  <!-- POPUP FORMULAIRE -->
+  <div class="popup" id="contactPopup">
+    <div class="popup-content">
+      <div class="close-btn" id="closePopup">&times;</div>
+      <h3>Contact MLF Agency</h3>
+      <h6><em>Notre équipe reviendra vers vous d’ici 48 heures.</em></h6>
+      <form action="https://formspree.io/f/xanlvwld" method="POST">
+        <input type="text" name="Nom du projet" placeholder="Nom du projet*" required>
+        <input type="email" name="Adresse mail" placeholder="Adresse mail*" required>
+        <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone*" required>
+        <input type="url" name="Lien" placeholder="Lien (optionnel)">
+        <textarea name="Message" placeholder="Message (optionnel)"></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
   </div>
-</section>
 
-<!-- POPUP -->
-<div class="popup" id="contactPopup">
-  <div class="popup-content">
-    <div class="close-btn" id="closePopup">&times;</div>
-    <h3>Contact MLF Agency</h3>
-    <h6><em>Notre équipe reviendra vers vous d’ici 48 heures.</em></h6>
-    <form action="https://formspree.io/f/xanlvwld" method="POST">
-      <input type="text" name="Nom du projet" placeholder="Nom du projet*" required>
-      <input type="email" name="Adresse mail" placeholder="Adresse mail*" required>
-      <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone*" required>
-      <input type="url" name="Lien" placeholder="Lien (optionnel)">
-      <textarea name="Message" placeholder="Message (optionnel)"></textarea>
-      <button type="submit">Envoyer</button>
-    </form>
-  </div>
-</div>
+  <script>
+    // --- POPUP ---
+    const popup = document.getElementById('contactPopup');
+    const openBtn = document.getElementById('openPopup');
+    const iconPopup = document.getElementById('iconPopup');
+    const closeBtn = document.getElementById('closePopup');
 
-<script>
-const popup = document.getElementById('contactPopup');
-const openBtn = document.getElementById('openPopup');
-const iconPopup = document.getElementById('iconPopup');
-const closeBtn = document.getElementById('closePopup');
+    function openPopup(e) {
+      e.preventDefault();
+      popup.style.display = 'flex';
+    }
 
-function openPopup(e) {
-  e.preventDefault();
-  popup.style.display = 'flex';
-}
+    openBtn.addEventListener('click', openPopup);
+    iconPopup.addEventListener('click', openPopup);
+    closeBtn.addEventListener('click', () => popup.style.display = 'none');
+    window.addEventListener('click', (e) => { if (e.target === popup) popup.style.display = 'none'; });
 
-openBtn.addEventListener('click', openPopup);
-iconPopup.addEventListener('click', openPopup);
-closeBtn.addEventListener('click', () => popup.style.display = 'none');
-window.addEventListener('click', (e) => { if (e.target === popup) popup.style.display = 'none'; });
+    // --- HEADER SHRINK ---
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 150) header.classList.add('shrink');
+      else header.classList.remove('shrink');
+    });
 
-const header = document.getElementById('mainHeader');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 150) header.classList.add('shrink');
-  else header.classList.remove('shrink');
-});
-
-const tabButtons = document.querySelectorAll(".tab-btn");
-const tabContents = document.querySelectorAll(".tab-content");
-tabButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const target = btn.getAttribute("data-tab");
-    tabButtons.forEach(b => b.classList.remove("active"));
-    tabContents.forEach(c => c.classList.remove("active"));
-    btn.classList.add("active");
-    document.getElementById(target).classList.add("active");
-  });
-});
-</script>
+    // --- TABS ---
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-tab");
+        tabButtons.forEach(b => b.classList.remove("active"));
+        tabContents.forEach(c => c.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(target).classList.add("active");
+      });
+    });
+  </script>
 
 </body>
 </html>
