@@ -357,12 +357,19 @@
 </head>
 <body>
 
-  <!-- VIDÉO D’ARRIÈRE-PLAN UNIQUE -->
-  <video autoplay muted loop playsinline id="background-video">
-    <source src="mlf_team.mp4" type="video/mp4">
-    <img src="fallback.jpg" alt="MLF Background">
-  </video>
-  <div class="video-overlay"></div>
+ <!-- VIDÉO D’ARRIÈRE-PLAN UNIQUE -->
+<video id="background-video"
+       autoplay
+       muted
+       loop
+       playsinline
+       webkit-playsinline
+       preload="auto"
+       poster="fallback.jpg">
+  <source src="mlf_team.mp4" type="video/mp4">
+</video>
+<div class="video-overlay"></div>
+
 
   <header id="mainHeader">
     <img src="logo.svg" alt="Logo MLF Agency">
@@ -528,7 +535,21 @@ Notre mission, c’est de leur donner les outils, la méthode et le réseau pour
         document.getElementById(target).classList.add("active");
       });
     });
-  </script>
+
+      // --- VIDÉO MOBILE FIX ---
+  document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('background-video');
+    if (!video) return; // sécurité
+
+    video.muted = true; // obligatoire pour iOS
+    video.play().catch(() => {
+      // Si la vidéo ne se lance pas, fallback image
+      video.style.display = 'none';
+      document.body.style.background =
+        "url('fallback.jpg') no-repeat center center / cover";
+    });
+  });
+</script>
 
 </body>
 </html>
