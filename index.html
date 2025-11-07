@@ -563,7 +563,27 @@ Notre mission, c’est de leur donner les outils, la méthode et le réseau pour
     });
   });
 </script>
+<script>
+window.addEventListener('load', () => {
+  const video = document.getElementById('background-video');
+  if (!video) return;
 
+  // iOS a besoin de ce mute forcé
+  video.muted = true;
+
+  // Tente de lire la vidéo
+  const playPromise = video.play();
+  if (playPromise !== undefined) {
+    playPromise.then(() => {
+      console.log('✅ Vidéo de fond lue avec succès.');
+    }).catch(err => {
+      console.warn('⚠️ Lecture vidéo bloquée sur mobile :', err);
+      // On garde le fond image du wrapper
+      video.remove();
+    });
+  }
+});
+</script>
 
 </body>
 </html>
