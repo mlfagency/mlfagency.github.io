@@ -302,14 +302,17 @@ body {
       align-items: center;
       z-index: 2000;
     }
+    
+.popup-content {
+  background: #111;
+  padding: 40px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 550px; /* plus grand */
+  box-shadow: 0 0 25px rgba(255,255,255,0.1);
+  text-align: center; /* pour centrer le logo */
+}
 
-    .popup-content {
-      background: #111;
-      padding: 30px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 400px;
-    }
 
     .popup-content h3 {
       text-align: center;
@@ -347,6 +350,13 @@ body {
     .popup-content button:hover {
       background: #0d57b5;
     }
+
+    .popup-logo {
+  width: 160px;
+  margin-bottom: 15px;
+  opacity: 0.95;
+}
+
 
     .close-btn {
       text-align: right;
@@ -470,10 +480,11 @@ body {
 }
     
 .form-note {
-  font-size: 0.8em;
-  color: #ff4d4d;
+  font-size: 0.7em;      /* plus petit */
+  color: #ff6b6b;        /* rouge un peu plus doux */
   text-align: left;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  opacity: 0.9;          /* effet visuel plus léger */
 }
 
   </style>
@@ -655,6 +666,7 @@ Et surtout, la compréhension des codes pour gérer ton image comme une marque �
   <div class="popup" id="contactPopup">
     <div class="popup-content">
       <div class="close-btn" id="closePopup">&times;</div>
+      <img src="logo.svg" alt="Logo MLF Agency" class="popup-logo">
       <h3>Contact MLF Agency</h3>
       <h6><em>Notre équipe reviendra vers vous d’ici 48 heures.</em></h6>
       <p class="form-note">* Les champs avec un astérisque sont obligatoires</p>
