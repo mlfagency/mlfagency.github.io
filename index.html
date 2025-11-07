@@ -523,33 +523,36 @@ Notre mission, c’est de leur donner les outils, la méthode et le réseau pour
       else header.classList.remove('shrink');
     });
 
-    // --- TABS ---
-    const tabButtons = document.querySelectorAll(".tab-btn");
-    const tabContents = document.querySelectorAll(".tab-content");
-    tabButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const target = btn.getAttribute("data-tab");
-        tabButtons.forEach(b => b.classList.remove("active"));
-        tabContents.forEach(c => c.classList.remove("active"));
-        btn.classList.add("active");
-        document.getElementById(target).classList.add("active");
-      });
+  // --- TABS ---
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const tabContents = document.querySelectorAll(".tab-content");
+  tabButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = btn.getAttribute("data-tab");
+      tabButtons.forEach(b => b.classList.remove("active"));
+      tabContents.forEach(c => c.classList.remove("active"));
+      btn.classList.add("active");
+      document.getElementById(target).classList.add("active");
     });
+  });
 
-      // --- VIDÉO MOBILE FIX ---
-  document.addEventListener('DOMContentLoaded', () => {
+  // --- VIDÉO MOBILE FIX ---
+  window.addEventListener('load', () => {
     const video = document.getElementById('background-video');
-    if (!video) return; // sécurité
+    if (!video) return;
 
-    video.muted = true; // obligatoire pour iOS
-    video.play().catch(() => {
-      // Si la vidéo ne se lance pas, fallback image
-      video.style.display = 'none';
-      document.body.style.background =
-        "url('fallback.jpg') no-repeat center center / cover";
+    video.muted = true;
+    video.play().then(() => {
+      // OK : la vidéo se joue
+      video.style.display = 'block';
+    }).catch(err => {
+      console.warn('Lecture vidéo bloquée :', err);
+      // On ne cache plus la vidéo — on laisse le poster visible
+      video.setAttribute('poster', 'fallback.jpg');
     });
   });
 </script>
+
 
 </body>
 </html>
