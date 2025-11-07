@@ -35,24 +35,15 @@
   z-index: -1;
 }
 
-
-    /* Compatibilité mobile */
-    @media (max-width: 768px) {
-      #background-video {
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-      }
-    }
-    
-    body { 
-      font-family: Arial, sans-serif; 
-      margin: 0; 
-      padding: 0; 
-      background-color: #000;
-      color: #fff;
-      line-height: 1.6;
-    }
+/* --- BASE ET AUTRES STYLES EXISTANTS --- */
+body { 
+  font-family: Arial, sans-serif; 
+  margin: 0; 
+  padding: 0; 
+  background-color: #000;
+  color: #fff;
+  line-height: 1.6;
+}
 
     /* --- HEADER DYNAMIQUE --- */
     header {
@@ -362,6 +353,122 @@
       cursor: pointer;
       font-size: 1.5em;
     }
+    /* --- SECTION TARIFS & ACCOMPAGNEMENTS --- */
+.pricing {
+  background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 100%);
+  padding: 90px 30px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.pricing h2 {
+  font-size: 2.2em;
+  margin-bottom: 15px;
+  text-shadow: 0 0 8px rgba(255,255,255,0.2);
+}
+
+.pricing p.intro {
+  font-size: 1.2em;
+  color: #ccc;
+  margin: 20px auto 40px;
+  max-width: 800px;
+}
+
+.pricing-highlight {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 40px 30px;
+  max-width: 650px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(255,255,255,0.05);
+}
+
+.pricing-highlight p {
+  font-size: 1.3em;
+  margin-bottom: 25px;
+}
+
+.pricing .btn {
+  margin-top: 15px;
+}
+
+/* --- SECTION PROGRAMME MLF --- */
+.program {
+  background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+  color: #fff;
+  padding: 90px 30px 110px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.program-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.program h2 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px rgba(255,255,255,0.2);
+}
+
+.program h3 {
+  margin-top: 40px;
+  font-size: 1.5em;
+  color: #fff;
+}
+
+.program ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.program ul li {
+  margin: 12px 0;
+  color: #ddd;
+}
+
+.program .quote {
+  margin-bottom: 30px;
+  font-size: 1.2em;
+  color: #ccc;
+}
+
+.program .tarif {
+  margin-top: 15px;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #eee;
+}
+
+.program-cta {
+  margin-top: 40px;
+}
+
+.program {
+  margin-bottom: 60px;
+}
+    
+/* --- ANIMATIONS AU SCROLL --- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
   </style>
 </head>
 <body>
@@ -476,24 +583,85 @@ Et surtout, la compréhension des codes pour gérer ton image comme une marque �
       </div>
     </div>
   </section>
+  
+  <section style="text-align:center; padding:60px 20px; max-width:800px; margin:auto;">
+  <p style="font-size:1.3em; color:#ccc;">
+    Après avoir découvert nos services, parlons concrètement de la manière dont on travaille et de l’investissement que cela représente.
+  </p>
+</section>
 
-  <!-- QUI SOMMES-NOUS -->
-  <section class="about">
-    <div class="about-inner">
-      <h2>Notre vision</h2>
-      <p>
-        MLF Agency accompagne les artistes indépendants dans leur développement musical et stratégique.
-Notre mission : offrir la structure, la stratégie et le réseau d’un label, sans en imposer les contraintes.
-Grâce à un écosystème complet, nous aidons chaque artiste à structurer son projet, affirmer son identité et atteindre ses objectifs.
-      </p>
-      <p>
-        Chez nous, on croit que l’avenir appartient aux artistes libres et conscients de leur business.
-Notre mission, c’est de leur donner les outils, la méthode et le réseau pour comprendre les règles et les maîtriser.
-      </p>
-      <p><em>“Ne paie pas pour qu’on fasse à ta place.
-Paie pour apprendre à le faire mieux que tout le monde.”</em></p>
+<!-- TARIFS & ACCOMPAGNEMENTS -->
+<section class="pricing fade-in">
+  <h2>Tarifs & accompagnements</h2>
+  <p class="intro">
+    Chaque projet est unique. Nos tarifs s’adaptent à la portée de ton ambition, à la durée de l’accompagnement et aux services choisis.
+  </p>
+  <div class="pricing-highlight">
+    <p>Nos accompagnements débutent à partir de <strong>199 €</strong> / projet.</p>
+    <p>Tu ne payes pas pour qu’on fasse à ta place, tu investis dans une structure, des outils et une méthode pour apprendre à faire comme un pro.</p>
+    <a href="#" id="openPopup" class="btn">Obtenir un devis personnalisé</a>
+  </div>
+</section>
+
+<!-- PROGRAMME MLF -->
+<section class="program fade-in">
+  <div class="program-inner">
+    <h2>🎓 Le Programme MLF – Investir sur soi-même</h2>
+    <p class="quote"><em>“Apprends à faire les choses par toi-même.<br>Pas à dépendre de quelqu’un d’autre.”</em></p>
+
+    <p>
+      Chez <strong>MLF Agency</strong>, on ne veut pas créer de la dépendance.  
+      On forme des artistes capables de gérer leur carrière, leurs sorties et leurs droits <strong>en toute autonomie</strong>.
+      Ce programme intensif de <strong>10 heures</strong> est <strong>100 % individuel et sur mesure</strong>, pensé pour que tu sois opérationnel seul à la fin.
+    </p>
+
+    <h3>🎯 Objectif du programme</h3>
+    <p>
+      À la fin des 10 heures, tu sauras <strong>structurer, gérer et lancer ton projet</strong> sans dépendre d’un label ou d’un manager.  
+      Tu n’achètes pas une prestation — <strong>tu investis dans tes compétences.</strong>
+    </p>
+
+    <h3>🧩 Contenu du programme</h3>
+    <ul>
+      <li><strong>1️⃣ Vision & Structure de Carrière :</strong> Comprendre ton profil, tes forces et poser les bases de ta stratégie globale.</li>
+      <li><strong>2️⃣ Droits, Édition & Administration :</strong> Gérer SACEM, ISRC, royalties, metadata, split sheets, etc.</li>
+      <li><strong>3️⃣ Distribution & DSP Strategy :</strong> Préparer et planifier tes sorties sur toutes les plateformes.</li>
+      <li><strong>4️⃣ Communication & Marketing organique :</strong> Gérer ton image et tes réseaux (Insta / TikTok / YouTube) avec cohérence.</li>
+      <li><strong>5️⃣ Plan d’action personnalisé :</strong> Créer ton plan à 3 mois avec méthode et autonomie.</li>
+    </ul>
+
+    <h3>💰 Tarif & modalités</h3>
+    <p class="tarif">
+      <strong>30 € / heure</strong> — soit <strong>300 € les 10 heures</strong><br>
+      📍 Séances individuelles à distance (visio ou téléphone)<br>
+      🕒 Planning flexible selon ton rythme<br>
+      📄 Documents récapitulatifs et outils fournis
+    </p>
+
+    <div class="program-cta">
+      <a href="#" id="openPopup" class="btn">Soumettre sa demande de formation</a>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- QUI SOMMES-NOUS -->
+<section class="about fade-in">
+  <div class="about-inner">
+    <h2>Notre vision</h2>
+    <p>
+      MLF Agency accompagne les artistes indépendants dans leur développement musical et stratégique.
+      Notre mission : offrir la structure, la stratégie et le réseau d’un label, sans en imposer les contraintes.
+      Grâce à un écosystème complet, nous aidons chaque artiste à structurer son projet, affirmer son identité et atteindre ses objectifs.
+    </p>
+    <p>
+      Chez nous, on croit que l’avenir appartient aux artistes libres et conscients de leur business.
+      Notre mission, c’est de leur donner les outils, la méthode et le réseau pour comprendre les règles et les maîtriser.
+    </p>
+    <p><em>“Ne paie pas pour qu’on fasse à ta place.
+    Paie pour apprendre à le faire mieux que tout le monde.”</em></p>
+  </div>
+</section>
+
 
   <!-- POPUP FORMULAIRE -->
   <div class="popup" id="contactPopup">
@@ -585,6 +753,22 @@ window.addEventListener('load', () => {
     });
   }
 });
+</script>
+<script>
+// --- ANIMATIONS AU SCROLL ---
+const fadeElements = document.querySelectorAll('.fade-in');
+
+function handleScrollAnimation() {
+  fadeElements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      el.classList.add('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', handleScrollAnimation);
+window.addEventListener('load', handleScrollAnimation);
 </script>
 
 </body>
