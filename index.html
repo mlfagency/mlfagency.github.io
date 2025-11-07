@@ -638,7 +638,7 @@ Et surtout, la compréhension des codes pour gérer ton image comme une marque �
     </p>
 
     <div class="program-cta">
-      <a href="#" id="openPopup" class="btn">Soumettre sa demande</a>
+    <a href="#" id="openPopupProgram" class="btn">Soumettre sa demande de formation</a>
     </div>
   </div>
 </section>
@@ -665,6 +665,7 @@ Et surtout, la compréhension des codes pour gérer ton image comme une marque �
     // --- POPUP ---
     const popup = document.getElementById('contactPopup');
     const openBtn = document.getElementById('openPopup');
+    const openBtnProgram = document.getElementById('openPopupProgram');
     const iconPopup = document.getElementById('iconPopup');
     const closeBtn = document.getElementById('closePopup');
 
@@ -674,9 +675,12 @@ Et surtout, la compréhension des codes pour gérer ton image comme une marque �
     }
 
     openBtn.addEventListener('click', openPopup);
+    openBtnProgram.addEventListener('click', openPopup);
     iconPopup.addEventListener('click', openPopup);
     closeBtn.addEventListener('click', () => popup.style.display = 'none');
-    window.addEventListener('click', (e) => { if (e.target === popup) popup.style.display = 'none'; });
+    window.addEventListener('click', (e) => {
+      if (e.target === popup) popup.style.display = 'none';
+    });
 
     // --- HEADER SHRINK ---
     const header = document.getElementById('mainHeader');
