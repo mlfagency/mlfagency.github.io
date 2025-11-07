@@ -4,28 +4,37 @@
   <meta charset="UTF-8">
   <title>MLF Agency</title>
   <style>
-    /* --- VIDÉO D’ARRIÈRE-PLAN --- */
-    #background-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-      background-color: #000;
-    }
+/* --- VIDÉO D’ARRIÈRE-PLAN (version compatible mobile) --- */
+.video-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -2;
+  background: url('fallback.jpg') no-repeat center center / cover;
+  background-color: #000;
+}
 
-    /* --- VOILE NOIR PAR-DESSUS LA VIDÉO --- */
-    .video-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.55);
-      z-index: -1;
-    }
+#background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- VOILE NOIR PAR-DESSUS LA VIDÉO --- */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  z-index: -1;
+}
+
 
     /* Compatibilité mobile */
     @media (max-width: 768px) {
@@ -357,18 +366,19 @@
 </head>
 <body>
 
- <!-- VIDÉO D’ARRIÈRE-PLAN UNIQUE -->
-<video id="background-video"
-       autoplay
-       muted
-       loop
-       playsinline
-       webkit-playsinline
-       preload="auto"
-       poster="fallback.jpg"
-       style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;">
-  <source src="mlf_team.mp4" type="video/mp4">
-</video>
+<!-- === VIDÉO D’ARRIÈRE-PLAN === -->
+<div class="video-wrapper">
+  <video id="background-video"
+         autoplay
+         muted
+         loop
+         playsinline
+         webkit-playsinline
+         preload="auto"
+         poster="fallback.jpg">
+    <source src="mlf_team.mp4" type="video/mp4">
+  </video>
+</div>
 <div class="video-overlay"></div>
 
 
