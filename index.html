@@ -334,6 +334,16 @@ body {
       background: #222;
       color: white;
     }
+    
+   .popup-content select {
+     width: 100%;
+     padding: 10px;
+     margin: 8px 0;
+     border: none;
+     border-radius: 5px;
+     background: #222;
+     color: white;
+}
 
     .popup-content button {
       background: #1a73e8;
@@ -717,22 +727,26 @@ Notre écosystème est construit pour que chaque artiste puisse affirmer son ide
 </section>
 
   <!-- POPUP FORMULAIRE -->
-  <div class="popup" id="contactPopup">
-    <div class="popup-content">
-      <div class="close-btn" id="closePopup">&times;</div>
-      <img src="logo.svg" alt="Logo MLF Agency" class="popup-logo">
-      <h6><em>Notre équipe reviendra vers vous d’ici 48 heures.</em></h6>
-      <p class="form-note">* Les champs avec un astérisque sont obligatoires</p>
-      <form action="https://formspree.io/f/xanlvwld" method="POST">
-        <input type="text" name="Nom du projet" placeholder="Nom du projet*" required>
-        <input type="email" name="Adresse mail" placeholder="Adresse mail*" required>
-        <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone*" required>
-        <input type="url" name="Lien" placeholder="Lien (optionnel)">
-        <textarea name="Message" placeholder="Message (optionnel)"></textarea>
-        <button type="submit">Envoyer</button>
-      </form>
-    </div>
-  </div>
+ <form action="https://formspree.io/f/xanlvwld" method="POST">
+  <input type="text" name="Nom du projet" placeholder="Nom du projet*" required>
+  <input type="email" name="Adresse mail" placeholder="Adresse mail*" required>
+  <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone*" required>
+  <input type="url" name="Lien" placeholder="Lien (optionnel)">
+
+  <select name="Objet" required>
+    <option value="">Objet de la demande*</option>
+    <option value="Label Services">Label Services</option>
+    <option value="Conseil & Carrière">Conseil & Carrière</option>
+    <option value="Distribution & Sortie">Distribution & Sortie</option>
+    <option value="Brand Building">Brand Building</option>
+    <option value="Programme MLF – Investir sur soi-même">Programme MLF – Investir sur soi-même</option>
+    <option value="Appel découverte">Appel découverte</option>
+  </select>
+
+  <textarea name="Message" placeholder="Message (optionnel)"></textarea>
+  <button type="submit">Envoyer</button>
+</form>
+
   
   <!-- SECTION RENDEZ-VOUS -->
 <section class="booking fade-in">
