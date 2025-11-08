@@ -140,6 +140,70 @@
     footer a:hover {
       color: white;
     }
+
+    /* --- POPUP --- */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .popup-content {
+      background: #111;
+      padding: 40px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 550px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(255,255,255,0.1);
+    }
+
+    .popup-logo {
+      width: 160px;
+      margin-bottom: 15px;
+      opacity: 0.95;
+    }
+
+    .close-btn {
+      text-align: right;
+      cursor: pointer;
+      font-size: 1.5em;
+    }
+
+    .popup-content input,
+    .popup-content textarea,
+    .popup-content select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 5px;
+      background: #222;
+      color: white;
+    }
+
+    .popup-content button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1em;
+      transition: 0.3s;
+    }
+
+    .popup-content button:hover {
+      background: #0d57b5;
+    }
   </style>
 </head>
 <body>
@@ -159,12 +223,11 @@
 <section class="intro">
   <h1>Programme MLF – Autonomie & Stratégie</h1>
   <p>Un accompagnement intensif et sur mesure pour les artistes indépendants qui veulent maîtriser leur carrière de A à Z — avec les outils, la méthode et les réflexes d’un label professionnel.</p>
-  <a href="#contact" class="btn">Soumettre ma candidature</a>
+  <a href="#" id="openPopupProgram" class="btn">Soumettre ma candidature</a>
 </section>
 
 <section>
   <h2>À qui s’adresse ce programme ?</h2>
-  <p>Ce programme s’adresse aux artistes indépendants, managers ou jeunes labels souhaitant :</p>
   <ul>
     <li>🧭 Structurer leur projet et définir une vision claire</li>
     <li>💼 Comprendre les aspects administratifs, droits et édition</li>
@@ -196,18 +259,13 @@
   </p>
 </section>
 
-<section id="contact">
-  <h2>Soumettre ma candidature</h2>
-  <p>Prêt à investir dans tes compétences ? Remplis le formulaire et notre équipe te contactera sous 48h.</p>
-  <a href="index.html#openPopupProgram" class="btn">Accéder au formulaire</a>
-</section>
-
 <footer>
   <a href="index.html">← Retour à l’accueil</a> |
   <a href="mentions-legales.html">Mentions légales</a> |
   <a href="politique-confidentialite.html">Politique de confidentialité</a>
 </footer>
-<!-- POPUP FORMULAIRE -->
+
+<!-- === POPUP FORMULAIRE === -->
 <div class="popup" id="contactPopup">
   <div class="popup-content">
     <div class="close-btn" id="closePopup">&times;</div>
@@ -218,147 +276,49 @@
     <form action="https://formspree.io/f/xanlvwld" method="POST">
       <select name="Objet" required>
         <option value="">Objet de la demande*</option>
-        <option value="Label Services">Label Services</option>
-        <option value="Conseil & Carrière">Conseil & Carrière</option>
-        <option value="Distribution & Sortie">Distribution & Sortie</option>
-        <option value="Brand Building">Brand Building</option>
-        <option value="Programme MLF – Investir sur soi-même">Programme MLF – Investir sur soi-même</option>
+        <option value="Programme MLF – Autonomie & Stratégie">Programme MLF – Autonomie & Stratégie</option>
         <option value="Appel découverte">Appel découverte</option>
       </select>
       <input type="text" name="Nom du projet" placeholder="Nom du projet*" required>
       <input type="email" name="Adresse mail" placeholder="Adresse mail*" required>
       <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone*" required>
-      <input type="url" name="Lien" placeholder="Lien (optionnel)">
       <textarea name="Message" placeholder="Message (optionnel)"></textarea>
       <button type="submit">Envoyer</button>
     </form>
   </div>
 </div>
+
 <script>
 // --- RÉFÉRENCES GLOBALES ---
 const popup = document.getElementById('contactPopup');
-const iconPopup = document.getElementById('iconPopup');
 const closeBtn = document.getElementById('closePopup');
+const openPopupProgram = document.getElementById('openPopupProgram');
 const selectObjet = document.querySelector('select[name="Objet"]');
 
-const openPopupDevis = document.getElementById('openPopupDevis');
-const openPopupCall = document.getElementById('openPopupCall');
-
-const header = document.getElementById('mainHeader');
-const tabButtons = document.querySelectorAll('.tab-btn');
-const tabContents = document.querySelectorAll('.tab-content');
-const video = document.getElementById('background-video');
-const fadeElements = document.querySelectorAll('.fade-in');
-
-const menuToggle = document.getElementById('menuToggle');
-const sideMenu = document.getElementById('sideMenu');
-const closeMenu = document.getElementById('closeMenu');
-
-// --- POPUP ---
+// --- OUVERTURE POPUP ---
 function openPopupModal() {
   popup.style.display = 'flex';
 }
+
+// --- FERMETURE POPUP ---
 function closePopupModal() {
   popup.style.display = 'none';
 }
 
-// --- Icône enveloppe ---
-if (iconPopup) {
-  iconPopup.addEventListener('click', (e) => {
-    e.preventDefault();
-    openPopupModal();
-  });
-}
-
-// --- Fermeture ---
-if (closeBtn) closeBtn.addEventListener('click', closePopupModal);
-window.addEventListener('click', (e) => {
-  if (e.target === popup) closePopupModal();
-});
-
-// --- "Demander un devis" ---
-if (openPopupDevis) {
-  openPopupDevis.addEventListener('click', (e) => {
-    e.preventDefault();
-    openPopupModal();
-    const activeTab = document.querySelector('.tab-btn.active');
-    if (activeTab && selectObjet) selectObjet.value = activeTab.textContent.trim();
-  });
-}
-
-// --- "Réserver un appel découverte" ---
-if (openPopupCall) {
-  openPopupCall.addEventListener('click', (e) => {
-    e.preventDefault();
-    openPopupModal();
-    if (selectObjet) selectObjet.value = "Appel découverte";
-  });
-}
-
-// --- HEADER SHRINK ---
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 150) header.classList.add('shrink');
-  else header.classList.remove('shrink');
-});
-
-// --- TABS ---
-tabButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const target = btn.getAttribute('data-tab');
-    tabButtons.forEach(b => b.classList.remove('active'));
-    tabContents.forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(target).classList.add('active');
-  });
-});
-
-// --- VIDÉO + ANIMATIONS AU SCROLL ---
-function handleScrollAnimation() {
-  fadeElements.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) el.classList.add('visible');
-  });
-}
-
-window.addEventListener('load', () => {
-  if (video) {
-    video.muted = true;
-    video.play().catch(() => {
-      video.setAttribute('poster', 'fallback.jpg');
-    });
-  }
-  handleScrollAnimation();
-});
-window.addEventListener('scroll', handleScrollAnimation);
-
-// --- MENU LATÉRAL ---
-if (menuToggle && sideMenu) {
-  menuToggle.addEventListener('click', () => {
-    sideMenu.classList.add('open');
-  });
-}
-if (closeMenu) {
-  closeMenu.addEventListener('click', () => {
-    sideMenu.classList.remove('open');
-  });
-}
-window.addEventListener('click', (e) => {
-  if (sideMenu.classList.contains('open') &&
-      !sideMenu.contains(e.target) &&
-      e.target !== menuToggle) {
-    sideMenu.classList.remove('open');
-  }
-});
-  // --- Bouton "Programme MLF – Investir sur soi-même" ---
-const openPopupProgram = document.getElementById('openPopupProgram');
+// --- Bouton “Soumettre ma candidature” ---
 if (openPopupProgram) {
   openPopupProgram.addEventListener('click', (e) => {
     e.preventDefault();
     openPopupModal();
-    if (selectObjet) selectObjet.value = "Programme débutant";
+    if (selectObjet) selectObjet.value = "Programme MLF – Autonomie & Stratégie";
   });
 }
 
+// --- Fermeture en cliquant sur la croix ou le fond ---
+if (closeBtn) closeBtn.addEventListener('click', closePopupModal);
+window.addEventListener('click', (e) => {
+  if (e.target === popup) closePopupModal();
+});
 </script>
 
 </body>
