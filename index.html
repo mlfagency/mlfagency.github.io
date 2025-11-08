@@ -726,26 +726,36 @@ Notre écosystème est construit pour que chaque artiste puisse affirmer son ide
   </div>
 </section>
 
-  <!-- POPUP FORMULAIRE -->
- <form action="https://formspree.io/f/xanlvwld" method="POST">
-  <input type="text" name="Nom du projet" placeholder="Nom du projet*" required>
-  <input type="email" name="Adresse mail" placeholder="Adresse mail*" required>
-  <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone*" required>
-  <input type="url" name="Lien" placeholder="Lien (optionnel)">
+<!-- POPUP FORMULAIRE -->
+<div class="popup" id="contactPopup">
+  <div class="popup-content">
+    <div class="close-btn" id="closePopup">&times;</div>
+    <img src="logo.svg" alt="Logo MLF Agency" class="popup-logo">
+    <h6><em>Notre équipe reviendra vers vous d’ici 48 heures.</em></h6>
+    <p class="form-note">* Les champs avec un astérisque sont obligatoires</p>
 
-  <select name="Objet" required>
-    <option value="">Objet de la demande*</option>
-    <option value="Label Services">Label Services</option>
-    <option value="Conseil & Carrière">Conseil & Carrière</option>
-    <option value="Distribution & Sortie">Distribution & Sortie</option>
-    <option value="Brand Building">Brand Building</option>
-    <option value="Programme MLF – Investir sur soi-même">Programme MLF – Investir sur soi-même</option>
-    <option value="Appel découverte">Appel découverte</option>
-  </select>
+    <form action="https://formspree.io/f/xanlvwld" method="POST">
+      <input type="text" name="Nom du projet" placeholder="Nom du projet*" required>
+      <input type="email" name="Adresse mail" placeholder="Adresse mail*" required>
+      <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone*" required>
+      <input type="url" name="Lien" placeholder="Lien (optionnel)">
 
-  <textarea name="Message" placeholder="Message (optionnel)"></textarea>
-  <button type="submit">Envoyer</button>
-</form>
+      <select name="Objet" required>
+        <option value="">Objet de la demande*</option>
+        <option value="Label Services">Label Services</option>
+        <option value="Conseil & Carrière">Conseil & Carrière</option>
+        <option value="Distribution & Sortie">Distribution & Sortie</option>
+        <option value="Brand Building">Brand Building</option>
+        <option value="Programme MLF – Investir sur soi-même">Programme MLF – Investir sur soi-même</option>
+        <option value="Appel découverte">Appel découverte</option>
+      </select>
+
+      <textarea name="Message" placeholder="Message (optionnel)"></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+</div>
+
 
   
   <!-- SECTION RENDEZ-VOUS -->
@@ -839,6 +849,22 @@ Notre écosystème est construit pour que chaque artiste puisse affirmer son ide
   window.addEventListener('scroll', handleScrollAnimation);
   window.addEventListener('load', handleScrollAnimation);
 </script>
+
+  <script>
+// --- OUVERTURE DU POPUP AVEC PRÉ-SÉLECTION ---
+const openPopupCall = document.getElementById('openPopupCall');
+const selectObjet = document.querySelector('select[name="Objet"]');
+
+if (openPopupCall) {
+  openPopupCall.addEventListener('click', (e) => {
+    e.preventDefault();
+    const popup = document.getElementById('contactPopup');
+    popup.style.display = 'flex';
+    if (selectObjet) selectObjet.value = "Appel découverte"; // pré-sélection automatique
+  });
+}
+</script>
+
 </body>
  
   <footer style="text-align:center; padding:20px; color:#999;">
