@@ -908,43 +908,54 @@ footer a:hover {
   window.addEventListener('load', handleScrollAnimation);
 </script>
 
-  <script>
-// --- OUVERTURE DU POPUP AVEC PRÉ-SÉLECTION SELON L'ONGLET ACTIF ---
-const openPopupDevis = document.getElementById('openPopupDevis');
+  
+<script>
+// --- POPUP GÉNÉRAL ---
+const popup = document.getElementById('contactPopup');
+const iconPopup = document.getElementById('iconPopup');
+const closeBtn = document.getElementById('closePopup');
+const selectObjet = document.querySelector('select[name="Objet"]');
 
+// --- Icône enveloppe dans le header ---
+if (iconPopup) {
+  iconPopup.addEventListener('click', (e) => {
+    e.preventDefault();
+    popup.style.display = 'flex';
+  });
+}
+
+// --- Fermeture du popup ---
+if (closeBtn) {
+  closeBtn.addEventListener('click', () => popup.style.display = 'none');
+}
+window.addEventListener('click', (e) => {
+  if (e.target === popup) popup.style.display = 'none';
+});
+
+// --- Bouton "Demander un devis" ---
+const openPopupDevis = document.getElementById('openPopupDevis');
 if (openPopupDevis) {
   openPopupDevis.addEventListener('click', (e) => {
     e.preventDefault();
-
-    const popup = document.getElementById('contactPopup');
-    const selectObjet = document.querySelector('select[name="Objet"]');
     const activeTab = document.querySelector('.tab-btn.active');
-
-    // Ouvre la popup
     popup.style.display = 'flex';
-
-    // Si on trouve un onglet actif, on envoie son texte dans le formulaire
     if (activeTab && selectObjet) {
       selectObjet.value = activeTab.textContent.trim();
     }
   });
 }
-</script>
 
-  <script>
-    
-// --- OUVERTURE DU POPUP AVEC PRÉ-SÉLECTION POUR "DEMANDER UN DEVIS" ---
-const openPopupDevis = document.getElementById('openPopupDevis');
-
-if (openPopupDevis) {
-  openPopupDevis.addEventListener('click', (e) => {
+// --- Bouton "Réserver un appel découverte" ---
+const openPopupCall = document.getElementById('openPopupCall');
+if (openPopupCall) {
+  openPopupCall.addEventListener('click', (e) => {
     e.preventDefault();
-    const popup = document.getElementById('contactPopup');
     popup.style.display = 'flex';
-    if (selectObjet) selectObjet.value = "Label Services"; // pré-sélection automatique
+    if (selectObjet) selectObjet.value = "Appel découverte";
   });
 }
 </script>
+
 <script>
 // --- MENU LATÉRAL ---
 const menuToggle = document.getElementById('menuToggle');
