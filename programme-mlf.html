@@ -306,27 +306,52 @@
 </div>
 
 <script>
-// --- RÉFÉRENCES GLOBALES ---
+// === GESTION DU POPUP SUR LA PAGE PROGRAMME ===
+
+// Références
 const popup = document.getElementById('contactPopup');
 const closeBtn = document.getElementById('closePopup');
 const openPopupProgram = document.getElementById('openPopupProgram');
+const selectObjet = document.querySelector('select[name="Objet"]');
 
-// --- OUVERTURE POPUP ---
+// Fonction ouverture
+function openPopupModal() {
+  if (popup) popup.style.display = 'flex';
+}
+
+// Fonction fermeture
+function closePopupModal() {
+  if (popup) popup.style.display = 'none';
+}
+
+// --- Bouton “Soumettre ma candidature” ---
 if (openPopupProgram) {
   openPopupProgram.addEventListener('click', (e) => {
     e.preventDefault();
-    popup.style.display = 'flex';
+    openPopupModal();
+    if (selectObjet) selectObjet.value = "Programme MLF – Autonomie & Stratégie";
   });
 }
 
-// --- FERMETURE POPUP ---
+// --- Bouton “Appel découverte” (si tu veux en rajouter un plus tard) ---
+const openPopupCall = document.getElementById('openPopupCall');
+if (openPopupCall) {
+  openPopupCall.addEventListener('click', (e) => {
+    e.preventDefault();
+    openPopupModal();
+    if (selectObjet) selectObjet.value = "Appel découverte";
+  });
+}
+
+// --- Fermeture du popup ---
 if (closeBtn) {
-  closeBtn.addEventListener('click', () => popup.style.display = 'none');
+  closeBtn.addEventListener('click', closePopupModal);
 }
 window.addEventListener('click', (e) => {
-  if (e.target === popup) popup.style.display = 'none';
+  if (e.target === popup) closePopupModal();
 });
 </script>
+
 
 </body>
 </html>
