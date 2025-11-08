@@ -830,157 +830,122 @@ footer a:hover {
   </div>
 </section>
 <script>
-  // --- POPUP ---
-  const popup = document.getElementById('contactPopup');
-  const iconPopup = document.getElementById('iconPopup');
-  const closeBtn = document.getElementById('closePopup');
-
-  // Tous les boutons qui ouvrent la popup (haut, programme, autres)
-  const openPopupButtons = document.querySelectorAll('#openPopup, #openPopupProgram');
-
-  // Fonction d'ouverture
-  function openPopup(e) {
-    e.preventDefault();
-    popup.style.display = 'flex';
-  }
-
-  // Attache l'ouverture à tous les boutons trouvés
-  openPopupButtons.forEach(btn => {
-    if (btn) btn.addEventListener('click', openPopup);
-  });
-
-  // Icône enveloppe dans le header
-  if (iconPopup) iconPopup.addEventListener('click', openPopup);
-
-  // Fermeture
-  if (closeBtn) closeBtn.addEventListener('click', () => popup.style.display = 'none');
-  window.addEventListener('click', (e) => {
-    if (e.target === popup) popup.style.display = 'none';
-  });
-
-  // --- HEADER SHRINK ---
-  const header = document.getElementById('mainHeader');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 150) header.classList.add('shrink');
-    else header.classList.remove('shrink');
-  });
-
-  // --- TABS ---
-  const tabButtons = document.querySelectorAll(".tab-btn");
-  const tabContents = document.querySelectorAll(".tab-content");
-  tabButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const target = btn.getAttribute("data-tab");
-      tabButtons.forEach(b => b.classList.remove("active"));
-      tabContents.forEach(c => c.classList.remove("active"));
-      btn.classList.add("active");
-      document.getElementById(target).classList.add("active");
-    });
-  });
-
-  // --- VIDÉO MOBILE FIX ---
-  window.addEventListener('load', () => {
-    const video = document.getElementById('background-video');
-    if (!video) return;
-
-    video.muted = true;
-    video.play().then(() => {
-      video.style.display = 'block';
-    }).catch(err => {
-      console.warn('Lecture vidéo bloquée :', err);
-      video.setAttribute('poster', 'fallback.jpg');
-    });
-  });
-
-  // --- ANIMATIONS AU SCROLL ---
-  const fadeElements = document.querySelectorAll('.fade-in');
-
-  function handleScrollAnimation() {
-    fadeElements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) {
-        el.classList.add('visible');
-      }
-    });
-  }
-
-  window.addEventListener('scroll', handleScrollAnimation);
-  window.addEventListener('load', handleScrollAnimation);
-</script>
-
-  
-<script>
-// --- POPUP GÉNÉRAL ---
+// --- RÉFÉRENCES GLOBALES ---
 const popup = document.getElementById('contactPopup');
 const iconPopup = document.getElementById('iconPopup');
 const closeBtn = document.getElementById('closePopup');
 const selectObjet = document.querySelector('select[name="Objet"]');
 
-// --- Icône enveloppe dans le header ---
-if (iconPopup) {
-  iconPopup.addEventListener('click', (e) => {
-    e.preventDefault();
-    popup.style.display = 'flex';
-  });
-}
-
-// --- Fermeture du popup ---
-if (closeBtn) {
-  closeBtn.addEventListener('click', () => popup.style.display = 'none');
-}
-window.addEventListener('click', (e) => {
-  if (e.target === popup) popup.style.display = 'none';
-});
-
-// --- Bouton "Demander un devis" ---
 const openPopupDevis = document.getElementById('openPopupDevis');
-if (openPopupDevis) {
-  openPopupDevis.addEventListener('click', (e) => {
-    e.preventDefault();
-    const activeTab = document.querySelector('.tab-btn.active');
-    popup.style.display = 'flex';
-    if (activeTab && selectObjet) {
-      selectObjet.value = activeTab.textContent.trim();
-    }
-  });
-}
-
-// --- Bouton "Réserver un appel découverte" ---
 const openPopupCall = document.getElementById('openPopupCall');
-if (openPopupCall) {
-  openPopupCall.addEventListener('click', (e) => {
-    e.preventDefault();
-    popup.style.display = 'flex';
-    if (selectObjet) selectObjet.value = "Appel découverte";
-  });
-}
-</script>
 
-<script>
-// --- MENU LATÉRAL ---
+const header = document.getElementById('mainHeader');
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+const video = document.getElementById('background-video');
+const fadeElements = document.querySelectorAll('.fade-in');
+
 const menuToggle = document.getElementById('menuToggle');
 const sideMenu = document.getElementById('sideMenu');
 const closeMenu = document.getElementById('closeMenu');
 
+// --- POPUP ---
+function openPopupModal() {
+  popup.style.display = 'flex';
+}
+function closePopupModal() {
+  popup.style.display = 'none';
+}
+
+// --- Icône enveloppe ---
+if (iconPopup) {
+  iconPopup.addEventListener('click', (e) => {
+    e.preventDefault();
+    openPopupModal();
+  });
+}
+
+// --- Fermeture ---
+if (closeBtn) closeBtn.addEventListener('click', closePopupModal);
+window.addEventListener('click', (e) => {
+  if (e.target === popup) closePopupModal();
+});
+
+// --- "Demander un devis" ---
+if (openPopupDevis) {
+  openPopupDevis.addEventListener('click', (e) => {
+    e.preventDefault();
+    openPopupModal();
+    const activeTab = document.querySelector('.tab-btn.active');
+    if (activeTab && selectObjet) selectObjet.value = activeTab.textContent.trim();
+  });
+}
+
+// --- "Réserver un appel découverte" ---
+if (openPopupCall) {
+  openPopupCall.addEventListener('click', (e) => {
+    e.preventDefault();
+    openPopupModal();
+    if (selectObjet) selectObjet.value = "Appel découverte";
+  });
+}
+
+// --- HEADER SHRINK ---
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 150) header.classList.add('shrink');
+  else header.classList.remove('shrink');
+});
+
+// --- TABS ---
+tabButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.getAttribute('data-tab');
+    tabButtons.forEach(b => b.classList.remove('active'));
+    tabContents.forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(target).classList.add('active');
+  });
+});
+
+// --- VIDÉO + ANIMATIONS AU SCROLL ---
+function handleScrollAnimation() {
+  fadeElements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) el.classList.add('visible');
+  });
+}
+
+window.addEventListener('load', () => {
+  if (video) {
+    video.muted = true;
+    video.play().catch(() => {
+      video.setAttribute('poster', 'fallback.jpg');
+    });
+  }
+  handleScrollAnimation();
+});
+window.addEventListener('scroll', handleScrollAnimation);
+
+// --- MENU LATÉRAL ---
 if (menuToggle && sideMenu) {
   menuToggle.addEventListener('click', () => {
     sideMenu.classList.add('open');
   });
 }
-
 if (closeMenu) {
   closeMenu.addEventListener('click', () => {
     sideMenu.classList.remove('open');
   });
 }
-
-// Ferme le menu si on clique en dehors
 window.addEventListener('click', (e) => {
-  if (sideMenu.classList.contains('open') && !sideMenu.contains(e.target) && e.target !== menuToggle) {
+  if (sideMenu.classList.contains('open') &&
+      !sideMenu.contains(e.target) &&
+      e.target !== menuToggle) {
     sideMenu.classList.remove('open');
   }
 });
 </script>
+
 
 </body>
  
