@@ -825,20 +825,28 @@ footer a:hover {
 </script>
 
   <script>
-    
-// --- OUVERTURE DU POPUP AVEC PRÉ-SÉLECTION ---
-const openPopupCall = document.getElementById('openPopupCall');
-const selectObjet = document.querySelector('select[name="Objet"]');
+// --- OUVERTURE DU POPUP AVEC PRÉ-SÉLECTION SELON L'ONGLET ACTIF ---
+const openPopupDevis = document.getElementById('openPopupDevis');
 
-if (openPopupCall) {
-  openPopupCall.addEventListener('click', (e) => {
+if (openPopupDevis) {
+  openPopupDevis.addEventListener('click', (e) => {
     e.preventDefault();
+
     const popup = document.getElementById('contactPopup');
+    const selectObjet = document.querySelector('select[name="Objet"]');
+    const activeTab = document.querySelector('.tab-btn.active');
+
+    // Ouvre la popup
     popup.style.display = 'flex';
-    if (selectObjet) selectObjet.value = "Appel découverte"; // pré-sélection automatique
+
+    // Si on trouve un onglet actif, on envoie son texte dans le formulaire
+    if (activeTab && selectObjet) {
+      selectObjet.value = activeTab.textContent.trim();
+    }
   });
 }
 </script>
+
   <script>
     
 // --- OUVERTURE DU POPUP AVEC PRÉ-SÉLECTION POUR "DEMANDER UN DEVIS" ---
