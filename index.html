@@ -505,6 +505,50 @@ footer a {
 footer a:hover {
   color: white;
 }
+/* --- SECTION RENDEZ-VOUS --- */
+.booking {
+  background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+  color: #fff;
+  padding: 90px 30px 100px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.booking-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.booking h2 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px rgba(255,255,255,0.2);
+}
+
+.booking p {
+  font-size: 1.2em;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.booking .btn {
+  font-size: 1.1em;
+  border-radius: 8px;
+  border: 1px solid white;
+  padding: 12px 25px;
+  color: white;
+  background: none;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.booking .btn:hover {
+  background: white;
+  color: black;
+}
 
   </style>
 </head>
@@ -672,7 +716,6 @@ Notre écosystème est construit pour que chaque artiste puisse affirmer son ide
   </div>
 </section>
 
-
   <!-- POPUP FORMULAIRE -->
   <div class="popup" id="contactPopup">
     <div class="popup-content">
@@ -690,7 +733,18 @@ Notre écosystème est construit pour que chaque artiste puisse affirmer son ide
       </form>
     </div>
   </div>
-
+  
+  <!-- SECTION RENDEZ-VOUS -->
+<section class="booking fade-in">
+  <div class="booking-inner">
+    <h2>📅 Réserver un appel découverte</h2>
+    <p>
+      Tu veux discuter de ton projet, poser des questions ou savoir comment on peut t’accompagner ?  
+      Réserve un créneau directement dans notre agenda — c’est simple et gratuit.
+    </p>
+    <a href="https://calendly.com/ton-lien-calendly" target="_blank" class="btn">Prendre rendez-vous</a>
+  </div>
+</section>
 <script>
   // --- POPUP ---
   const popup = document.getElementById('contactPopup');
