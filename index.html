@@ -184,32 +184,51 @@ body {
     }
 
     /* --- CADRE AUTOUR DE LA SECTION SERVICES --- */
-    .services {
-      position: relative;
-      max-width: 950px;
-      margin: 40px auto 0;
-      padding: 50px 30px 70px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 16px;
-      background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 100%);
-      box-shadow: 0 0 25px rgba(255,255,255,0.05);
-      transition: border-color 0.4s ease, box-shadow 0.4s ease;
-      border-bottom: none;
-      border-radius: 16px 16px 0 0;
-      z-index: 1;
-    }
+.services {
+  position: relative;
+  max-width: 950px;
+  margin: 40px auto 0;
+  padding: 50px 30px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 100%);
+  box-shadow: 0 0 25px rgba(255,255,255,0.05);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  z-index: 1;
+}
 
-    .services:hover {
-      border-color: rgba(255,255,255,0.6);
-      box-shadow: 0 0 35px rgba(255,255,255,0.1);
-    }
+.services:hover {
+  border-color: rgba(255,255,255,0.6);
+  box-shadow: 0 0 35px rgba(255,255,255,0.1);
+}
 
-    .services h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2em;
-      color: white;
-    }
+.services h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2em;
+  color: white;
+}
+
+.services .btn-devis {
+  display: inline-block;
+  margin-top: 35px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  border: 1px solid white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  transition: 0.3s;
+  cursor: pointer;
+  background: none;
+  text-align: center;
+}
+
+.services .btn-devis:hover {
+  background-color: white;
+  color: black;
+}
+
 
     /* --- TABS --- */
     .tabs {
@@ -655,6 +674,10 @@ footer a:hover {
   </section>
   
   </div>
+  <div style="text-align:center;">
+  <a href="#" id="openPopupDevis" class="btn-devis">Demander un devis</a>
+</div>
+
 </section>
 
 <!-- PROGRAMME MLF -->
