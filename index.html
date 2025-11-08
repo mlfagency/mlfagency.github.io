@@ -643,6 +643,87 @@ footer a:hover {
   color: black;
 }
 
+    /* --- MENU LATÉRAL --- */
+.menu-icon {
+  position: absolute;
+  left: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.8em;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.menu-icon:hover {
+  opacity: 0.8;
+}
+
+/* Container du menu latéral */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -270px; /* caché à gauche */
+  width: 250px;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.4);
+  z-index: 2000;
+  transition: left 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
+.side-menu.open {
+  left: 0; /* visible */
+}
+
+.side-menu .menu-content {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0 0;
+}
+
+.side-menu ul li {
+  margin: 20px 0;
+}
+
+.side-menu ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  display: block;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.side-menu ul li a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.close-menu {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8em;
+  cursor: pointer;
+  color: white;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.close-menu:hover {
+  opacity: 1;
+}
+
   </style>
 </head>
 <body>
@@ -663,10 +744,23 @@ footer a:hover {
 <div class="video-overlay"></div>
 
 
-  <header id="mainHeader">
-    <img src="logo.svg" alt="Logo MLF Agency">
-    <span class="envelope-icon" id="iconPopup">✉️</span>
-  </header>
+<header id="mainHeader">
+  <div class="menu-icon" id="menuToggle">☰</div>
+  <img src="logo.svg" alt="Logo MLF Agency">
+  <span class="envelope-icon" id="iconPopup">✉️</span>
+</header>
+
+<!-- MENU LATÉRAL GAUCHE -->
+<nav id="sideMenu" class="side-menu">
+  <div class="menu-content">
+    <span class="close-menu" id="closeMenu">&times;</span>
+    <ul>
+      <li><a href="index.html">🏠 Accueil</a></li>
+      <li><a href="programme-mlf.html">🎓 Programme débutant</a></li>
+    </ul>
+  </div>
+</nav>
+
 
   <!-- INTRO -->
   <section class="intro">
@@ -914,7 +1008,31 @@ if (openPopupDevis) {
   });
 }
 </script>
+<script>
+// --- MENU LATÉRAL ---
+const menuToggle = document.getElementById('menuToggle');
+const sideMenu = document.getElementById('sideMenu');
+const closeMenu = document.getElementById('closeMenu');
 
+if (menuToggle && sideMenu) {
+  menuToggle.addEventListener('click', () => {
+    sideMenu.classList.add('open');
+  });
+}
+
+if (closeMenu) {
+  closeMenu.addEventListener('click', () => {
+    sideMenu.classList.remove('open');
+  });
+}
+
+// Ferme le menu si on clique en dehors
+window.addEventListener('click', (e) => {
+  if (sideMenu.classList.contains('open') && !sideMenu.contains(e.target) && e.target !== menuToggle) {
+    sideMenu.classList.remove('open');
+  }
+});
+</script>
 
 </body>
  
