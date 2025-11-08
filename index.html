@@ -691,33 +691,41 @@ Notre écosystème est construit pour que chaque artiste puisse affirmer son ide
     </div>
   </div>
 
-  <script>
-    // --- POPUP ---
-    const popup = document.getElementById('contactPopup');
-    const openBtn = document.getElementById('openPopup');
-    const openBtnProgram = document.getElementById('openPopupProgram');
-    const iconPopup = document.getElementById('iconPopup');
-    const closeBtn = document.getElementById('closePopup');
+<script>
+  // --- POPUP ---
+  const popup = document.getElementById('contactPopup');
+  const iconPopup = document.getElementById('iconPopup');
+  const closeBtn = document.getElementById('closePopup');
 
-    function openPopup(e) {
-      e.preventDefault();
-      popup.style.display = 'flex';
-    }
+  // Tous les boutons qui ouvrent la popup (haut, programme, autres)
+  const openPopupButtons = document.querySelectorAll('#openPopup, #openPopupProgram');
 
-    openBtn.addEventListener('click', openPopup);
-    openBtnProgram.addEventListener('click', openPopup);
-    iconPopup.addEventListener('click', openPopup);
-    closeBtn.addEventListener('click', () => popup.style.display = 'none');
-    window.addEventListener('click', (e) => {
-      if (e.target === popup) popup.style.display = 'none';
-    });
+  // Fonction d'ouverture
+  function openPopup(e) {
+    e.preventDefault();
+    popup.style.display = 'flex';
+  }
 
-    // --- HEADER SHRINK ---
-    const header = document.getElementById('mainHeader');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 150) header.classList.add('shrink');
-      else header.classList.remove('shrink');
-    });
+  // Attache l'ouverture à tous les boutons trouvés
+  openPopupButtons.forEach(btn => {
+    if (btn) btn.addEventListener('click', openPopup);
+  });
+
+  // Icône enveloppe dans le header
+  if (iconPopup) iconPopup.addEventListener('click', openPopup);
+
+  // Fermeture
+  if (closeBtn) closeBtn.addEventListener('click', () => popup.style.display = 'none');
+  window.addEventListener('click', (e) => {
+    if (e.target === popup) popup.style.display = 'none';
+  });
+
+  // --- HEADER SHRINK ---
+  const header = document.getElementById('mainHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 150) header.classList.add('shrink');
+    else header.classList.remove('shrink');
+  });
 
   // --- TABS ---
   const tabButtons = document.querySelectorAll(".tab-btn");
@@ -739,51 +747,27 @@ Notre écosystème est construit pour que chaque artiste puisse affirmer son ide
 
     video.muted = true;
     video.play().then(() => {
-      // OK : la vidéo se joue
       video.style.display = 'block';
     }).catch(err => {
       console.warn('Lecture vidéo bloquée :', err);
-      // On ne cache plus la vidéo — on laisse le poster visible
       video.setAttribute('poster', 'fallback.jpg');
     });
   });
-</script>
-<script>
-window.addEventListener('load', () => {
-  const video = document.getElementById('background-video');
-  if (!video) return;
 
-  // iOS a besoin de ce mute forcé
-  video.muted = true;
+  // --- ANIMATIONS AU SCROLL ---
+  const fadeElements = document.querySelectorAll('.fade-in');
 
-  // Tente de lire la vidéo
-  const playPromise = video.play();
-  if (playPromise !== undefined) {
-    playPromise.then(() => {
-      console.log('✅ Vidéo de fond lue avec succès.');
-    }).catch(err => {
-      console.warn('⚠️ Lecture vidéo bloquée sur mobile :', err);
-      // On garde le fond image du wrapper
-      video.remove();
+  function handleScrollAnimation() {
+    fadeElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        el.classList.add('visible');
+      }
     });
   }
-});
-</script>
-<script>
-// --- ANIMATIONS AU SCROLL ---
-const fadeElements = document.querySelectorAll('.fade-in');
 
-function handleScrollAnimation() {
-  fadeElements.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
-      el.classList.add('visible');
-    }
-  });
-}
-
-window.addEventListener('scroll', handleScrollAnimation);
-window.addEventListener('load', handleScrollAnimation);
+  window.addEventListener('scroll', handleScrollAnimation);
+  window.addEventListener('load', handleScrollAnimation);
 </script>
 </body>
  
