@@ -829,6 +829,7 @@ footer a:hover {
 </script>
 
   <script>
+    
 // --- OUVERTURE DU POPUP AVEC PRÉ-SÉLECTION ---
 const openPopupCall = document.getElementById('openPopupCall');
 const selectObjet = document.querySelector('select[name="Objet"]');
@@ -842,6 +843,21 @@ if (openPopupCall) {
   });
 }
 </script>
+  <script>
+    
+// --- OUVERTURE DU POPUP AVEC PRÉ-SÉLECTION POUR "DEMANDER UN DEVIS" ---
+const openPopupDevis = document.getElementById('openPopupDevis');
+
+if (openPopupDevis) {
+  openPopupDevis.addEventListener('click', (e) => {
+    e.preventDefault();
+    const popup = document.getElementById('contactPopup');
+    popup.style.display = 'flex';
+    if (selectObjet) selectObjet.value = "Label Services"; // pré-sélection automatique
+  });
+}
+</script>
+
 
 </body>
  
