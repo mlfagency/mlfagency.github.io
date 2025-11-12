@@ -26,14 +26,15 @@
 
 /* --- VOILE NOIR PAR-DESSUS LA VIDÉO --- */
 .video-overlay {
-  position: fixed;
+  position: fixed;              /* reste collé à la fenêtre */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.55);
-  z-index: -1;
+  background: rgba(0,0,0,0.55); /* ✅ le film noir (55 % d'opacité) */
+  z-index: -1;                  /* ✅ entre la vidéo (-2) et le contenu du site (0 par défaut) */
 }
+
 
 /* --- BASE ET AUTRES STYLES EXISTANTS --- */
 body { 
