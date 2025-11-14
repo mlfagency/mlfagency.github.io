@@ -14,18 +14,18 @@
       overflow-x: hidden;
     }
 
-    /* --- VIDÉO D’ARRIÈRE-PLAN --- */
-    .video-wrapper {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      z-index: -2;
-      pointer-events: none; /* ✅ Empêche tout blocage de clic */
-      background: url('fallback.jpg') no-repeat center center / cover;
-    }
+.video-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -2;
+  pointer-events: none;
+  background: url('fallback.jpg') no-repeat center center / cover;
+}
+
 
     .video-overlay {
       position: fixed;
@@ -228,10 +228,10 @@
 </head>
 <body>
 
-<!-- === VIDÉO D’ARRIÈRE-PLAN === -->
-
-</div>
+<!-- === IMAGE D’ARRIÈRE-PLAN === -->
+<div class="video-wrapper"></div>
 <div class="video-overlay"></div>
+
 
 <header>
   <a href="index.html"><img src="logo.svg" alt="MLF Agency"></a>
