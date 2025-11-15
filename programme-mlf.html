@@ -36,7 +36,7 @@ body::before {
 header {
   position:fixed;
   top:0; left:0; width:100%;
-  padding:18px 70px 18px 30px; /* <-- menu plus à gauche */
+  padding:18px 40px 18px 30px; /* <-- menu plus à gauche */
   background:#000;
   z-index:1000;
   display:flex;
@@ -47,10 +47,11 @@ header {
 header img { width:160px; }
 
 nav { 
+ nav { 
   display:flex; 
-  gap:26px;
-  transform:translateX(-20px); /* <-- décalage supplémentaire */
+  gap:18px;  /* réduit le débordement */
 }
+  
 nav a {
   color:#ddd;
   text-decoration:none;
