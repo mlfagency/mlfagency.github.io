@@ -1,354 +1,295 @@
-<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Programme MLF – Investir en soi-même | MLF Agency</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programme MLF – Investir en soi-même</title>
 
-  <style>
-/* ------------------- BASE ------------------- */
+<style>
+/* ---------------------- */
+/* BASE */
+/* ---------------------- */
 body {
-  margin: 0;
-  padding: 0;
-  background: #000;
-  color: #fff;
+  margin:0; padding:0;
+  background:#000;
+  color:#fff;
   font-family: Arial, sans-serif;
-  line-height: 1.7;
+  line-height:1.7;
+  overflow-x:hidden;
 }
 
-/* ------------------- HEADER VARIANT ------------------- */
+/* Subtile texture (grain) */
+body::before {
+  content:"";
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  pointer-events:none;
+  background:radial-gradient(circle at 20% 20%, rgba(255,255,255,0.02), transparent 70%),
+             radial-gradient(circle at 80% 80%, rgba(255,255,255,0.015), transparent 60%);
+  z-index:-1;
+}
+
+/* ---------------------- */
+/* HEADER */
+/* ---------------------- */
 header {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  background: #000;
-  padding: 18px 30px; /* réduit de 40px → 30px */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  box-sizing: border-box;
+  position:fixed; top:0; left:0; width:100%;
+  padding:18px 30px;
+  background:#000;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
-    
-.top-nav {
-  margin-right: 40px; /* déplace les liens vers la gauche */
-}
+header img { width:160px; }
 
-.header-logo {
-  width: 160px;
-  transition: 0.3s ease;
+nav { display:flex; gap:26px; }
+nav a {
+  color:#ddd;
+  text-decoration:none;
+  position:relative;
+  font-size:1em;
 }
+nav a:hover { color:#fff; }
 
-/* MENU */
-.top-nav {
-  display: flex;
-  gap: 28px;
+/* Ligne hover white */
+nav a::after {
+  content:"";
+  position:absolute;
+  left:0; bottom:-3px;
+  width:0%; height:1px;
+  background:white;
+  transition:0.3s;
 }
+nav a:hover::after { width:100%; }
 
-.top-nav a {
-  color: rgba(255,255,255,0.85);
-  text-decoration: none;
-  font-size: 1.05em;
-  letter-spacing: 0.5px;
-  padding-bottom: 4px;
-  transition: 0.3s ease;
-  position: relative;
-}
-
-.top-nav a:hover {
-  color: #fff;
-}
-
-.top-nav a::after {
-  content: "";
-  position: absolute;
-  bottom: 0; left: 0;
-  height: 1px;
-  width: 0;
-  background: white;
-  transition: 0.3s ease;
-}
-.top-nav a:hover::after { width: 100%; }
-
-/* ------------------- SECTIONS ------------------- */
+/* ---------------------- */
+/* SECTION WRAPPER */
+/* ---------------------- */
 section {
-  max-width: 900px;
-  width: 90%;
-  margin: 140px auto 40px;
-  background: #0c0c0c;
-  padding: 50px 35px;
-  border-radius: 16px;
-  box-shadow: 0 0 25px rgba(255,255,255,0.05);
+  width:90%;
+  max-width:1100px;
+  margin:140px auto 70px;
 }
 
-section h1,
-section h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-size: 2em;
+/* Separator lumineux */
+.section-separator {
+  width:100%; height:1px;
+  background:linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+  margin:70px 0;
 }
 
-section p,
-section li {
-  color: #d2d2d2;
-  font-size: 1.08em;
+/* ---------------------- */
+/* HERO */
+/* ---------------------- */
+.hero {
+  padding:90px 40px;
+  border-radius:20px;
+  background:linear-gradient(180deg, #0b0b0b, #000);
+  border:1px solid rgba(255,255,255,0.07);
+  box-shadow:0 0 35px rgba(255,255,255,0.05);
+  text-align:center;
+  animation: fadeUp 0.8s ease;
 }
 
-ul {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 20px;
+.hero h1 {
+  font-size:2.6em;
+  margin-bottom:20px;
+}
+.hero p {
+  max-width:700px;
+  margin:auto;
+  color:#ccc;
+  font-size:1.15em;
 }
 
-li {
-  margin: 12px 0;
-  text-align: center;
-}
-
-/* ------------------- BOUTON ------------------- */
+/* CTA */
 .btn {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 12px 28px;
-  border: 1px solid white;
-  border-radius: 8px;
-  color: white;
-  text-decoration: none;
-  font-size: 1.15em;
-  transition: 0.3s ease;
+  display:inline-block;
+  margin-top:28px;
+  padding:14px 32px;
+  border:1px solid #fff;
+  border-radius:10px;
+  color:#fff;
+  text-decoration:none;
+  font-size:1.1em;
+  transition:0.3s;
 }
-
 .btn:hover {
-  background: white;
-  color: black;
+  background:#fff;
+  color:#000;
 }
 
-/* ------------------- POPUP (INDEX STYLE) ------------------- */
-.popup {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 5000;
-  padding: 20px;
+/* ---------------------- */
+/* CARDS */
+/* ---------------------- */
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:28px;
 }
 
-.popup-content {
-  background: #111;
-  padding: 40px;
-  border-radius: 14px;
-  width: 90%;
-  max-width: 520px;
-  box-shadow: 0 0 25px rgba(255,255,255,0.08);
-  position: relative;
-  animation: fadeIn 0.3s ease;
-  text-align: center;
+.card {
+  background:#0d0d0d;
+  padding:32px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 0 25px rgba(255,255,255,0.04);
+  text-align:center;
+  transition:0.35s ease;
+  animation: fadeUp 0.8s ease;
+}
+.card:hover {
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,0.2);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95);}
-  to   { opacity: 1; transform: scale(1);}
+.card h3 { font-size:1.3em; margin-bottom:10px; }
+.card p { color:#ccc; }
+
+/* ---------------------- */
+/* TIMELINE */
+/* ---------------------- */
+.timeline-wrapper {
+  background:#0d0d0d;
+  padding:50px 25px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 0 25px rgba(255,255,255,0.04);
 }
 
-.popup-logo {
-  width: 150px;
-  margin-bottom: 20px;
-  opacity: 0.95;
+.timeline-title { text-align:center; font-size:2em; margin-bottom:40px; }
+
+.timeline {
+  position:relative;
+  max-width:700px;
+  margin:0 auto;
+  padding-left:20px;
+}
+.timeline::before {
+  content:"";
+  position:absolute; left:50%;
+  width:2px; height:100%;
+  background:#333;
+  transform:translateX(-50%);
 }
 
-.close-btn {
-  position: absolute;
-  top: 12px; right: 18px;
-  font-size: 1.8em;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: 0.3s;
+.step {
+  position:relative;
+  width:50%;
+  padding:20px 30px;
+  animation: fadeUp 0.8s ease;
 }
-.close-btn:hover { opacity: 1; }
+.step:nth-child(odd) { left:0; text-align:right; }
+.step:nth-child(even) { left:50%; }
 
-.popup-content input,
-.popup-content textarea,
-.popup-content select {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0 16px;
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 6px;
-  background: #1a1a1a;
-  color: white;
-  font-size: 1em;
+.step::before {
+  content:"";
+  position:absolute;
+  top:28px;
+  width:14px; height:14px;
+  background:white;
+  border-radius:50%;
+  border:3px solid #000;
 }
+.step:nth-child(odd)::before { right:-7px; }
+.step:nth-child(even)::before { left:-7px; }
 
-.popup-content textarea {
-  min-height: 120px;
-  resize: vertical;
-}
+.step h4 { margin-bottom:6px; }
+.step p { color:#ccc; }
 
-.popup-content button {
-  width: 100%;
-  background: white;
-  color: black;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1em;
-  cursor: pointer;
-  transition: 0.3s ease;
-  margin-top: 10px;
-}
-.popup-content button:hover { opacity: 0.85; }
-
-/* ------------------- FOOTER ------------------- */
+/* ---------------------- */
+/* FOOTER */
+/* ---------------------- */
 footer {
-  text-align: center;
-  font-size: 0.75em;
-  color: rgba(255,255,255,0.6);
-  padding: 30px 10px;
+  text-align:center;
+  padding:40px 20px;
+  color:#aaa;
+  border-top:1px solid rgba(255,255,255,0.08);
+  margin-top:60px;
 }
-
 footer a {
-  color: rgba(255,255,255,0.6);
-  text-decoration: none;
-  margin: 0 5px;
+  color:#aaa;
+  text-decoration:none;
 }
-footer a:hover { color: white; }
+footer a:hover { color:#fff; }
 
-  </style>
+/* ---------------------- */
+/* ANIMATIONS */
+/* ---------------------- */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+</style>
 </head>
+
 <body>
 
-<!-- --------------------- HEADER --------------------- -->
 <header>
-  <a href="index.html"><img src="logo3.svg" class="header-logo"></a>
-
-  <nav class="top-nav">
+  <a href="index.html"><img src="logo.svg"></a>
+  <nav>
     <a href="index.html">Accueil</a>
     <a href="label-services.html">Label Services</a>
     <a href="programme-mlf.html">Investir en soi-même</a>
-    <a href="#" id="openPopupContact">Contactez-nous</a>
+    <a href="#">Contact</a>
   </nav>
 </header>
 
-<!-- --------------------- INTRO --------------------- -->
 <section>
-  <h1>Programme MLF – Investir en soi-même</h1>
-  <p>
-   Un accompagnement sur mesure pour les artistes indépendants qui entrent dans l’industrie et veulent piloter leur carrière avec les outils d’un label.
-  </p>
-  <div style="text-align:center;">
-    <a href="#" id="openPopupProgram" class="btn">Soumettre ma candidature</a>
+  <div class="hero">
+    <h1>Programme MLF – Investir en soi-même</h1>
+    <p>Un accompagnement intensif pour maîtriser ta carrière avec les outils, la méthode et les réflexes d’un label professionnel.</p>
+    <a href="#" class="btn">Soumettre ma candidature</a>
   </div>
 </section>
 
-<!-- --------------------- SECTION 1 --------------------- -->
+<div class="section-separator"></div>
+
 <section>
-  <h2>Ce programme soutient les artistes qui aspirent à:</h2>
- 
- <ul>
-    <li>Structurer leur projet et définir une vision claire</li>
-    <li>Comprendre droits, édition, administration</li>
-    <li>Planifier et distribuer efficacement ses sorties</li>
-    <li>Développer son image & stratégie digitale</li>
-    <li>Gagner en autonomie et professionnalisme</li>
-  </ul>
+  <h2>Un programme pensé pour les artistes qui veulent :</h2>
+  <div class="cards">
+    <div class="card"><h3>Structurer leur projet</h3><p>Bases solides & vision claire.</p></div>
+    <div class="card"><h3>Comprendre l'industrie</h3><p>Droits, édition, administration.</p></div>
+    <div class="card"><h3>Planifier leurs sorties</h3><p>Distribution & stratégie DSP.</p></div>
+    <div class="card"><h3>Développer leur image</h3><p>Identité, branding & réseaux.</p></div>
+    <div class="card"><h3>Gagner en autonomie</h3><p>Maîtriser sa carrière.</p></div>
+  </div>
 </section>
 
-<!-- --------------------- SECTION 2 --------------------- -->
+<div class="section-separator"></div>
+
 <section>
-  <h2>Contenu du programme</h2>
-  <ul>
-    <li><strong>1️⃣ Vision & Structure :</strong> stratégie globale</li>
-    <li><strong>2️⃣ Droits & Administration :</strong> SACEM, royalties...</li>
-    <li><strong>3️⃣ Distribution :</strong> DSP Strategy</li>
-    <li><strong>4️⃣ Communication :</strong> Instagram, TikTok, YouTube</li>
-    <li><strong>5️⃣ Feuille de route :</strong> Établir un rétroplanning?</li>
-  </ul>
+  <div class="timeline-wrapper">
+    <h2 class="timeline-title">Les étapes du programme</h2>
+    <div class="timeline">
+      <div class="step"><h4>1. Vision & Structure</h4><p>Stratégie globale.</p></div>
+      <div class="step"><h4>2. Droits & Administration</h4><p>SACEM, royalties.</p></div>
+      <div class="step"><h4>3. Distribution</h4><p>DSP & metadata.</p></div>
+      <div class="step"><h4>4. Communication</h4><p>Image & réseaux.</p></div>
+      <div class="step"><h4>5. Feuille de route</h4><p>Plan 3 mois.</p></div>
+    </div>
+  </div>
 </section>
 
-<!-- --------------------- SECTION 3 --------------------- -->
+<div class="section-separator"></div>
+
 <section>
   <h2>Format & Tarifs</h2>
   <p style="text-align:center;">
     <strong>Durée :</strong> 10 heures individuelles<br>
-    <strong>Tarif :</strong> 300 € (30 € / h)<br>
-    <strong>Format :</strong> visio ou téléphone<br>
-    <strong>Planning :</strong> flexible<br>
-    <strong>Inclus :</strong> résumé de la formation + outils pratiques
+    <strong>Tarif :</strong> 300 € (30 €/h)<br>
+    <strong>Format :</strong> Visio ou téléphone<br>
+    <strong>Planning :</strong> Flexible<br>
+    <strong>Inclus :</strong> Documents + outils
   </p>
 </section>
 
-<!-- --------------------- FOOTER --------------------- -->
 <footer>
-  <a href="index.html">← Retour</a> |
-  <a href="mentions-legales.html">Mentions légales</a> |
-  <a href="politique-confidentialite.html">Politique de confidentialité</a>
+  <p>MLF Agency — Accompagnement pour artistes indépendants</p>
+  <p><a href="mentions-legales.html">Mentions légales</a> • <a href="politique-confidentialite.html">Politique de confidentialité</a></p>
 </footer>
-
-
-<!-- --------------------- POPUP --------------------- -->
-<div class="popup" id="contactPopup">
-  <div class="popup-content">
-
-    <div class="close-btn" id="closePopup">&times;</div>
-
-    <img src="logo.svg" class="popup-logo">
-
-    <form action="https://formspree.io/f/xanlvwld" method="POST">
-      <select name="Objet" required>
-        <option value="Programme MLF – Investir en soi-même" selected>Programme MLF – Investir en soi-même</option>
-        <option value="Appel découverte">Appel découverte</option>
-      </select>
-
-      <input type="text" name="Nom du projet" placeholder="Nom du projet*" required>
-      <input type="email" name="Adresse mail" placeholder="Adresse mail*" required>
-      <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone*" required>
-      <textarea name="Message" placeholder="Message (optionnel)"></textarea>
-
-      <button type="submit">Envoyer</button>
-    </form>
-
-  </div>
-</div>
-
-
-<!-- --------------------- SCRIPT --------------------- -->
-<script>
-const popup = document.getElementById('contactPopup');
-const closeBtn = document.getElementById('closePopup');
-const openPopupContact = document.getElementById('openPopupContact');
-const openPopupProgram = document.getElementById('openPopupProgram');
-const selectObjet = document.querySelector('select[name="Objet"]');
-
-function openPopup() {
-  popup.style.display = 'flex';
-}
-function closePopup() {
-  popup.style.display = 'none';
-}
-
-openPopupContact.addEventListener('click', (e) => {
-  e.preventDefault();
-  openPopup();
-  selectObjet.value = "";
-});
-
-openPopupProgram.addEventListener('click', (e) => {
-  e.preventDefault();
-  openPopup();
-  selectObjet.value = "Programme MLF – Investir en soi-même";
-});
-
-closeBtn.addEventListener('click', closePopup);
-
-window.addEventListener('click', (e) => {
-  if (e.target === popup) closePopup();
-});
-</script>
 
 </body>
 </html>
