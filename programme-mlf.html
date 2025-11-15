@@ -40,20 +40,24 @@ header {
   background:#000;
   z-index:1000;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   border-bottom:1px solid rgba(255,255,255,0.08);
+  overflow:visible;
 }
 
 header img {
-  width:160px;
+  width:130px; /* réduit pour laisser de la place */
+  flex-shrink:0;
 }
 
 nav {
   display:flex;
   gap:22px;
-  padding-right:10px; /* léger espace à droite sans décaler excessivement */
+  white-space:nowrap;
+  max-width:calc(100% - 160px); /* empêche le débordement */
 }
+
 
 nav a {
   color:#ddd;
@@ -252,6 +256,7 @@ footer a:hover { color:#fff; }
     <a href="#">Contact</a>
   </nav>
 </header>
+
 
 <section>
   <div class="hero">
