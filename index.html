@@ -75,6 +75,35 @@ header.shrink img {
   max-width: 120px;
   transform: scale(0.9);
 }
+    
+    /* --- MENU HORIZONTAL DANS LE HEADER --- */
+.top-nav {
+  position: absolute;
+  right: 80px; /* ajuste si besoin */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 25px;
+}
+
+.top-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  transition: 0.3s;
+  opacity: 0.9;
+}
+
+.top-nav a:hover {
+  opacity: 1;
+  color: #fff;
+}
+
+/* menu réduit quand header shrink */
+header.shrink .top-nav a {
+  font-size: 0.9em;
+}
+
 
 .envelope-icon {
   display: none;
@@ -266,31 +295,7 @@ header.shrink .envelope-icon {
   text-align: center;
 }
 
-/* --- MENU --- */
-.menu-icon {
-  position: absolute;
-  left: 25px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2.4em;
-  border: 1px solid rgba(255,255,255,0.4);
-  border-radius: 6px;
-  cursor: pointer;
-}
 
-.side-menu {
-  position: fixed;
-  top: 0;
-  left: -270px;
-  width: 250px;
-  height: 100vh;
-  background: rgba(0,0,0,0.95);
-  transition: left 0.4s ease;
-  z-index: 2000;
-  padding-top: 40px;
-}
-
-.side-menu.open { left: 0; }
 
 footer {
   text-align: center;
@@ -324,19 +329,18 @@ footer a:hover {
 <div class="video-overlay"></div>
 
 <header id="mainHeader">
-  <div class="menu-icon" id="menuToggle">☰</div>
   <img src="logo.svg" alt="Logo MLF Agency">
+
+  <nav class="top-nav">
+    <a href="index.html">Accueil</a>
+    <a href="label-services.html">Label Services</a>
+    <a href="programme-mlf.html">Investir en soi-même</a>
+  </nav>
+
   <span class="envelope-icon" id="iconPopup">✉️</span>
 </header>
 
-<!-- MENU -->
-<nav id="sideMenu" class="side-menu">
-  <span class="close-menu" id="closeMenu">&times;</span>
-  <ul>
-    <li><a href="index.html">- Accueil</a></li>
-    <li><a href="programme-mlf.html">- Investir en soi-même</a></li>
-  </ul>
-</nav>
+
 
 <section class="intro"><div class="intro-content"></div></section>
 
@@ -445,14 +449,6 @@ window.addEventListener('scroll', () => {
   header.classList.toggle('shrink', window.scrollY > 150);
 });
 
-/* MENU */
-const menuToggle = document.getElementById('menuToggle');
-const sideMenu = document.getElementById('sideMenu');
-const closeMenu = document.getElementById('closeMenu');
-
-menuToggle.addEventListener('click', () => sideMenu.classList.add('open'));
-closeMenu.addEventListener('click', () => sideMenu.classList.remove('open'));
-</script>
 
 <footer>
   <a href="mentions-legales.html">Mentions légales</a> |
