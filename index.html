@@ -26,17 +26,16 @@
 
 /* --- VOILE NOIR PAR-DESSUS LA VIDÉO --- */
 .video-overlay {
-  position: fixed;              /* reste collé à la fenêtre */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.7); /* ✅ le film noir (70 % d'opacité) */
-  z-index: -1;                  /* ✅ entre la vidéo (-2) et le contenu du site (0 par défaut) */
+  background: rgba(0,0,0,0.7);
+  z-index: -1;
 }
 
-
-/* --- BASE ET AUTRES STYLES EXISTANTS --- */
+/* --- BASE --- */
 body { 
   font-family: Arial, sans-serif; 
   margin: 0; 
@@ -46,145 +45,136 @@ body {
   line-height: 1.6;
 }
 
-    /* --- HEADER DYNAMIQUE --- */
-    header {
-      background-color: #000;
-      color: white; 
-      padding: 15px 0;
-      text-align: center; 
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.5s ease;
-    }
+/* --- HEADER DYNAMIQUE --- */
+header {
+  background-color: #000;
+  color: white; 
+  padding: 15px 0;
+  text-align: center; 
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+}
 
-    header.shrink {
-      padding: 6px 0;
-      background-color: rgba(0, 0, 0, 0.95);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
-    }
+header.shrink {
+  padding: 6px 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
 
-    header img {
-      max-width: 300px;
-      transition: transform 0.5s ease, max-width 0.5s ease;
-    }
+header img {
+  max-width: 300px;
+  transition: transform 0.5s ease, max-width 0.5s ease;
+}
 
-    header.shrink img {
-      max-width: 120px;
-      transform: scale(0.9);
-    }
+header.shrink img {
+  max-width: 120px;
+  transform: scale(0.9);
+}
 
-    .envelope-icon {
-      display: none;
-      font-size: 1.6em;
-      position: absolute;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
-      transition: opacity 0.3s ease;
-    }
+.envelope-icon {
+  display: none;
+  font-size: 1.6em;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
 
-    header.shrink .envelope-icon {
-      display: block;
-    }
+header.shrink .envelope-icon {
+  display: block;
+}
 
-    /* --- SECTION INTRO --- */
-    .intro {
-      text-align: center;
-      padding: 220px 20px 40px;
-      color: #fff;
-      position: relative;
-      z-index: 1;
-    }
+/* --- INTRO (sans phrase) --- */
+.intro {
+  text-align: center;
+  padding: 220px 20px 40px;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
 
-    .intro-content {
-      max-width: 900px;
-      margin: 0 auto;
-    }
+.intro-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-    .intro p {
-      font-size: 1.2em;
-      margin: 10px 0;
-    }
+/* --- CARROUSEL --- */
+.about-carousel {
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0 40px;
+  position: relative;
+  z-index: 1;
+}
 
-    .btn {
-      display: inline-block;
-      margin-top: 25px;
-      color: white;
-      text-decoration: none;
-      font-size: 1.1em;
-      border: 1px solid white;
-      padding: 12px 25px;
-      border-radius: 8px;
-      transition: 0.3s;
-      cursor: pointer;
-      background: none;
-    }
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+}
 
-    .btn:hover {
-      background-color: white;
-      color: black;
-    }
+.carousel-track img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+}
 
-    /* --- CARROUSEL FLUIDE INFINI --- */
-    .about-carousel {
-      overflow: hidden;
-      width: 100%;
-      padding: 20px 0 40px;
-      position: relative;
-      z-index: 1;
-    }
+.carousel-track img:hover {
+  transform: scale(1.05);
+}
 
-    .carousel-track {
-      display: flex;
-      width: max-content;
-      animation: scroll 25s linear infinite;
-    }
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 
-    .carousel-track img {
-      width: 300px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin: 0 10px;
-      transition: transform 0.3s ease;
-    }
+@media (max-width: 900px) {
+  .carousel-track img { width: 220px; height: 220px; }
+}
 
-    .carousel-track img:hover {
-      transform: scale(1.05);
-    }
+@media (max-width: 600px) {
+  .carousel-track img { width: 180px; height: 180px; }
+}
 
-    /* Animation infinie */
-    @keyframes scroll {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
-    }
+/* --- SECTION ABOUT --- */
+.about {
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  padding: 80px 30px 100px;
+  text-align: center;
+}
 
-    /* Responsive carrousel */
-    @media (max-width: 900px) {
-      .carousel-track img {
-        width: 220px;
-        height: 220px;
-      }
-    }
+.about-inner {
+  max-width: 850px;
+  margin: 0 auto;
+}
 
-    @media (max-width: 600px) {
-      .carousel-track img {
-        width: 180px;
-        height: 180px;
-      }
-    }
+.about-inner h2 {
+  color: #fff;
+  font-size: 2.4em;
+  margin-bottom: 25px;
+}
 
-    /* --- CADRE AUTOUR DE LA SECTION SERVICES --- */
+.about-inner p {
+  color: #ddd;
+  font-size: 1.15em;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+/* --- SECTION SERVICES RESTRUCTURÉE --- */
 .services {
   position: relative;
   max-width: 950px;
@@ -195,13 +185,7 @@ body {
   border-radius: 16px;
   background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 100%);
   box-shadow: 0 0 25px rgba(255,255,255,0.05);
-  transition: border-color 0.4s ease, box-shadow 0.4s ease;
   z-index: 1;
-}
-
-.services:hover {
-  border-color: rgba(255,255,255,0.6);
-  box-shadow: 0 0 35px rgba(255,255,255,0.1);
 }
 
 .services h2 {
@@ -211,9 +195,42 @@ body {
   color: white;
 }
 
+/* --- NOUVEAUX CADRES CLIQUABLES --- */
+.service-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px auto;
+  flex-wrap: wrap;
+}
 
-    /* --- BOUTONS --- */
-.btn, .btn-devis, .btn-programme {
+.service-box {
+  width: 350px;
+  height: 180px;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background: rgba(0,0,0,0.6);
+  transition: 0.3s;
+}
+
+.service-box h3 {
+  color: white;
+  font-size: 1.6em;
+  margin: 0;
+}
+
+.service-box:hover {
+  border-color: white;
+  background: rgba(255,255,255,0.1);
+  transform: scale(1.04);
+}
+
+/* --- BOUTONS --- */
+.btn, .btn-devis {
   display: inline-block;
   margin-top: 25px;
   color: white;
@@ -223,470 +240,93 @@ body {
   padding: 12px 25px;
   border-radius: 8px;
   transition: 0.3s;
-  cursor: pointer;
   background: none;
 }
-.btn:hover, .btn-devis:hover, .btn-programme:hover {
+
+.btn:hover, .btn-devis:hover {
   background-color: white;
   color: black;
 }
 
-    /* --- TABS --- */
-    .tabs {
-      margin-top: 20px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 20px;
-    }
+/* --- POPUP --- */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
 
-    .tab-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 20px;
-      gap: 10px;
-    }
-
-    .tab-btn {
-      font-family: inherit;
-      font-size: 1.1em;
-      padding: 12px 25px;
-      border-radius: 8px;
-      border: 1px solid white;
-      color: white;
-      background: none;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .tab-btn:hover, .tab-btn.active {
-      background-color: white;
-      color: black;
-    }
-
-    .tab-content {
-      display: none;
-      text-align: left;
-      padding: 0 30px;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    .tab-content p,
-    .tab-content h3 {
-      margin-left: 0;
-      margin-right: 0;
-    }
-
-    /* --- SECTION QUI SOMMES-NOUS --- */
-    .about {
-      background: transparent;
-      position: relative;
-      z-index: 1;
-      padding: 80px 30px 100px;
-      text-align: center;
-    }
-
-    .about-inner {
-      max-width: 850px;
-      margin: 0 auto;
-    }
-
-    .about-inner h2 {
-      color: #fff;
-      font-size: 2.4em;
-      margin-bottom: 25px;
-      text-shadow: 0 0 8px rgba(255,255,255,0.3);
-    }
-
-    .about-inner p {
-      color: #ddd;
-      font-size: 1.15em;
-      line-height: 1.8;
-      margin-bottom: 15px;
-    }
-
-    /* --- POPUP --- */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-    
 .popup-content {
   background: #111;
   padding: 40px;
   border-radius: 12px;
   width: 90%;
-  max-width: 550px; /* plus grand */
-  box-shadow: 0 0 25px rgba(255,255,255,0.1);
-  text-align: center; /* pour centrer le logo */
+  max-width: 550px;
+  text-align: center;
 }
 
-
-    .popup-content h3 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .popup-content h6 {
-      text-align: center;
-      font-style: italic;
-      margin-bottom: 15px;
-    }
-
-    .popup-content input, .popup-content textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 5px;
-      background: #222;
-      color: white;
-    }
-    
-   .popup-content select {
-     width: 100%;
-     padding: 10px;
-     margin: 8px 0;
-     border: none;
-     border-radius: 5px;
-     background: #222;
-     color: white;
-}
-
-    .popup-content button {
-      background: #1a73e8;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100%;
-      font-size: 1em;
-      transition: 0.3s;
-    }
-
-    .popup-content button:hover {
-      background: #0d57b5;
-    }
-
-    .popup-logo {
+.popup-logo {
   width: 160px;
   margin-bottom: 15px;
-  opacity: 0.95;
 }
 
-
-    .close-btn {
-      text-align: right;
-      cursor: pointer;
-      font-size: 1.5em;
-    }
-    /* --- SECTION TARIFS & ACCOMPAGNEMENTS --- */
-.pricing {
-  background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 100%);
-  padding: 90px 30px;
-  text-align: center;
-  color: #fff;
-  position: relative;
-  z-index: 1;
-}
-
-.pricing h2 {
-  font-size: 2.2em;
-  margin-bottom: 15px;
-  text-shadow: 0 0 8px rgba(255,255,255,0.2);
-}
-
-.pricing p.intro {
-  font-size: 1.2em;
-  color: #ccc;
-  margin: 20px auto 40px;
-  max-width: 800px;
-}
-
-.pricing-highlight {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 12px;
-  padding: 40px 30px;
-  max-width: 650px;
-  margin: 0 auto;
-  box-shadow: 0 0 20px rgba(255,255,255,0.05);
-}
-
-.pricing-highlight p {
-  font-size: 1.3em;
-  margin-bottom: 25px;
-}
-
-.pricing .btn {
-  margin-top: 15px;
-}
-
-/* --- SECTION PROGRAMME MLF --- */
-.program {
-  background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
-  color: #fff;
-  padding: 90px 30px 110px;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.program-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  line-height: 1.8;
-}
-
-.program h2 {
-  font-size: 2.2em;
-  margin-bottom: 20px;
-  text-shadow: 0 0 8px rgba(255,255,255,0.2);
-}
-
-.program h3 {
-  margin-top: 40px;
-  font-size: 1.5em;
-  color: #fff;
-}
-
-.program ul {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-  text-align: left;
-}
-
-.program ul li {
-  margin: 12px 0;
-  color: #ddd;
-}
-
-.program .quote {
-  margin-bottom: 30px;
-  font-size: 1.2em;
-  color: #ccc;
-}
-
-.program .tarif {
-  margin-top: 15px;
-  font-size: 1.1em;
-  line-height: 1.6;
-  color: #eee;
-}
-
-.program-cta {
-  margin-top: 40px;
-}
-
-.program {
-  margin-bottom: 60px;
-}
-    
-/* --- ANIMATIONS AU SCROLL --- */
-.fade-in {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-    
-.form-note {
-  font-size: 0.7em;      /* plus petit */
-  color: #ff6b6b;        /* rouge un peu plus doux */
-  text-align: left;
-  margin-bottom: 8px;
-  opacity: 0.9;          /* effet visuel plus léger */
-}
-    footer {
-  text-align: center;
-  font-size: 0.75em; /* texte plus petit */
-  color: rgba(255, 255, 255, 0.6);
-  padding: 30px 10px;
-  background: rgba(0, 0, 0, 0.4);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-footer a {
-  color: rgba(255, 255, 255, 0.6);
-  text-decoration: none;
-  margin: 0 5px;
-  transition: color 0.3s ease;
-}
-
-footer a:hover {
-  color: white;
-}
-/* --- SECTION RENDEZ-VOUS --- */
+/* --- SECTION BOOKING --- */
 .booking {
   background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
-  color: #fff;
   padding: 90px 30px 100px;
   text-align: center;
-  position: relative;
-  z-index: 1;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.booking-inner {
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.8;
-}
-
-.booking h2 {
-  font-size: 2.2em;
-  margin-bottom: 20px;
-  text-shadow: 0 0 8px rgba(255,255,255,0.2);
-}
-
-.booking p {
-  font-size: 1.2em;
-  color: #ccc;
-  margin-bottom: 30px;
-}
-
-.booking .btn {
-  font-size: 1.1em;
-  border-radius: 8px;
-  border: 1px solid white;
-  padding: 12px 25px;
   color: white;
-  background: none;
-  text-decoration: none;
-  transition: 0.3s;
 }
 
-.booking .btn:hover {
-  background: white;
-  color: black;
-}
-
-
-    /* --- MENU LATÉRAL --- */
+/* --- MENU LATÉRAL --- */
 .menu-icon {
   position: absolute;
   left: 25px;
   top: 50%;
   transform: translateY(-50%);
   font-size: 2.4em;
-  font-weight: bold;
-  padding: 5px 10px;
   border: 1px solid rgba(255,255,255,0.4);
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.menu-icon:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: white;
-}
-
-
-/* Container du menu latéral */
 .side-menu {
   position: fixed;
   top: 0;
-  left: -270px; /* caché à gauche */
+  left: -270px;
   width: 250px;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.95);
-  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.4);
-  z-index: 2000;
+  background: rgba(0,0,0,0.95);
   transition: left 0.4s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  z-index: 2000;
   padding-top: 40px;
 }
 
-.side-menu.open {
-  left: 0; /* visible */
-}
+.side-menu.open { left: 0; }
 
-.side-menu .menu-content {
-  position: relative;
-  width: 100%;
-  padding: 20px;
+footer {
+  text-align: center;
+  color: rgba(255,255,255,0.6);
+  padding: 30px 10px;
+  margin-top: 40px;
 }
-
-.side-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 30px 0 0;
-}
-
-.side-menu ul li {
-  margin: 20px 0;
-}
-
-.side-menu ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.1em;
-  display: block;
-  padding: 10px;
-  border-radius: 6px;
-  transition: background 0.3s ease;
-}
-
-.side-menu ul li a:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.close-menu {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 1.8em;
-  cursor: pointer;
-  color: white;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
-}
-
-.close-menu:hover {
-  opacity: 1;
-}
-
   </style>
 </head>
 <body>
 
 <!-- === VIDÉO D’ARRIÈRE-PLAN === -->
 <div class="video-wrapper">
-  <video id="background-video"
-         autoplay
-         muted
-         loop
-         playsinline
-         webkit-playsinline
-         preload="auto"
-         poster="fallback.jpg">
+  <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
     <source src="mlf_team.mp4" type="video/mp4">
   </video>
 </div>
 <div class="video-overlay"></div>
-
 
 <header id="mainHeader">
   <div class="menu-icon" id="menuToggle">☰</div>
@@ -694,265 +334,152 @@ footer a:hover {
   <span class="envelope-icon" id="iconPopup">✉️</span>
 </header>
 
-<!-- MENU LATÉRAL GAUCHE -->
+<!-- MENU LATÉRAL -->
 <nav id="sideMenu" class="side-menu">
-  <div class="menu-content">
-    <span class="close-menu" id="closeMenu">&times;</span>
-    <ul>
-      <li><a href="index.html">- Accueil</a></li>
-      <li><a href="programme-mlf.html">- Investir en soi-même</a></li>
-    </ul>
-  </div>
+  <span class="close-menu" id="closeMenu">&times;</span>
+  <ul>
+    <li><a href="index.html">- Accueil</a></li>
+    <li><a href="programme-mlf.html">- Investir en soi-même</a></li>
+  </ul>
 </nav>
 
+<!-- INTRO (vide) -->
+<section class="intro">
+  <div class="intro-content"></div>
+</section>
 
-  <!-- INTRO -->
-  <section class="intro">
-    <div class="intro-content">
-     <h1><em>Le talent crée l’élan. La stratégie crée la trajectoire.</em></h1>
-    </div>
-  </section>
+<!-- CARROUSEL -->
+<div class="about-carousel">
+  <div class="carousel-track">
+    <img src="imageteam1.jpg">
+    <img src="imageteam2.jpg">
+    <img src="imageteam3.jpg">
+    <img src="imageteam4.jpg">
+    <img src="imageteam5.jpg">
+    <img src="imageteam6.jpg">
 
-    <!-- CARROUSEL / GALERIE -->
-  <div class="about-carousel">
-    <div class="carousel-track">
-      <img src="imageteam1.jpg" alt="Équipe MLF 1">
-      <img src="imageteam2.jpg" alt="Équipe MLF 2">
-      <img src="imageteam3.jpg" alt="Équipe MLF 3">
-      <img src="imageteam4.jpg" alt="Équipe MLF 4">
-      <img src="imageteam5.jpg" alt="Équipe MLF 5">
-      <img src="imageteam6.jpg" alt="Équipe MLF 6">
-
-      <!-- duplication pour continuité -->
-      <img src="imageteam1.jpg" alt="Équipe MLF 1">
-      <img src="imageteam2.jpg" alt="Équipe MLF 2">
-      <img src="imageteam3.jpg" alt="Équipe MLF 3">
-      <img src="imageteam4.jpg" alt="Équipe MLF 4">
-      <img src="imageteam5.jpg" alt="Équipe MLF 5">
-      <img src="imageteam6.jpg" alt="Équipe MLF 6">
-    </div>
+    <!-- duplication pour l’infini -->
+    <img src="imageteam1.jpg">
+    <img src="imageteam2.jpg">
+    <img src="imageteam3.jpg">
+    <img src="imageteam4.jpg">
+    <img src="imageteam5.jpg">
+    <img src="imageteam6.jpg">
   </div>
-  
+</div>
+
+<!-- ABOUT -->
 <section class="about fade-in">
   <div class="about-inner">
     <h2>Notre histoire</h2>
-   <p>Nés de l’indépendance et forgés par l’expérience.</p>
-<p>Les personnes qui composent MLF Agency ont développé leur expertise à travers l’édition, la production et la stratégie au sein de leurs propres structures et projets.
-Aujourd’hui, cette expérience devient notre force pour accompagner les artistes indépendants avec une idée simple :
-développer un projet comme un label, tout en préservant la liberté de l’indépendance.</p>
+    <p>Nés de l’indépendance et forgés par l’expérience.</p>
+    <p>Les personnes qui composent MLF Agency ont développé leur expertise [...]</p>
   </div>
 </section>
 
-  <!-- NOS SERVICES -->
-  <section class="services">
-    <h2>Nos Services</h2>
-    <div class="tabs">
-      <div class="tab-buttons">
-        <button class="tab-btn active" data-tab="tab1">Label Services</button>
-        <button class="tab-btn" data-tab="tab2">Conseil & Carrière</button>
-        <button class="tab-btn" data-tab="tab3">Distribution & Sortie</button>
-        <button class="tab-btn" data-tab="tab4">Branding</button>
-      </div>
+<!-- SERVICES VERSION SIMPLIFIÉE -->
+<section class="services">
+  <h2>Nos Services</h2>
 
-      <div class="tab-content active" id="tab1">
-    
-        <p>- Coordination de projet (de la conception à la sortie)</p>
-        <p>- Accès à notre réseau : studios, beatmakers, ingénieurs, graphistes, clippeurs</p>
-        <p>- Suivi administratif (ISRC, métadonnées, dépôts SACEM)</p>
-        <p>- Reporting et analyse des performances</p>
-     </div>
-      <div class="tab-content" id="tab2">
-      
-        <p>- Audit artistique et stratégique</p>
-        <p>- Définition de plan de carrière clair (court, moyen et long terme)</p>
-        <p>- Conseil en édition, droits voisins, contrats et royalties</p>
-        <p>- Mise en relation avec des partenaires fiables</p>
-      </div>
-      <div class="tab-content" id="tab3">
-        
-        <p>- Planification des sorties (single, EP, album)</p>
-        <p>- Distribution digitale via nos partenaires (Spotify, Apple Music, Deezer…)</p>
-        <p>- Pitch playlist & DSP strategy</p>
-        <p>- Gestion des visuels, teasers, pre-save et communication de lancement</p>
-      </div>
-      <div class="tab-content" id="tab4">
-       
-        <p>- Étude du profil & adaptation à la direction artistique</p>
-        <p>- Audit des comptes (Instagram / TikTok / YouTube)</p>
-        <p>- Création d’un planning & d’une ligne éditoriale cohérente</p>
-        <p>- Construction du storytelling & positionnement de marque</p>
-      </div>
-    </div> 
+  <div class="service-boxes">
+
+    <a href="label-services.html" class="service-box">
+      <h3>Label Services</h3>
+    </a>
+
+    <a href="programme-mlf.html" class="service-box">
+      <h3>Investir en soi-même</h3>
+    </a>
+
+  </div>
+
   <div style="text-align:center;">
-  <a href="#" id="openPopupDevis" class="btn-devis">Demander un devis</a>
-</div>
-  </section>
-
+    <a href="#" id="openPopupDevis" class="btn-devis">Demander un devis</a>
+  </div>
+</section>
 
 <!-- POPUP FORMULAIRE -->
 <div class="popup" id="contactPopup">
   <div class="popup-content">
     <div class="close-btn" id="closePopup">&times;</div>
-    <img src="logo.svg" alt="Logo MLF Agency" class="popup-logo">
-    <h6><em>Notre équipe reviendra vers vous d’ici 48 heures.</em></h6>
-    <p class="form-note">* Les champs avec un astérisque sont obligatoires</p>
+    <img src="logo.svg" class="popup-logo">
 
     <form action="https://formspree.io/f/xanlvwld" method="POST">
-          <select name="Objet" required>
+      <select name="Objet" required>
         <option value="">Objet de la demande*</option>
         <option value="Label Services">Label Services</option>
-        <option value="Conseil & Carrière">Conseil & Carrière</option>
-        <option value="Distribution & Sortie">Distribution & Sortie</option>
-        <option value="Brand Building">Branding</option>
-        <option value="Programme MLF – Investir sur soi-même">Programme MLF – Investir en soi-même</option>
+        <option value="Programme MLF – Investir en soi-même">Programme MLF – Investir en soi-même</option>
         <option value="Appel découverte">Appel découverte</option>
       </select>
+
       <input type="text" name="Nom du projet" placeholder="Nom du projet*" required>
       <input type="email" name="Adresse mail" placeholder="Adresse mail*" required>
       <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone*" required>
-      <input type="url" name="Lien" placeholder="Lien (optionnel)">
-
       <textarea name="Message" placeholder="Message (optionnel)"></textarea>
       <button type="submit">Envoyer</button>
     </form>
   </div>
 </div>
 
-
-  
-  <!-- SECTION RENDEZ-VOUS -->
+<!-- SECTION RENDEZ-VOUS -->
 <section class="booking fade-in">
   <div class="booking-inner">
     <h2>📅 Réserver un appel découverte</h2>
-    <p>
-      Tu veux discuter de ton projet, poser des questions ou savoir comment on peut t’accompagner ?  
-    </p>
-    <a href="#" id="openPopupCall" class="btn">Réserver un appel découverte</a>
+    <p>Tu veux discuter de ton projet ?</p>
+    <a href="#" id="openPopupCall" class="btn">Réserver un appel</a>
   </div>
 </section>
+
 <script>
-// --- RÉFÉRENCES GLOBALES ---
+// --- POPUP ---
 const popup = document.getElementById('contactPopup');
-const iconPopup = document.getElementById('iconPopup');
 const closeBtn = document.getElementById('closePopup');
+const iconPopup = document.getElementById('iconPopup');
 const selectObjet = document.querySelector('select[name="Objet"]');
 
-const openPopupDevis = document.getElementById('openPopupDevis');
-const openPopupCall = document.getElementById('openPopupCall');
+function openPopupModal() { popup.style.display = 'flex'; }
+function closePopupModal() { popup.style.display = 'none'; }
 
-const header = document.getElementById('mainHeader');
-const tabButtons = document.querySelectorAll('.tab-btn');
-const tabContents = document.querySelectorAll('.tab-content');
-const video = document.getElementById('background-video');
-const fadeElements = document.querySelectorAll('.fade-in');
+iconPopup?.addEventListener('click', openPopupModal);
+closeBtn?.addEventListener('click', closePopupModal);
 
-const menuToggle = document.getElementById('menuToggle');
-const sideMenu = document.getElementById('sideMenu');
-const closeMenu = document.getElementById('closeMenu');
-
-// --- POPUP ---
-function openPopupModal() {
-  popup.style.display = 'flex';
-}
-function closePopupModal() {
-  popup.style.display = 'none';
-}
-
-// --- Icône enveloppe ---
-if (iconPopup) {
-  iconPopup.addEventListener('click', (e) => {
-    e.preventDefault();
-    openPopupModal();
-  });
-}
-
-// --- Fermeture ---
-if (closeBtn) closeBtn.addEventListener('click', closePopupModal);
 window.addEventListener('click', (e) => {
   if (e.target === popup) closePopupModal();
 });
 
 // --- "Demander un devis" ---
-if (openPopupDevis) {
-  openPopupDevis.addEventListener('click', (e) => {
-    e.preventDefault();
-    openPopupModal();
-    const activeTab = document.querySelector('.tab-btn.active');
-    if (activeTab && selectObjet) selectObjet.value = activeTab.textContent.trim();
-  });
-}
+document.getElementById('openPopupDevis').addEventListener('click', (e) => {
+  e.preventDefault();
+  openPopupModal();
+  selectObjet.value = "Label Services";
+});
 
-// --- "Réserver un appel découverte" ---
-if (openPopupCall) {
-  openPopupCall.addEventListener('click', (e) => {
-    e.preventDefault();
-    openPopupModal();
-    if (selectObjet) selectObjet.value = "Appel découverte";
-  });
-}
+// --- "Réserver un appel" ---
+document.getElementById('openPopupCall').addEventListener('click', (e) => {
+  e.preventDefault();
+  openPopupModal();
+  selectObjet.value = "Appel découverte";
+});
 
 // --- HEADER SHRINK ---
+const header = document.getElementById('mainHeader');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 150) header.classList.add('shrink');
-  else header.classList.remove('shrink');
+  header.classList.toggle('shrink', window.scrollY > 150);
 });
-
-// --- TABS ---
-tabButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const target = btn.getAttribute('data-tab');
-    tabButtons.forEach(b => b.classList.remove('active'));
-    tabContents.forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(target).classList.add('active');
-  });
-});
-
-// --- VIDÉO + ANIMATIONS AU SCROLL ---
-function handleScrollAnimation() {
-  fadeElements.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) el.classList.add('visible');
-  });
-}
-
-window.addEventListener('load', () => {
-  if (video) {
-    video.muted = true;
-    video.play().catch(() => {
-      video.setAttribute('poster', 'fallback.jpg');
-    });
-  }
-  handleScrollAnimation();
-});
-window.addEventListener('scroll', handleScrollAnimation);
 
 // --- MENU LATÉRAL ---
-if (menuToggle && sideMenu) {
-  menuToggle.addEventListener('click', () => {
-    sideMenu.classList.add('open');
-  });
-}
-if (closeMenu) {
-  closeMenu.addEventListener('click', () => {
-    sideMenu.classList.remove('open');
-  });
-}
-window.addEventListener('click', (e) => {
-  if (sideMenu.classList.contains('open') &&
-      !sideMenu.contains(e.target) &&
-      e.target !== menuToggle) {
-    sideMenu.classList.remove('open');
-  }
-});
+const menuToggle = document.getElementById('menuToggle');
+const sideMenu = document.getElementById('sideMenu');
+const closeMenu = document.getElementById('closeMenu');
+
+menuToggle.addEventListener('click', () => sideMenu.classList.add('open'));
+closeMenu.addEventListener('click', () => sideMenu.classList.remove('open'));
 </script>
 
-
-</body>
- 
-  <footer style="text-align:center; padding:20px; color:#999;">
-  <a href="mentions-legales.html" style="color:#999; text-decoration:none;">Mentions légales</a> |
-  <a href="politique-confidentialite.html" style="color:#999; text-decoration:none;">Politique de confidentialité</a>
+<footer>
+  <a href="mentions-legales.html">Mentions légales</a> |
+  <a href="politique-confidentialite.html">Politique de confidentialité</a>
 </footer>
 
+</body>
 </html>
