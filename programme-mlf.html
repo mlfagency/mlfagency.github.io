@@ -101,6 +101,23 @@ header.shrink .header-logo {
 header.shrink .top-nav a {
   font-size: 0.9em;
 }
+  
+/* Logo secondaire à gauche */
+.header-left-logo {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-65%);
+  width: 90px;
+  opacity: 0.85;
+  transition: 0.3s ease;
+}
+
+/* Quand le header rétrécit */
+header.shrink .header-left-logo {
+  width: 55px;
+  opacity: 0.75;
+}
 
 /* ESPACEMENT DU CONTENU SOUS LE HEADER FIXE */
 body {
@@ -365,6 +382,19 @@ footer a:hover { color:#fff; }
   from { opacity:0; transform:translateY(20px); }
   to { opacity:1; transform:translateY(0); }
 }
+  
+/* --- Responsive mobile pour le logo gauche --- */
+@media (max-width: 850px) {
+  .header-left-logo {
+    left: 15px;
+    width: 70px;
+    transform: translateY(-50%);
+  }
+
+  header.shrink .header-left-logo {
+    width: 45px;
+  }
+}
 
 </style>
 </head>
@@ -373,8 +403,14 @@ footer a:hover { color:#fff; }
 
 <header id="mainHeader">
   <div class="header-inner">
+
+    <!-- Nouveau : Logo gauche -->
+    <img src="logo3.svg" alt="Logo secondaire" class="header-left-logo">
+
+    <!-- Logo central -->
     <img src="logo.svg" alt="Logo MLF Agency" class="header-logo">
 
+    <!-- Menu -->
     <nav class="top-nav">
       <a href="index.html">Accueil</a>
       <a href="label-services.html">Label Services</a>
@@ -383,6 +419,7 @@ footer a:hover { color:#fff; }
     </nav>
   </div>
 </header>
+
 
 <section>
   <div class="hero">
