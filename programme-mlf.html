@@ -102,49 +102,105 @@ header.shrink .top-nav a {
   font-size: 0.9em;
 }
 
-/* ESPACEMENT DU CONTENU */
+/* ESPACEMENT DU CONTENU SOUS LE HEADER FIXE */
 body {
   padding-top: 180px !important;
 }
 
+/* ---------------------- */
+/* POPUP CONTACT (copié de l'index) */
+/* ---------------------- */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
+  padding: 20px;
+}
 
-/* --- VERSION MOBILE --- */
-@media (max-width: 850px) {
-  nav.menu {
-    position: fixed;
-    top: 70px;
-    right: 0;
-    background: #000;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 20px 0;
-    gap: 18px;
-    text-align: center;
-    border-top:1px solid rgba(255,255,255,0.1);
-    transform: translateY(-400px);
-    transition: 0.35s ease;
-  }
+.popup-content {
+  background: #111;
+  padding: 40px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 520px;
+  box-shadow: 0 0 25px rgba(255,255,255,0.08);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
 
-  /* Afficher le menu si checkbox cochée */
-  #menu-toggle:checked + .menu-icon + nav.menu {
-    transform: translateY(0);
-  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
 
-  /* Le bouton burger apparaît */
-  .menu-icon {
-    display: block;
-  }
+.popup-content h3 {
+  font-size: 1.4em;
+  margin-bottom: 15px;
+}
 
-  /* On cache le menu en large écran */
-  nav.menu {
-    display: none;
-  }
+.popup-logo {
+  width: 150px;
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
 
-  /* Quand burger actif = afficher menu */
-  #menu-toggle:checked + .menu-icon + nav.menu {
-    display: flex;
-  }
+/* Inputs */
+.popup-content input,
+.popup-content textarea,
+.popup-content select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 16px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  background: #1a1a1a;
+  color: white;
+  font-size: 1em;
+}
+
+.popup-content textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Bouton */
+.popup-content button {
+  width: 100%;
+  background: white;
+  color: black;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 10px;
+}
+
+.popup-content button:hover {
+  opacity: 0.85;
+}
+
+/* Croix de fermeture */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 1.8em;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  opacity: 1;
 }
 
 
@@ -328,14 +384,11 @@ footer a:hover { color:#fff; }
   </div>
 </header>
 
-
-
-
 <section>
   <div class="hero">
     <h1>Programme MLF – Investir en soi-même</h1>
     <p>Un accompagnement intensif pour maîtriser ta carrière avec les outils, la méthode et les réflexes d’un label professionnel.</p>
-    <a href="#" class="btn">Soumettre ma candidature</a>
+    <a href="#" class="btn" id="openPopupCandidature">Soumettre ma candidature</a>
   </div>
 </section>
 
@@ -380,6 +433,31 @@ footer a:hover { color:#fff; }
   </p>
 </section>
 
+<!-- POPUP CONTACT -->
+<div class="popup" id="contactPopup">
+  <div class="popup-content">
+    <div class="close-btn" id="closePopup">&times;</div>
+
+    <img src="logo.svg" class="popup-logo" alt="MLF Agency">
+
+    <form action="https://formspree.io/f/xanlvwld" method="POST">
+      <select name="Objet" required>
+        <option value="">Objet de la demande*</option>
+        <option value="Label Services">Label Services</option>
+        <option value="Programme MLF – Investir en soi-même">Programme MLF – Investir en soi-même</option>
+        <option value="Appel découverte">Appel découverte</option>
+      </select>
+
+      <input type="text" name="Nom du projet" placeholder="Nom du projet*" required>
+      <input type="email" name="Adresse mail" placeholder="Adresse mail*" required>
+      <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone*" required>
+      <textarea name="Message" placeholder="Message (optionnel)"></textarea>
+
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+</div>
+
 <footer>
   <p>MLF Agency — Accompagnement pour artistes indépendants</p>
   <p>
@@ -389,9 +467,43 @@ footer a:hover { color:#fff; }
 </footer>
   
 <script>
+// Header shrink
 const header = document.getElementById('mainHeader');
 window.addEventListener('scroll', () => {
   header.classList.toggle('shrink', window.scrollY > 150);
+});
+
+// Popup contact
+const popup = document.getElementById('contactPopup');
+const closeBtn = document.getElementById('closePopup');
+const selectObjet = document.querySelector('select[name="Objet"]');
+
+function openPopupModal() { 
+  popup.style.display = 'flex'; 
+}
+
+function closePopupModal() { 
+  popup.style.display = 'none'; 
+}
+
+// Lien "Contactez-nous" dans le header
+document.getElementById('openPopupContact').addEventListener('click', (e) => {
+  e.preventDefault();
+  openPopupModal();
+  selectObjet.value = "";
+});
+
+// Bouton "Soumettre ma candidature"
+document.getElementById('openPopupCandidature').addEventListener('click', (e) => {
+  e.preventDefault();
+  openPopupModal();
+  selectObjet.value = "Programme MLF – Investir en soi-même";
+});
+
+// Fermeture popup
+closeBtn.addEventListener('click', closePopupModal);
+window.addEventListener('click', (e) => {
+  if (e.target === popup) closePopupModal();
 });
 </script>
 
