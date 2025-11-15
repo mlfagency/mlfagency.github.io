@@ -506,7 +506,6 @@ footer a:hover {
 <script>
 const popup = document.getElementById('contactPopup');
 const closeBtn = document.getElementById('closePopup');
-const iconPopup = document.getElementById('iconPopup');
 const selectObjet = document.querySelector('select[name="Objet"]');
 
   // Lien "Contactez-nous" dans le menu
@@ -520,7 +519,6 @@ document.getElementById('openPopupContact').addEventListener('click', (e) => {
 function openPopupModal() { popup.style.display = 'flex'; }
 function closePopupModal() { popup.style.display = 'none'; }
 
-iconPopup.addEventListener('click', openPopupModal);
 closeBtn.addEventListener('click', closePopupModal);
 
 window.addEventListener('click', (e) => {
