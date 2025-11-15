@@ -33,43 +33,43 @@ body::before {
 /* ---------------------- */
 /* HEADER */
 /* ---------------------- */
+
 header {
-  position:fixed;
-  top:0; left:0; width:100%;
-  padding:18px 30px;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  padding: 18px 30px;
   background:#000;
-  z-index:1000;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom:1px solid rgba(255,255,255,0.08);
-  overflow:visible;
+  z-index: 1000;
 }
 
-header img {
-  width:130px; /* réduit pour laisser de la place */
-  flex-shrink:0;
+/* Logo */
+header .logo img {
+  width:140px;
+  flex-shrink: 0;
 }
 
-nav {
-  display:flex;
-  gap:22px;
-  white-space:nowrap;
-  max-width:calc(100% - 160px); /* empêche le débordement */
+/* Menu classique */
+nav.menu {
+  display: flex;
+  gap: 22px;
 }
 
-
-nav a {
+nav.menu a {
   color:#ddd;
-  text-decoration:none;
-  position:relative;
-  font-size:1em;
+  text-decoration: none;
+  position: relative;
 }
 
-nav a:hover { color:#fff; }
+nav.menu a:hover {
+  color:#fff;
+}
 
-/* Hover line */
-nav a::after {
+nav.menu a::after {
   content:"";
   position:absolute;
   left:0; bottom:-3px;
@@ -78,7 +78,61 @@ nav a::after {
   transition:0.3s;
 }
 
-nav a:hover::after { width:100%; }
+nav.menu a:hover::after {
+  width:100%;
+}
+
+/* --- BURGER --- */
+#menu-toggle {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+/* --- VERSION MOBILE --- */
+@media (max-width: 850px) {
+  nav.menu {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    background: #000;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    gap: 18px;
+    text-align: center;
+    border-top:1px solid rgba(255,255,255,0.1);
+    transform: translateY(-400px);
+    transition: 0.35s ease;
+  }
+
+  /* Afficher le menu si checkbox cochée */
+  #menu-toggle:checked + .menu-icon + nav.menu {
+    transform: translateY(0);
+  }
+
+  /* Le bouton burger apparaît */
+  .menu-icon {
+    display: block;
+  }
+
+  /* On cache le menu en large écran */
+  nav.menu {
+    display: none;
+  }
+
+  /* Quand burger actif = afficher menu */
+  #menu-toggle:checked + .menu-icon + nav.menu {
+    display: flex;
+  }
+}
+
 
 /* ---------------------- */
 /* SECTIONS */
@@ -248,14 +302,22 @@ footer a:hover { color:#fff; }
 <body>
 
 <header>
-  <a href="index.html"><img src="logo3.svg"></a>
-  <nav>
+  <a href="index.html" class="logo">
+    <img src="logo3.svg" alt="Logo">
+  </a>
+
+  <!-- Bouton hamburger -->
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+  <nav class="menu">
     <a href="index.html">Accueil</a>
     <a href="label-services.html">Label Services</a>
     <a href="programme-mlf.html">Investir en soi-même</a>
     <a href="#">Contact</a>
   </nav>
 </header>
+
 
 
 <section>
