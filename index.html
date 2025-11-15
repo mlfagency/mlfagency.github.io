@@ -44,46 +44,49 @@ body {
   line-height: 1.6;
 }
 
-/* --- HEADER --- */
+/* HEADER NOIR */
 header {
   background-color: #000;
-  color: white; 
-  padding: 15px 0;
-  text-align: center; 
+  color: white;
+  width: 100%;
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 0;
   z-index: 1000;
+  padding: 20px 0 35px; /* espace pour le menu */
   display: flex;
-  align-items: center;
   justify-content: center;
-  transition: all 0.5s ease;
+  align-items: center;
+  transition: 0.4s ease;
 }
 
 header.shrink {
-  padding: 6px 0;
-  background-color: rgba(0, 0, 0, 0.95);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+  padding: 8px 0 20px;
 }
 
-header img {
-  max-width: 300px;
-  transition: transform 0.5s ease, max-width 0.5s ease;
-}
-
-header.shrink img {
-  max-width: 120px;
-  transform: scale(0.9);
-}
-    
-/* --- MENU HORIZONTAL CENTRÉ --- */
-.top-nav {
-  position: absolute;
-  bottom: -28px; /* place les liens juste sous le logo */
-  left: 50%;
-  transform: translateX(-50%);
+/* CONTENEUR INTERNE DU LOGO + MENU */
+.header-inner {
+  text-align: center;
   display: flex;
-  gap: 35px;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* LOGO */
+.header-logo {
+  max-width: 260px;
+  transition: 0.3s ease;
+}
+
+header.shrink .header-logo {
+  max-width: 130px;
+}
+
+/* MENU HORIZONTAL DANS LE HEADER */
+.top-nav {
+  margin-top: 12px;
+  display: flex;
+  gap: 28px;
 }
 
 .top-nav a {
@@ -91,12 +94,12 @@ header.shrink img {
   text-decoration: none;
   font-size: 1.05em;
   letter-spacing: 0.5px;
-  padding-bottom: 5px;
+  padding-bottom: 4px;
   position: relative;
-  transition: 0.3s ease;
+  transition: 0.3s;
 }
 
-/* Effet soulignement moderne */
+/* Effet soulignement */
 .top-nav a::after {
   content: "";
   position: absolute;
@@ -108,24 +111,14 @@ header.shrink img {
   transition: width 0.3s ease;
 }
 
-.top-nav a:hover {
-  color: white;
-}
+.top-nav a:hover { color: #fff; }
+.top-nav a:hover::after { width: 100%; }
 
-.top-nav a:hover::after {
-  width: 100%;
-}
-
-/* Réduction en mode shrink */
-header.shrink .top-nav {
-  bottom: -20px;
-  gap: 28px;
-}
-
+/* Mode shrink */
 header.shrink .top-nav a {
   font-size: 0.9em;
-  opacity: 0.9;
 }
+
 
 
 
@@ -353,17 +346,20 @@ footer a:hover {
 <div class="video-overlay"></div>
 
 <header id="mainHeader">
-  <img src="logo.svg" alt="Logo MLF Agency" class="header-logo">
+  <div class="header-inner">
+    <img src="logo.svg" alt="Logo MLF Agency" class="header-logo">
 
-  <nav class="top-nav">
-    <a href="index.html">Accueil</a>
-    <a href="label-services.html">Label Services</a>
-    <a href="programme-mlf.html">Investir en soi-même</a>
-    <a href="#" id="openPopupContact">Contactez-nous</a>
-  </nav>
+    <nav class="top-nav">
+      <a href="index.html">Accueil</a>
+      <a href="label-services.html">Label Services</a>
+      <a href="programme-mlf.html">Investir en soi-même</a>
+      <a href="#" id="openPopupContact">Contactez-nous</a>
+    </nav>
+  </div>
 
   <span class="envelope-icon" id="iconPopup">✉️</span>
 </header>
+
 
 
 
