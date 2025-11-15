@@ -277,7 +277,7 @@ header.shrink .envelope-icon {
   color: black;
 }
 
-/* --- POPUP --- */
+/* --- POPUP (VERSION REPAIRÉE) --- */
 .popup {
   display: none;
   position: fixed;
@@ -285,25 +285,92 @@ header.shrink .envelope-icon {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
-  z-index: 2000;
+  z-index: 5000;
+  padding: 20px;
 }
 
 .popup-content {
   background: #111;
   padding: 40px;
-  border-radius: 12px;
+  border-radius: 14px;
   width: 90%;
-  max-width: 550px;
-  text-align: center;
+  max-width: 520px;
+  box-shadow: 0 0 25px rgba(255,255,255,0.08);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.popup-content h3 {
+  font-size: 1.4em;
+  margin-bottom: 15px;
 }
 
 .popup-logo {
-  width: 160px;
-  margin-bottom: 15px;
+  width: 150px;
+  margin-bottom: 20px;
+  opacity: 0.95;
 }
+
+/* Inputs */
+.popup-content input,
+.popup-content textarea,
+.popup-content select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 16px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  background: #1a1a1a;
+  color: white;
+  font-size: 1em;
+}
+
+.popup-content textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Bouton */
+.popup-content button {
+  width: 100%;
+  background: white;
+  color: black;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 10px;
+}
+
+.popup-content button:hover {
+  opacity: 0.85;
+}
+
+/* Croix de fermeture */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 1.8em;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  opacity: 1;
+}
+
 
 /* --- BOOKING --- */
 .booking {
@@ -415,7 +482,8 @@ footer a:hover {
 <div class="popup" id="contactPopup">
   <div class="popup-content">
     <div class="close-btn" id="closePopup">&times;</div>
-    <img src="logo.svg" class="popup-logo">
+
+    <img src="logo.svg" class="popup-logo" alt="MLF Agency">
 
     <form action="https://formspree.io/f/xanlvwld" method="POST">
       <select name="Objet" required>
@@ -429,10 +497,12 @@ footer a:hover {
       <input type="email" name="Adresse mail" placeholder="Adresse mail*" required>
       <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone*" required>
       <textarea name="Message" placeholder="Message (optionnel)"></textarea>
+
       <button type="submit">Envoyer</button>
     </form>
   </div>
 </div>
+
 
 <!-- APPEL DÉCOUVERTE -->
 <section class="booking fade-in">
