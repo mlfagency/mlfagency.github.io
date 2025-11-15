@@ -206,26 +206,7 @@ header.shrink .envelope-icon {
   margin-bottom: 15px;
 }
 
-/* --- SERVICES (2 CADRES) --- */
-.services {
-  position: relative;
-  max-width: 950px;
-  margin: 40px auto 0;
-  padding: 50px 30px 40px;
-  margin-bottom: 120px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.95), rgba(0,0,0,0.7));
-  box-shadow: 0 0 25px rgba(255,255,255,0.05);
-  z-index: 1;
-}
-
-.services h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2em;
-}
-
+/* --- CADRES --- */
 .service-boxes {
   display: flex;
   justify-content: center;
@@ -234,29 +215,43 @@ header.shrink .envelope-icon {
   flex-wrap: wrap;
 }
 
-.service-box {
-  width: 350px;
-  height: 180px;
-  border: 1px solid rgba(255,255,255,0.4);
-  border-radius: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.service-card {
+  width: 380px;
+  background: #0b0b0b;
+  padding: 40px 30px;
+  border-radius: 18px;
   text-decoration: none;
-  background: rgba(0,0,0,0.6);
-  transition: 0.3s;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  transition: 0.35s ease;
 }
 
-.service-box h3 {
-  color: white;
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,0.2);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+}
+
+.service-card .icon img {
+  width: 40px;
+  opacity: 0.9;
+  margin-bottom: 18px;
+  filter: brightness(100%);
+}
+
+.service-card h3 {
   font-size: 1.6em;
-  margin: 0;
+  margin: 10px 0 12px;
+  color: white;
+  font-weight: 700;
 }
 
-.service-box:hover {
-  border-color: white;
-  background: rgba(255,255,255,0.1);
-  transform: scale(1.04);
+.service-card p {
+  color: #c9c9c9;
+  font-size: 1.05em;
+  line-height: 1.6;
+}
+
 }
 
 /* --- BOUTON POPUP --- */
@@ -465,17 +460,22 @@ footer a:hover {
 <section class="services">
   <h2>Nos Services</h2>
 
-  <div class="service-boxes">
+<div class="service-boxes">
 
-    <a href="label-services.html" class="service-box">
-      <h3>Label Services</h3>
-    </a>
+  <a href="label-services.html" class="service-card">
+    <div class="icon"><img src="icon-gear-white.svg" alt=""></div>
+    <h3>Label Services</h3>
+    <p>Une offre de services à la carte pour <strong>renforcer</strong> votre équipe.</p>
+  </a>
 
-    <a href="programme-mlf.html" class="service-box">
-      <h3>Investir en soi-même</h3>
-    </a>
+  <a href="programme-mlf.html" class="service-card">
+    <div class="icon"><img src="icon-target-white.svg" alt=""></div>
+    <h3>Investir en soi-même</h3>
+    <p>Un accompagnement dédié pour <strong>structurer</strong> votre projet artistique.</p>
+  </a>
 
-  </div>
+</div>
+
 </section>
 
 <!-- POPUP -->
