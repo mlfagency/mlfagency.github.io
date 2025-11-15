@@ -1,1 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Label Services – MLF Agency</title>
+
+<style>
+
+/* --- BASE --- */
+body { 
+  font-family: 'Montserrat', sans-serif;
+  margin: 0; 
+  padding: 0; 
+  background-color: #000;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* --- HEADER --- */
+header {
+  background-color: #000;
+  color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px 0 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s ease;
+}
+
+header.shrink {
+  padding: 8px 0 20px;
+}
+
+.header-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Logo central */
+.header-logo {
+  max-width: 260px;
+  transition: 0.3s ease;
+}
+
+header.shrink .header-logo {
+  max-width: 130px;
+}
+
+/* Logo gauche */
+.header-left-logo {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-65%);
+  width: 90px;
+  opacity: 0.85;
+  transition: 0.3s ease;
+}
+
+header.shrink .header-left-logo {
+  width: 55px;
+  opacity: 0.75;
+}
+
+/* Menu */
+.top-nav {
+  margin-top: 12px;
+  display: flex;
+  gap: 28px;
+}
+
+.top-nav a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 1.05em;
+  letter-spacing: 0.5px;
+  padding-bottom: 4px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.top-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 0%;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.top-nav a:hover { color: #fff; }
+.top-nav a:hover::after { width: 100%; }
+
+header.shrink .top-nav a {
+  font-size: 0.9em;
+}
+
+/* ESPACEMENT SOUS LE HEADER */
+body {
+  padding-top: 190px;
+}
+
+/* --- SECTION HERO --- */
+.hero {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+.hero h1 {
+  font-size: 2.8em;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  color: #d2d2d2;
+  max-width: 750px;
+  margin: auto;
+}
+
+/* --- SERVICE GRID --- */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+  gap: 35px;
+  margin: 60px auto;
+  max-width: 1100px;
+  padding: 0 20px;
+}
+
+.service-box {
+  background: #0b0b0b;
+  padding: 35px 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 25px rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+
+.service-box:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.service-box h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.service-box p {
+  color: #bfbfbf;
+}
+
+/* CTA */
+.cta-section {
+  text-align: center;
+  margin: 60px 0 100px;
+}
+
+.btn {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  border: 1px solid white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: white;
+  color: black;
+}
+
+/* --- POPUP --- */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
+  padding: 20px;
+}
+
+.popup-content {
+  background: #111;
+  padding: 40px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 520px;
+  box-shadow: 0 0 25px rgba(255,255,255,0.08);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity:0; transform: scale(0.95); }
+  to { opacity:1; transform: scale(1); }
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 1.8em;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.close-btn:hover { opacity: 1; }
+
+.popup-logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+/* FORM */
+.popup-content input,
+.popup-content select,
+.popup-content textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: #1a1a1a;
+  color: white;
+}
+
+.popup-content button {
+  width: 100%;
+  background: white;
+  color: black;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  border: none;
+  cursor: pointer;
+}
+
+/* --- FOOTER --- */
+footer {
+  text-align:center;
+  color: rgba(255,255,255,0.6);
+  padding: 40px 10px;
+  font-size: 0.8em;
+}
+
+footer a {
+  color: rgba(255,255,255,0.6);
+  text-decoration:none;
+}
+
+footer a:hover { color: white; }
+
+/* --- RESPONSIVE LOGO LEFT --- */
+@media (max-width: 850px) {
+  .header-left-logo {
+    left: 15px;
+    width: 70px;
+    transform: translateY(-50%);
+  }
+  header.shrink .header-left-logo {
+    width: 45px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header id="mainHeader">
+  <div class="header-inner">
+
+    <!-- Logo gauche -->
+    <img src="logo3.svg" alt="Logo MLF" class="header-left-logo">
+
+    <!-- Logo central -->
+    <img src="logo.svg" alt="Logo MLF Agency" class="header-logo">
+
+    <nav class="top-nav">
+      <a href="index.html">Accueil</a>
+      <a href="label-services.html">Label Services</a>
+      <a href="programme-mlf.html">Investir en soi-même</a>
+      <a href="#" id="openPopupContact">Contactez-nous</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Label Services</h1>
+  <p>Des services professionnels pour optimiser, structurer et accélérer le développement de votre projet musical.</p>
+</section>
+
+<!-- GRID DES SERVICES -->
+<section class="services-grid">
+
+  <div class="service-box">
+    <h3>Stratégie globale</h3>
+    <p>Planification, feuille de route, objectifs, branding et structuration de projet.</p>
+  </div>
+
+  <div class="service-box">
+    <h3>Administration</h3>
+    <p>Gestion SACEM, royalties, metadata, dépôts, contrats et suivi administratif.</p>
+  </div>
+
+  <div class="service-box">
+    <h3>Distribution</h3>
+    <p>Accompagnement sur la distribution DSP, calendriers de sorties et stratégie Spotify.</p>
+  </div>
+
+  <div class="service-box">
+    <h3>Marketing digital</h3>
+    <p>Identité visuelle, réseaux sociaux, stratégie de contenu, optimisation.</p>
+  </div>
+
+  <div class="service-box">
+    <h3>Promotion</h3>
+    <p>Préparation de sorties, pitch DSP, dossiers de presse, accompagnement médias.</p>
+  </div>
+
+  <div class="service-box">
+    <h3>Accompagnement personnalisé</h3>
+    <p>Coaching, corrections, suivi hebdomadaire selon vos besoins.</p>
+  </div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <a href="#" class="btn" id="openPopupServices">Demander nos services</a>
+</section>
+
+<!-- POPUP CONTACT -->
+<div class="popup" id="contactPopup">
+  <div class="popup-content">
+    <div class="close-btn" id="closePopup">&times;</div>
+
+    <img src="logo.svg" class="popup-logo">
+
+    <form action="https://formspree.io/f/xanlvwld" method="POST">
+      <select name="Objet" required>
+        <option value="">Objet de la demande*</option>
+        <option value="Label Services">Label Services</option>
+        <option value="Programme MLF – Investir en soi-même">Programme MLF – Investir en soi-même</option>
+        <option value="Appel découverte">Appel découverte</option>
+      </select>
+
+      <input type="text" name="Nom du projet" placeholder="Nom du projet*" required>
+      <input type="email" name="Adresse mail" placeholder="Adresse mail*" required>
+      <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone*" required>
+      <textarea name="Message" placeholder="Détaillez votre demande…"></textarea>
+
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <a href="mentions-legales.html">Mentions légales</a> |
+  <a href="politique-confidentialite.html">Politique de confidentialité</a>
+</footer>
+
+<script>
+// header shrink
+const header = document.getElementById('mainHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('shrink', window.scrollY > 150);
+});
+
+// popup
+const popup = document.getElementById('contactPopup');
+const closePopup = document.getElementById('closePopup');
+const selectObjet = document.querySelector('select[name="Objet"]');
+
+function openPopup() {
+  popup.style.display = "flex";
+}
+function closePopupModal() {
+  popup.style.display = "none";
+}
+
+document.getElementById('openPopupContact').onclick = (e) => {
+  e.preventDefault();
+  openPopup();
+  selectObjet.value = "";
+};
+
+document.getElementById('openPopupServices').onclick = (e) => {
+  e.preventDefault();
+  openPopup();
+  selectObjet.value = "Label Services";
+};
+
+closePopup.onclick = closePopupModal;
+
+window.onclick = (e) => {
+  if (e.target === popup) closePopupModal();
+};
+</script>
+
+</body>
+</html>
 
