@@ -2,359 +2,348 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Programme MLF – Autonomie & Stratégie | MLF Agency</title>
+  <title>Programme MLF – Investir en soi-même | MLF Agency</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #000;
-      color: #fff;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
 
-.video-wrapper {
+  <style>
+/* ------------------- BASE ------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  line-height: 1.7;
+}
+
+/* ------------------- HEADER VARIANT ------------------- */
+header {
+  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: -2;
-  pointer-events: none;
-  background: url('fallback.jpg') no-repeat center center / cover;
+  z-index: 1000;
+  background: #000;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
+.header-logo {
+  width: 160px;
+  transition: 0.3s ease;
+}
 
-    .video-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      z-index: -1;
-      pointer-events: none;
-    }
+/* MENU */
+.top-nav {
+  display: flex;
+  gap: 28px;
+}
 
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.9);
-      text-align: center;
-      padding: 12px 0;
-      z-index: 10;
-    }
+.top-nav a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 1.05em;
+  letter-spacing: 0.5px;
+  padding-bottom: 4px;
+  transition: 0.3s ease;
+  position: relative;
+}
 
-    header img {
-      max-width: 140px;
-    }
+.top-nav a:hover {
+  color: #fff;
+}
 
- .intro {
-  text-align: center;
-  padding: 160px 30px 70px; /* ajusté pour header */
+.top-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 1px;
+  width: 0;
+  background: white;
+  transition: 0.3s ease;
+}
+.top-nav a:hover::after { width: 100%; }
+
+/* ------------------- SECTIONS ------------------- */
+section {
   max-width: 900px;
   width: 90%;
-  margin: 0 auto 40px; /* même marge basse que les sections */
-  background: rgba(0,0,0,0.6); /* identique */
-  border-radius: 16px;          /* identique */
-  box-shadow: 0 0 25px rgba(255,255,255,0.05); /* identique */
-  position: relative;
-  z-index: 1;
+  margin: 140px auto 40px;
+  background: #0c0c0c;
+  padding: 50px 35px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(255,255,255,0.05);
 }
 
+section h1,
+section h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2em;
+}
 
+section p,
+section li {
+  color: #d2d2d2;
+  font-size: 1.08em;
+}
 
-    .intro h1 {
-      font-size: 2.3em;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px rgba(255,255,255,0.2);
-    }
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
 
-    .intro p {
-      font-size: 1.2em;
-      color: #ddd;
-      margin-bottom: 25px;
-    }
-
-    section {
-      max-width: 900px;
-      width: 90%;  
-      margin: 0 auto;
-      padding: 60px 30px;
-      background: rgba(0,0,0,0.6);
-      border-radius: 16px;
-      margin-bottom: 40px;
-      box-shadow: 0 0 25px rgba(255,255,255,0.05);
-      position: relative;
-      z-index: 1;
-    }
-
-    section p {
+li {
+  margin: 12px 0;
   text-align: center;
 }
 
-    h2 {
-      font-size: 1.8em;
-      margin-bottom: 15px;
-      text-align: center;
-    }
+/* ------------------- BOUTON ------------------- */
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 28px;
+  border: 1px solid white;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.15em;
+  transition: 0.3s ease;
+}
 
-    p, li {
-      color: #ccc;
-      font-size: 1.05em;
-    }
+.btn:hover {
+  background: white;
+  color: black;
+}
 
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
+/* ------------------- POPUP (INDEX STYLE) ------------------- */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
+  padding: 20px;
+}
 
-    li {
-      margin: 10px 0;
-    }
+.popup-content {
+  background: #111;
+  padding: 40px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 520px;
+  box-shadow: 0 0 25px rgba(255,255,255,0.08);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+  text-align: center;
+}
 
-    .btn {
-      display: inline-block;
-      color: white;
-      text-decoration: none;
-      border: 1px solid white;
-      padding: 12px 25px;
-      border-radius: 8px;
-      transition: 0.3s;
-      font-size: 1.1em;
-      margin-top: 25px;
-      text-align: center;
-      background: none;
-      cursor: pointer;
-    }
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95);}
+  to   { opacity: 1; transform: scale(1);}
+}
 
-    .btn:hover {
-      background: white;
-      color: black;
-    }
+.popup-logo {
+  width: 150px;
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
 
-    footer {
-      text-align: center;
-      font-size: 0.8em;
-      color: rgba(255,255,255,0.6);
-      padding: 25px 10px;
-      background: rgba(0,0,0,0.4);
-      border-top: 1px solid rgba(255,255,255,0.1);
-      position: relative;
-      z-index: 1;
-    }
+.close-btn {
+  position: absolute;
+  top: 12px; right: 18px;
+  font-size: 1.8em;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+.close-btn:hover { opacity: 1; }
 
-    footer a {
-      color: rgba(255,255,255,0.6);
-      text-decoration: none;
-      margin: 0 5px;
-    }
+.popup-content input,
+.popup-content textarea,
+.popup-content select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 16px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  background: #1a1a1a;
+  color: white;
+  font-size: 1em;
+}
 
-    footer a:hover {
-      color: white;
-    }
+.popup-content textarea {
+  min-height: 120px;
+  resize: vertical;
+}
 
-    /* --- POPUP --- */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      backdrop-filter: blur(4px);
-    }
+.popup-content button {
+  width: 100%;
+  background: white;
+  color: black;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 10px;
+}
+.popup-content button:hover { opacity: 0.85; }
 
-    .popup-content {
-      background: #111;
-      padding: 40px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 550px;
-      text-align: center;
-      box-shadow: 0 0 25px rgba(255,255,255,0.1);
-      animation: fadeIn 0.3s ease-out;
-    }
+/* ------------------- FOOTER ------------------- */
+footer {
+  text-align: center;
+  font-size: 0.75em;
+  color: rgba(255,255,255,0.6);
+  padding: 30px 10px;
+}
 
-    @keyframes fadeIn {
-      from {opacity: 0; transform: scale(0.95);}
-      to {opacity: 1; transform: scale(1);}
-    }
+footer a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  margin: 0 5px;
+}
+footer a:hover { color: white; }
 
-    .popup-logo {
-      width: 160px;
-      margin-bottom: 15px;
-      opacity: 0.95;
-    }
-
-    .close-btn {
-      text-align: right;
-      cursor: pointer;
-      font-size: 1.5em;
-      margin-bottom: 10px;
-    }
-
-    .popup-content input,
-    .popup-content textarea,
-    .popup-content select {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 5px;
-      background: #222;
-      color: white;
-    }
-
-    .popup-content button {
-      background: #1a73e8;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100%;
-      font-size: 1em;
-      transition: 0.3s;
-    }
-
-    .popup-content button:hover {
-      background: #0d57b5;
-    }
   </style>
 </head>
 <body>
 
-<!-- === IMAGE D’ARRIÈRE-PLAN === -->
-<div class="video-wrapper"></div>
-<div class="video-overlay"></div>
-
-
+<!-- --------------------- HEADER --------------------- -->
 <header>
-  <a href="index.html"><img src="logo.svg" alt="MLF Agency"></a>
+  <a href="index.html"><img src="logo.svg" class="header-logo"></a>
+
+  <nav class="top-nav">
+    <a href="index.html">Accueil</a>
+    <a href="label-services.html">Label Services</a>
+    <a href="programme-mlf.html">Investir en soi-même</a>
+    <a href="#" id="openPopupContact">Contactez-nous</a>
+  </nav>
 </header>
 
-<section class="intro">
+<!-- --------------------- INTRO --------------------- -->
+<section>
   <h1>Programme MLF – Investir en soi-même</h1>
-  <p>Un accompagnement intensif et sur mesure pour les artistes indépendants qui veulent maîtriser leur carrière avec les outils, la méthode et les réflexes d’un label professionnel.</p>
-  <button id="openPopupProgram" class="btn">Soumettre ma candidature</button>
+  <p>
+    Un accompagnement intensif et sur mesure pour les artistes indépendants 
+    qui veulent maîtriser leur carrière avec les outils, la méthode et les réflexes d’un label professionnel.
+  </p>
+  <div style="text-align:center;">
+    <a href="#" id="openPopupProgram" class="btn">Soumettre ma candidature</a>
+  </div>
 </section>
 
+<!-- --------------------- SECTION 1 --------------------- -->
 <section>
   <h2>À qui s’adresse ce programme ?</h2>
-  <p><strong>Il est conçu pour les artistes et créateurs qui souhaitent :</strong></p>
   <ul>
-    <li>Structurer leur projet et définir une vision claire</li>
-    <li>Comprendre les aspects administratifs, droits et édition</li>
-    <li>Planifier et distribuer leurs sorties efficacement</li>
-    <li>Développer leur image et stratégie digitale</li>
-    <li>Gagner en autonomie et en professionnalisme</li>
+    <li>Structurer son projet et définir une vision claire</li>
+    <li>Comprendre droits, édition, administration</li>
+    <li>Planifier et distribuer efficacement ses sorties</li>
+    <li>Développer son image & stratégie digitale</li>
+    <li>Gagner en autonomie et professionnalisme</li>
   </ul>
 </section>
 
-
+<!-- --------------------- SECTION 2 --------------------- -->
 <section>
   <h2>Contenu du programme</h2>
   <ul>
-    <li><strong>1️⃣ Vision & Structure :</strong> définir ton profil et ta stratégie globale</li>
-    <li><strong>2️⃣ Droits & Administration :</strong> comprendre SACEM, ISRC, royalties, metadata, split sheets</li>
-    <li><strong>3️⃣ Distribution & DSP Strategy :</strong> planifier et lancer tes sorties digitales</li>
-    <li><strong>4️⃣ Communication & Réseaux :</strong> aligner ton image sur Insta, TikTok, YouTube</li>
-    <li><strong>5️⃣ Plan d’action personnalisé :</strong> établir une feuille de route à 3 mois</li>
+    <li><strong>1️⃣ Vision & Structure :</strong> stratégie globale</li>
+    <li><strong>2️⃣ Droits & Administration :</strong> SACEM, royalties, metadata</li>
+    <li><strong>3️⃣ Distribution :</strong> DSP Strategy</li>
+    <li><strong>4️⃣ Communication :</strong> Instagram, TikTok, YouTube</li>
+    <li><strong>5️⃣ Feuille de route :</strong> plan 3 mois personnalisé</li>
   </ul>
 </section>
 
+<!-- --------------------- SECTION 3 --------------------- -->
 <section>
   <h2>Format & Tarifs</h2>
-  <p>
+  <p style="text-align:center;">
     <strong>Durée :</strong> 10 heures individuelles<br>
     <strong>Tarif :</strong> 300 € (30 € / h)<br>
-    <strong>Format :</strong> en visio ou téléphone<br>
-    <strong>Planning :</strong> flexible selon ton rythme<br>
-    <strong>Inclus :</strong> documents récapitulatifs et outils pratiques
+    <strong>Format :</strong> visio ou téléphone<br>
+    <strong>Planning :</strong> flexible<br>
+    <strong>Inclus :</strong> documents + outils pratiques
   </p>
 </section>
 
+<!-- --------------------- FOOTER --------------------- -->
 <footer>
-  <a href="index.html">← Retour à l’accueil</a> |
+  <a href="index.html">← Retour</a> |
   <a href="mentions-legales.html">Mentions légales</a> |
   <a href="politique-confidentialite.html">Politique de confidentialité</a>
 </footer>
 
-<!-- === POPUP FORMULAIRE === -->
+
+<!-- --------------------- POPUP --------------------- -->
 <div class="popup" id="contactPopup">
   <div class="popup-content">
+
     <div class="close-btn" id="closePopup">&times;</div>
-    <img src="logo.svg" alt="Logo MLF Agency" class="popup-logo">
-    <h6><em>Notre équipe reviendra vers vous d’ici 48 heures.</em></h6>
+
+    <img src="logo.svg" class="popup-logo">
+
     <form action="https://formspree.io/f/xanlvwld" method="POST">
       <select name="Objet" required>
-        <option value="Programme MLF – Autonomie & Stratégie" selected>Programme MLF – Investir en soi-même</option>
+        <option value="Programme MLF – Investir en soi-même" selected>Programme MLF – Investir en soi-même</option>
         <option value="Appel découverte">Appel découverte</option>
       </select>
+
       <input type="text" name="Nom du projet" placeholder="Nom du projet*" required>
       <input type="email" name="Adresse mail" placeholder="Adresse mail*" required>
       <input type="tel" name="Numéro de téléphone" placeholder="Numéro de téléphone*" required>
       <textarea name="Message" placeholder="Message (optionnel)"></textarea>
+
       <button type="submit">Envoyer</button>
     </form>
+
   </div>
 </div>
 
-<script>
-// === GESTION DU POPUP SUR LA PAGE PROGRAMME ===
 
-// Références
+<!-- --------------------- SCRIPT --------------------- -->
+<script>
 const popup = document.getElementById('contactPopup');
 const closeBtn = document.getElementById('closePopup');
+const openPopupContact = document.getElementById('openPopupContact');
 const openPopupProgram = document.getElementById('openPopupProgram');
 const selectObjet = document.querySelector('select[name="Objet"]');
 
-// Fonction ouverture
-function openPopupModal() {
-  if (popup) popup.style.display = 'flex';
+function openPopup() {
+  popup.style.display = 'flex';
+}
+function closePopup() {
+  popup.style.display = 'none';
 }
 
-// Fonction fermeture
-function closePopupModal() {
-  if (popup) popup.style.display = 'none';
-}
+openPopupContact.addEventListener('click', (e) => {
+  e.preventDefault();
+  openPopup();
+  selectObjet.value = "";
+});
 
-// --- Bouton “Soumettre ma candidature” ---
-if (openPopupProgram) {
-  openPopupProgram.addEventListener('click', (e) => {
-    e.preventDefault();
-    openPopupModal();
-    if (selectObjet) selectObjet.value = "Programme MLF – Autonomie & Stratégie";
-  });
-}
+openPopupProgram.addEventListener('click', (e) => {
+  e.preventDefault();
+  openPopup();
+  selectObjet.value = "Programme MLF – Investir en soi-même";
+});
 
-// --- Bouton “Appel découverte” (si tu veux en rajouter un plus tard) ---
-const openPopupCall = document.getElementById('openPopupCall');
-if (openPopupCall) {
-  openPopupCall.addEventListener('click', (e) => {
-    e.preventDefault();
-    openPopupModal();
-    if (selectObjet) selectObjet.value = "Appel découverte";
-  });
-}
+closeBtn.addEventListener('click', closePopup);
 
-// --- Fermeture du popup ---
-if (closeBtn) {
-  closeBtn.addEventListener('click', closePopupModal);
-}
 window.addEventListener('click', (e) => {
-  if (e.target === popup) closePopupModal();
+  if (e.target === popup) closePopup();
 });
 </script>
-
 
 </body>
 </html>
