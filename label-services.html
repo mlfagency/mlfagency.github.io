@@ -68,6 +68,30 @@ header.shrink .header-left-logo {
   width: 55px;
   opacity: 0.75;
 }
+/* Logo Instagram à droite */
+.insta-link {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-65%);
+}
+
+.insta-logo {
+  width: 34px;
+  opacity: 0.85;
+  transition: 0.3s ease;
+}
+
+.insta-logo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Shrink */
+header.shrink .insta-logo {
+  width: 24px;
+  opacity: 0.75;
+}
 
 /* Menu */
 .top-nav {
@@ -279,6 +303,22 @@ footer a:hover { color: white; }
     width: 45px;
   }
 }
+@media (max-width: 850px) {
+
+  .insta-link {
+    right: 15px;
+    transform: translateY(-50%);
+  }
+
+  .insta-logo {
+    width: 28px;
+  }
+
+  header.shrink .insta-logo {
+    width: 20px;
+  }
+
+}
 
 </style>
 </head>
@@ -289,11 +329,12 @@ footer a:hover { color: white; }
   <div class="header-inner">
 
     <!-- Logo gauche -->
-    <img src="logo3.svg" alt="Logo MLF" class="header-left-logo">
+    <img src="logo3.svg" alt="Logo secondaire" class="header-left-logo">
 
     <!-- Logo central -->
     <img src="logo.svg" alt="Logo MLF Agency" class="header-logo">
 
+    <!-- Menu -->
     <nav class="top-nav">
       <a href="index.html">Accueil</a>
       <a href="label-services.html">Label Services</a>
@@ -301,8 +342,14 @@ footer a:hover { color: white; }
       <a href="#" id="openPopupContact">Contactez-nous</a>
     </nav>
 
+    <!-- Instagram à droite -->
+    <a href="https://www.instagram.com/mlfagency/" target="_blank" class="insta-link">
+      <img src="instagram.svg" alt="Instagram" class="insta-logo">
+    </a>
+
   </div>
 </header>
+
 
 <!-- HERO -->
 <section class="hero">
