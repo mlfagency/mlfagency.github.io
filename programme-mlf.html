@@ -34,7 +34,599 @@ body::before {
 /* ---------------------- */
 header {
   position:fixed; top:0; left:0; width:100%;
-  padding:18px 30px;
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programme MLF – Investir en soi-même</title>
+
+<style>
+/* ---------------------- */
+/* BASE */
+/* ---------------------- */
+body {
+  margin:0; padding:0;
+  background:#000;
+  color:#fff;
+  font-family: Arial, sans-serif;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* Subtile texture (grain) */
+body::before {
+  content:"";
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  pointer-events:none;
+  background:radial-gradient(circle at 20% 20%, rgba(255,255,255,0.02), transparent 70%),
+             radial-gradient(circle at 80% 80%, rgba(255,255,255,0.015), transparent 60%);
+  z-index:-1;
+}
+
+/* ---------------------- */
+/* HEADER */
+/* ---------------------- */
+header {
+  position:fixed; top:0; left:0; width:100%;
+ <html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programme MLF – Investir en soi-même</title>
+
+<style>
+/* ---------------------- */
+/* BASE */
+/* ---------------------- */
+body {
+  margin:0; padding:0;
+  background:#000;
+  color:#fff;
+  font-family: Arial, sans-serif;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* Subtile texture (grain) */
+body::before {
+  content:"";
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  pointer-events:none;
+  background:radial-gradient(circle at 20% 20%, rgba(255,255,255,0.02), transparent 70%),
+             radial-gradient(circle at 80% 80%, rgba(255,255,255,0.015), transparent 60%);
+  z-index:-1;
+}
+
+/* ---------------------- */
+/* HEADER */
+/* ---------------------- */
+header {
+  position:fixed; top:0; left:0; width:100%;
+  padding:18px 60px 18px 30px; /* haut - droite - bas - gauche */
+  background:#000;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+header img { width:160px; }
+
+nav { display:flex; gap:26px; }
+nav a {
+  color:#ddd;
+  text-decoration:none;
+  position:relative;
+  font-size:1em;
+}
+nav a:hover { color:#fff; }
+
+/* Ligne hover white */
+nav a::after {
+  content:"";
+  position:absolute;
+  left:0; bottom:-3px;
+  width:0%; height:1px;
+  background:white;
+  transition:0.3s;
+}
+nav a:hover::after { width:100%; }
+
+/* ---------------------- */
+/* SECTION WRAPPER */
+/* ---------------------- */
+section {
+  width:90%;
+  max-width:1100px;
+  margin:140px auto 70px;
+}
+
+/* Separator lumineux */
+.section-separator {
+  width:100%; height:1px;
+  background:linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+  margin:70px 0;
+}
+
+/* ---------------------- */
+/* HERO */
+/* ---------------------- */
+.hero {
+  padding:90px 40px;
+  border-radius:20px;
+  background:linear-gradient(180deg, #0b0b0b, #000);
+  border:1px solid rgba(255,255,255,0.07);
+  box-shadow:0 0 35px rgba(255,255,255,0.05);
+  text-align:center;
+  animation: fadeUp 0.8s ease;
+}
+
+.hero h1 {
+  font-size:2.6em;
+  margin-bottom:20px;
+}
+.hero p {
+  max-width:700px;
+  margin:auto;
+  color:#ccc;
+  font-size:1.15em;
+}
+
+/* CTA */
+.btn {
+  display:inline-block;
+  margin-top:28px;
+  padding:14px 32px;
+  border:1px solid #fff;
+  border-radius:10px;
+  color:#fff;
+  text-decoration:none;
+  font-size:1.1em;
+  transition:0.3s;
+}
+.btn:hover {
+  background:#fff;
+  color:#000;
+}
+
+/* ---------------------- */
+/* CARDS */
+/* ---------------------- */
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:28px;
+}
+
+.card {
+  background:#0d0d0d;
+  padding:32px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 0 25px rgba(255,255,255,0.04);
+  text-align:center;
+  transition:0.35s ease;
+  animation: fadeUp 0.8s ease;
+}
+.card:hover {
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,0.2);
+}
+
+.card h3 { font-size:1.3em; margin-bottom:10px; }
+.card p { color:#ccc; }
+
+/* ---------------------- */
+/* TIMELINE */
+/* ---------------------- */
+.timeline-wrapper {
+  background:#0d0d0d;
+  padding:50px 25px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 0 25px rgba(255,255,255,0.04);
+}
+
+.timeline-title { text-align:center; font-size:2em; margin-bottom:40px; }
+
+.timeline {
+  position:relative;
+  max-width:700px;
+  margin:0 auto;
+  padding-left:20px;
+}
+.timeline::before {
+  content:"";
+  position:absolute; left:50%;
+  width:2px; height:100%;
+  background:#333;
+  transform:translateX(-50%);
+}
+
+.step {
+  position:relative;
+  width:50%;
+  padding:20px 30px;
+  animation: fadeUp 0.8s ease;
+}
+.step:nth-child(odd) { left:0; text-align:right; }
+.step:nth-child(even) { left:50%; }
+
+.step::before {
+  content:"";
+  position:absolute;
+  top:28px;
+  width:14px; height:14px;
+  background:white;
+  border-radius:50%;
+  border:3px solid #000;
+}
+.step:nth-child(odd)::before { right:-7px; }
+.step:nth-child(even)::before { left:-7px; }
+
+.step h4 { margin-bottom:6px; }
+.step p { color:#ccc; }
+
+/* ---------------------- */
+/* FOOTER */
+/* ---------------------- */
+footer {
+  text-align:center;
+  padding:40px 20px;
+  color:#aaa;
+  border-top:1px solid rgba(255,255,255,0.08);
+  margin-top:60px;
+}
+footer a {
+  color:#aaa;
+  text-decoration:none;
+}
+footer a:hover { color:#fff; }
+
+/* ---------------------- */
+/* ANIMATIONS */
+/* ---------------------- */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html"><img src="logo3.svg"></a>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="label-services.html">Label Services</a>
+    <a href="programme-mlf.html">Investir en soi-même</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<section>
+  <div class="hero">
+    <h1>Programme MLF – Investir en soi-même</h1>
+    <p>Un accompagnement intensif pour maîtriser ta carrière avec les outils, la méthode et les réflexes d’un label professionnel.</p>
+    <a href="#" class="btn">Soumettre ma candidature</a>
+  </div>
+</section>
+
+<div class="section-separator"></div>
+
+<section>
+  <h2>Un programme pensé pour les artistes qui veulent :</h2>
+  <div class="cards">
+    <div class="card"><h3>Structurer leur projet</h3><p>Bases solides & vision claire.</p></div>
+    <div class="card"><h3>Comprendre l'industrie</h3><p>Droits, édition, administration.</p></div>
+    <div class="card"><h3>Planifier leurs sorties</h3><p>Distribution & stratégie DSP.</p></div>
+    <div class="card"><h3>Développer leur image</h3><p>Identité, branding & réseaux.</p></div>
+    <div class="card"><h3>Gagner en autonomie</h3><p>Maîtriser sa carrière.</p></div>
+  </div>
+</section>
+
+<div class="section-separator"></div>
+
+<section>
+  <div class="timeline-wrapper">
+    <h2 class="timeline-title">Les étapes du programme</h2>
+    <div class="timeline">
+      <div class="step"><h4>1. Vision & Structure</h4><p>Stratégie globale.</p></div>
+      <div class="step"><h4>2. Droits & Administration</h4><p>SACEM, royalties.</p></div>
+      <div class="step"><h4>3. Distribution</h4><p>DSP & metadata.</p></div>
+      <div class="step"><h4>4. Communication</h4><p>Image & réseaux.</p></div>
+      <div class="step"><h4>5. Feuille de route</h4><p>Plan 3 mois.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-separator"></div>
+
+<section>
+  <h2>Format & Tarifs</h2>
+  <p style="text-align:center;">
+    <strong>Durée :</strong> 10 heures individuelles<br>
+    <strong>Tarif :</strong> 300 € (30 €/h)<br>
+    <strong>Format :</strong> Visio ou téléphone<br>
+    <strong>Planning :</strong> Flexible<br>
+    <strong>Inclus :</strong> Documents + outils
+  </p>
+</section>
+
+<footer>
+  <p>MLF Agency — Accompagnement pour artistes indépendants</p>
+  <p><a href="mentions-legales.html">Mentions légales</a> • <a href="politique-confidentialite.html">Politique de confidentialité</a></p>
+</footer>
+
+</body>
+</html>
+
+Je trouve ça super,  juste remettre un peu à gauche les liens dans le header, 
+  background:#000;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+header img { width:160px; }
+
+nav { display:flex; gap:26px; }
+nav a {
+  color:#ddd;
+  text-decoration:none;
+  position:relative;
+  font-size:1em;
+}
+nav a:hover { color:#fff; }
+
+/* Ligne hover white */
+nav a::after {
+  content:"";
+  position:absolute;
+  left:0; bottom:-3px;
+  width:0%; height:1px;
+  background:white;
+  transition:0.3s;
+}
+nav a:hover::after { width:100%; }
+
+/* ---------------------- */
+/* SECTION WRAPPER */
+/* ---------------------- */
+section {
+  width:90%;
+  max-width:1100px;
+  margin:140px auto 70px;
+}
+
+/* Separator lumineux */
+.section-separator {
+  width:100%; height:1px;
+  background:linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+  margin:70px 0;
+}
+
+/* ---------------------- */
+/* HERO */
+/* ---------------------- */
+.hero {
+  padding:90px 40px;
+  border-radius:20px;
+  background:linear-gradient(180deg, #0b0b0b, #000);
+  border:1px solid rgba(255,255,255,0.07);
+  box-shadow:0 0 35px rgba(255,255,255,0.05);
+  text-align:center;
+  animation: fadeUp 0.8s ease;
+}
+
+.hero h1 {
+  font-size:2.6em;
+  margin-bottom:20px;
+}
+.hero p {
+  max-width:700px;
+  margin:auto;
+  color:#ccc;
+  font-size:1.15em;
+}
+
+/* CTA */
+.btn {
+  display:inline-block;
+  margin-top:28px;
+  padding:14px 32px;
+  border:1px solid #fff;
+  border-radius:10px;
+  color:#fff;
+  text-decoration:none;
+  font-size:1.1em;
+  transition:0.3s;
+}
+.btn:hover {
+  background:#fff;
+  color:#000;
+}
+
+/* ---------------------- */
+/* CARDS */
+/* ---------------------- */
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:28px;
+}
+
+.card {
+  background:#0d0d0d;
+  padding:32px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 0 25px rgba(255,255,255,0.04);
+  text-align:center;
+  transition:0.35s ease;
+  animation: fadeUp 0.8s ease;
+}
+.card:hover {
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,0.2);
+}
+
+.card h3 { font-size:1.3em; margin-bottom:10px; }
+.card p { color:#ccc; }
+
+/* ---------------------- */
+/* TIMELINE */
+/* ---------------------- */
+.timeline-wrapper {
+  background:#0d0d0d;
+  padding:50px 25px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 0 25px rgba(255,255,255,0.04);
+}
+
+.timeline-title { text-align:center; font-size:2em; margin-bottom:40px; }
+
+.timeline {
+  position:relative;
+  max-width:700px;
+  margin:0 auto;
+  padding-left:20px;
+}
+.timeline::before {
+  content:"";
+  position:absolute; left:50%;
+  width:2px; height:100%;
+  background:#333;
+  transform:translateX(-50%);
+}
+
+.step {
+  position:relative;
+  width:50%;
+  padding:20px 30px;
+  animation: fadeUp 0.8s ease;
+}
+.step:nth-child(odd) { left:0; text-align:right; }
+.step:nth-child(even) { left:50%; }
+
+.step::before {
+  content:"";
+  position:absolute;
+  top:28px;
+  width:14px; height:14px;
+  background:white;
+  border-radius:50%;
+  border:3px solid #000;
+}
+.step:nth-child(odd)::before { right:-7px; }
+.step:nth-child(even)::before { left:-7px; }
+
+.step h4 { margin-bottom:6px; }
+.step p { color:#ccc; }
+
+/* ---------------------- */
+/* FOOTER */
+/* ---------------------- */
+footer {
+  text-align:center;
+  padding:40px 20px;
+  color:#aaa;
+  border-top:1px solid rgba(255,255,255,0.08);
+  margin-top:60px;
+}
+footer a {
+  color:#aaa;
+  text-decoration:none;
+}
+footer a:hover { color:#fff; }
+
+/* ---------------------- */
+/* ANIMATIONS */
+/* ---------------------- */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html"><img src="logo3.svg"></a>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="label-services.html">Label Services</a>
+    <a href="programme-mlf.html">Investir en soi-même</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<section>
+  <div class="hero">
+    <h1>Programme MLF – Investir en soi-même</h1>
+    <p>Un accompagnement intensif pour maîtriser ta carrière avec les outils, la méthode et les réflexes d’un label professionnel.</p>
+    <a href="#" class="btn">Soumettre ma candidature</a>
+  </div>
+</section>
+
+<div class="section-separator"></div>
+
+<section>
+  <h2>Un programme pensé pour les artistes qui veulent :</h2>
+  <div class="cards">
+    <div class="card"><h3>Structurer leur projet</h3><p>Bases solides & vision claire.</p></div>
+    <div class="card"><h3>Comprendre l'industrie</h3><p>Droits, édition, administration.</p></div>
+    <div class="card"><h3>Planifier leurs sorties</h3><p>Distribution & stratégie DSP.</p></div>
+    <div class="card"><h3>Développer leur image</h3><p>Identité, branding & réseaux.</p></div>
+    <div class="card"><h3>Gagner en autonomie</h3><p>Maîtriser sa carrière.</p></div>
+  </div>
+</section>
+
+<div class="section-separator"></div>
+
+<section>
+  <div class="timeline-wrapper">
+    <h2 class="timeline-title">Les étapes du programme</h2>
+    <div class="timeline">
+      <div class="step"><h4>1. Vision & Structure</h4><p>Stratégie globale.</p></div>
+      <div class="step"><h4>2. Droits & Administration</h4><p>SACEM, royalties.</p></div>
+      <div class="step"><h4>3. Distribution</h4><p>DSP & metadata.</p></div>
+      <div class="step"><h4>4. Communication</h4><p>Image & réseaux.</p></div>
+      <div class="step"><h4>5. Feuille de route</h4><p>Plan 3 mois.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-separator"></div>
+
+<section>
+  <h2>Format & Tarifs</h2>
+  <p style="text-align:center;">
+    <strong>Durée :</strong> 10 heures individuelles<br>
+    <strong>Tarif :</strong> 300 € (30 €/h)<br>
+    <strong>Format :</strong> Visio ou téléphone<br>
+    <strong>Planning :</strong> Flexible<br>
+    <strong>Inclus :</strong> Documents + outils
+  </p>
+</section>
+
+<footer>
+  <p>MLF Agency — Accompagnement pour artistes indépendants</p>
+  <p><a href="mentions-legales.html">Mentions légales</a> • <a href="politique-confidentialite.html">Politique de confidentialité</a></p>
+</footer>
+
+</body>
+</html>
+
+Je trouve ça super,  juste remettre un peu à gauche les liens dans le header, 
   background:#000;
   z-index:1000;
   display:flex;
