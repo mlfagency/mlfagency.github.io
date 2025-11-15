@@ -76,33 +76,57 @@ header.shrink img {
   transform: scale(0.9);
 }
     
-    /* --- MENU HORIZONTAL DANS LE HEADER --- */
+/* --- MENU HORIZONTAL CENTRÉ --- */
 .top-nav {
   position: absolute;
-  right: 80px; /* ajuste si besoin */
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: -28px; /* place les liens juste sous le logo */
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  gap: 25px;
+  gap: 35px;
 }
 
 .top-nav a {
-  color: white;
+  color: rgba(255,255,255,0.85);
   text-decoration: none;
-  font-size: 1em;
-  transition: 0.3s;
-  opacity: 0.9;
+  font-size: 1.05em;
+  letter-spacing: 0.5px;
+  padding-bottom: 5px;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+/* Effet soulignement moderne */
+.top-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 0%;
+  background: white;
+  transition: width 0.3s ease;
 }
 
 .top-nav a:hover {
-  opacity: 1;
-  color: #fff;
+  color: white;
 }
 
-/* menu réduit quand header shrink */
+.top-nav a:hover::after {
+  width: 100%;
+}
+
+/* Réduction en mode shrink */
+header.shrink .top-nav {
+  bottom: -20px;
+  gap: 28px;
+}
+
 header.shrink .top-nav a {
   font-size: 0.9em;
+  opacity: 0.9;
 }
+
 
 
 .envelope-icon {
@@ -329,16 +353,18 @@ footer a:hover {
 <div class="video-overlay"></div>
 
 <header id="mainHeader">
-  <img src="logo.svg" alt="Logo MLF Agency">
+  <img src="logo.svg" alt="Logo MLF Agency" class="header-logo">
 
   <nav class="top-nav">
     <a href="index.html">Accueil</a>
     <a href="label-services.html">Label Services</a>
     <a href="programme-mlf.html">Investir en soi-même</a>
+    <a href="#" id="openPopupContact">Contactez-nous</a>
   </nav>
 
   <span class="envelope-icon" id="iconPopup">✉️</span>
 </header>
+
 
 
 
@@ -426,6 +452,14 @@ const popup = document.getElementById('contactPopup');
 const closeBtn = document.getElementById('closePopup');
 const iconPopup = document.getElementById('iconPopup');
 const selectObjet = document.querySelector('select[name="Objet"]');
+
+  // Lien "Contactez-nous" dans le menu
+document.getElementById('openPopupContact').addEventListener('click', (e) => {
+  e.preventDefault();
+  openPopupModal();
+  selectObjet.value = "";
+});
+
 
 function openPopupModal() { popup.style.display = 'flex'; }
 function closePopupModal() { popup.style.display = 'none'; }
