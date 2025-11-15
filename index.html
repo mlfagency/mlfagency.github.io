@@ -508,35 +508,43 @@ const popup = document.getElementById('contactPopup');
 const closeBtn = document.getElementById('closePopup');
 const selectObjet = document.querySelector('select[name="Objet"]');
 
-  // Lien "Contactez-nous" dans le menu
+// --- Fonctions popup ---
+function openPopupModal() { 
+  popup.style.display = 'flex'; 
+}
+
+function closePopupModal() { 
+  popup.style.display = 'none'; 
+}
+
+// --- Ouvrir popup via "Contactez-nous" ---
 document.getElementById('openPopupContact').addEventListener('click', (e) => {
   e.preventDefault();
   openPopupModal();
   selectObjet.value = "";
 });
 
-
-function openPopupModal() { popup.style.display = 'flex'; }
-function closePopupModal() { popup.style.display = 'none'; }
-
-closeBtn.addEventListener('click', closePopupModal);
-
-window.addEventListener('click', (e) => {
-  if (e.target === popup) closePopupModal();
-});
-
+// --- Ouvrir popup via "Appel découverte" ---
 document.getElementById('openPopupCall').addEventListener('click', (e) => {
   e.preventDefault();
   openPopupModal();
   selectObjet.value = "Appel découverte";
 });
 
-/* HEADER */
+// --- Fermeture popup ---
+closeBtn.addEventListener('click', closePopupModal);
+
+window.addEventListener('click', (e) => {
+  if (e.target === popup) closePopupModal();
+});
+
+// --- Header shrink ---
 const header = document.getElementById('mainHeader');
 window.addEventListener('scroll', () => {
   header.classList.toggle('shrink', window.scrollY > 150);
 });
 </script>
+
 
 <footer>
   <a href="mentions-legales.html">Mentions légales</a> |
