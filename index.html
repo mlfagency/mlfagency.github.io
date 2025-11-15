@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>MLF Agency</title>
   <style>
-/* --- VIDÉO D’ARRIÈRE-PLAN (version compatible mobile) --- */
+/* --- VIDÉO D’ARRIÈRE-PLAN --- */
 .video-wrapper {
   position: fixed;
   top: 0;
@@ -24,7 +24,6 @@
   display: block;
 }
 
-/* --- VOILE NOIR PAR-DESSUS LA VIDÉO --- */
 .video-overlay {
   position: fixed;
   top: 0;
@@ -45,7 +44,7 @@ body {
   line-height: 1.6;
 }
 
-/* --- HEADER DYNAMIQUE --- */
+/* --- HEADER --- */
 header {
   background-color: #000;
   color: white; 
@@ -85,18 +84,16 @@ header.shrink img {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  transition: opacity 0.3s ease;
 }
 
 header.shrink .envelope-icon {
   display: block;
 }
 
-/* --- INTRO (sans phrase) --- */
+/* --- INTRO VIDE --- */
 .intro {
   text-align: center;
   padding: 220px 20px 40px;
-  color: #fff;
   position: relative;
   z-index: 1;
 }
@@ -139,17 +136,8 @@ header.shrink .envelope-icon {
   to { transform: translateX(-50%); }
 }
 
-@media (max-width: 900px) {
-  .carousel-track img { width: 220px; height: 220px; }
-}
-
-@media (max-width: 600px) {
-  .carousel-track img { width: 180px; height: 180px; }
-}
-
-/* --- SECTION ABOUT --- */
+/* --- ABOUT --- */
 .about {
-  background: transparent;
   position: relative;
   z-index: 1;
   padding: 80px 30px 100px;
@@ -162,7 +150,6 @@ header.shrink .envelope-icon {
 }
 
 .about-inner h2 {
-  color: #fff;
   font-size: 2.4em;
   margin-bottom: 25px;
 }
@@ -170,11 +157,10 @@ header.shrink .envelope-icon {
 .about-inner p {
   color: #ddd;
   font-size: 1.15em;
-  line-height: 1.8;
   margin-bottom: 15px;
 }
 
-/* --- SECTION SERVICES RESTRUCTURÉE --- */
+/* --- SERVICES (2 CADRES) --- */
 .services {
   position: relative;
   max-width: 950px;
@@ -183,7 +169,7 @@ header.shrink .envelope-icon {
   margin-bottom: 120px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 16px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.95), rgba(0,0,0,0.7));
   box-shadow: 0 0 25px rgba(255,255,255,0.05);
   z-index: 1;
 }
@@ -192,10 +178,8 @@ header.shrink .envelope-icon {
   text-align: center;
   margin-bottom: 30px;
   font-size: 2em;
-  color: white;
 }
 
-/* --- NOUVEAUX CADRES CLIQUABLES --- */
 .service-boxes {
   display: flex;
   justify-content: center;
@@ -229,8 +213,8 @@ header.shrink .envelope-icon {
   transform: scale(1.04);
 }
 
-/* --- BOUTONS --- */
-.btn, .btn-devis {
+/* --- BOUTON POPUP --- */
+.btn {
   display: inline-block;
   margin-top: 25px;
   color: white;
@@ -240,11 +224,10 @@ header.shrink .envelope-icon {
   padding: 12px 25px;
   border-radius: 8px;
   transition: 0.3s;
-  background: none;
 }
 
-.btn:hover, .btn-devis:hover {
-  background-color: white;
+.btn:hover {
+  background: white;
   color: black;
 }
 
@@ -276,15 +259,14 @@ header.shrink .envelope-icon {
   margin-bottom: 15px;
 }
 
-/* --- SECTION BOOKING --- */
+/* --- BOOKING --- */
 .booking {
   background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
   padding: 90px 30px 100px;
   text-align: center;
-  color: white;
 }
 
-/* --- MENU LATÉRAL --- */
+/* --- MENU --- */
 .menu-icon {
   position: absolute;
   left: 25px;
@@ -320,7 +302,7 @@ footer {
 </head>
 <body>
 
-<!-- === VIDÉO D’ARRIÈRE-PLAN === -->
+<!-- VIDEO -->
 <div class="video-wrapper">
   <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
     <source src="mlf_team.mp4" type="video/mp4">
@@ -334,7 +316,7 @@ footer {
   <span class="envelope-icon" id="iconPopup">✉️</span>
 </header>
 
-<!-- MENU LATÉRAL -->
+<!-- MENU -->
 <nav id="sideMenu" class="side-menu">
   <span class="close-menu" id="closeMenu">&times;</span>
   <ul>
@@ -343,10 +325,7 @@ footer {
   </ul>
 </nav>
 
-<!-- INTRO (vide) -->
-<section class="intro">
-  <div class="intro-content"></div>
-</section>
+<section class="intro"><div class="intro-content"></div></section>
 
 <!-- CARROUSEL -->
 <div class="about-carousel">
@@ -358,7 +337,6 @@ footer {
     <img src="imageteam5.jpg">
     <img src="imageteam6.jpg">
 
-    <!-- duplication pour l’infini -->
     <img src="imageteam1.jpg">
     <img src="imageteam2.jpg">
     <img src="imageteam3.jpg">
@@ -377,7 +355,7 @@ footer {
   </div>
 </section>
 
-<!-- SERVICES VERSION SIMPLIFIÉE -->
+<!-- SERVICES (2 CADRES) -->
 <section class="services">
   <h2>Nos Services</h2>
 
@@ -392,13 +370,9 @@ footer {
     </a>
 
   </div>
-
-  <div style="text-align:center;">
-    <a href="#" id="openPopupDevis" class="btn-devis">Demander un devis</a>
-  </div>
 </section>
 
-<!-- POPUP FORMULAIRE -->
+<!-- POPUP -->
 <div class="popup" id="contactPopup">
   <div class="popup-content">
     <div class="close-btn" id="closePopup">&times;</div>
@@ -421,7 +395,7 @@ footer {
   </div>
 </div>
 
-<!-- SECTION RENDEZ-VOUS -->
+<!-- APPEL DÉCOUVERTE -->
 <section class="booking fade-in">
   <div class="booking-inner">
     <h2>📅 Réserver un appel découverte</h2>
@@ -431,7 +405,6 @@ footer {
 </section>
 
 <script>
-// --- POPUP ---
 const popup = document.getElementById('contactPopup');
 const closeBtn = document.getElementById('closePopup');
 const iconPopup = document.getElementById('iconPopup');
@@ -440,34 +413,26 @@ const selectObjet = document.querySelector('select[name="Objet"]');
 function openPopupModal() { popup.style.display = 'flex'; }
 function closePopupModal() { popup.style.display = 'none'; }
 
-iconPopup?.addEventListener('click', openPopupModal);
-closeBtn?.addEventListener('click', closePopupModal);
+iconPopup.addEventListener('click', openPopupModal);
+closeBtn.addEventListener('click', closePopupModal);
 
 window.addEventListener('click', (e) => {
   if (e.target === popup) closePopupModal();
 });
 
-// --- "Demander un devis" ---
-document.getElementById('openPopupDevis').addEventListener('click', (e) => {
-  e.preventDefault();
-  openPopupModal();
-  selectObjet.value = "Label Services";
-});
-
-// --- "Réserver un appel" ---
 document.getElementById('openPopupCall').addEventListener('click', (e) => {
   e.preventDefault();
   openPopupModal();
   selectObjet.value = "Appel découverte";
 });
 
-// --- HEADER SHRINK ---
+/* HEADER */
 const header = document.getElementById('mainHeader');
 window.addEventListener('scroll', () => {
   header.classList.toggle('shrink', window.scrollY > 150);
 });
 
-// --- MENU LATÉRAL ---
+/* MENU */
 const menuToggle = document.getElementById('menuToggle');
 const sideMenu = document.getElementById('sideMenu');
 const closeMenu = document.getElementById('closeMenu');
