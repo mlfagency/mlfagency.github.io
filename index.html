@@ -281,9 +281,17 @@ header.shrink .header-logo {
 } 
   
 .service-card img {
-  width: 42px;
-  opacity: 0.9;
-  filter: brightness(100%) saturate(0%); /* force le blanc */
+  filter: brightness(100%) saturate(0%) !important; /* blanc neutre */
+}
+
+.service-card:link h3,
+.service-card:visited h3 {
+  color: #fff !important;
+}
+
+.service-card:link p,
+.service-card:visited p {
+  color: var(--text-soft) !important;
 }
 
 
