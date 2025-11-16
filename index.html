@@ -155,6 +155,22 @@ body {
   filter: none !important; /* icônes blanches */
 }
 
+/* FIX : Texte violet dans les cards */
+.service-card h3,
+.service-card p,
+.service-card strong {
+  color: #ffffff !important;        /* titres = blanc */
+}
+
+.service-card p {
+  color: rgba(255,255,255,0.72) !important;  /* paragraphes = gris clair */
+}
+
+.service-card:hover h3,
+.service-card:hover p,
+.service-card:hover strong {
+  color: #ffffff !important;        /* sur hover = blanc pur */
+}
 
 /* ----------------------------------------
    BUTTON GLASS
