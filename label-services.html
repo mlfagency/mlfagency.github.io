@@ -10,6 +10,9 @@
   <!-- Header global -->
   <link rel="stylesheet" href="header.css">
 
+  <!-- POP UP -->
+  <link rel="stylesheet" href="popup.css">
+
 <style>
 
 /* ----------------------------------------
@@ -111,64 +114,6 @@ body {
   background:rgba(255,255,255,0.12);
   border-color:rgba(255,255,255,0.4);
   transform:translateY(-2px);
-}
-
-/* ----------------------------------------
-   POPUP
----------------------------------------- */
-.popup {
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.75);
-  backdrop-filter:blur(10px);
-  justify-content:center;
-  align-items:center;
-  z-index:5000;
-  padding:20px;
-}
-
-.popup-content {
-  background:rgba(20,20,20,0.88);
-  padding:40px;
-  width:90%;
-  max-width:520px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,0.1);
-  animation:fadeIn .3s ease;
-  position:relative;
-}
-
-@keyframes fadeIn {
-  from { opacity:0; transform:scale(.96); }
-  to   { opacity:1; transform:scale(1); }
-}
-
-.close-btn {
-  position:absolute;
-  top:12px;
-  right:18px;
-  font-size:2em;
-  cursor:pointer;
-  opacity:0.6;
-}
-
-.popup-logo {
-  width:150px;
-  margin:20px auto;
-  display:block;
-}
-
-.popup-content input,
-.popup-content select,
-.popup-content textarea {
-  width:100%;
-  padding:14px;
-  border-radius:10px;
-  margin:10px 0 18px;
-  background:#151515;
-  border:1px solid rgba(255,255,255,0.25);
-  color:white;
 }
 
 /* ----------------------------------------
