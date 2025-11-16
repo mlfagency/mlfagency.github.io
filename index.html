@@ -6,6 +6,7 @@
 
   <!-- Police -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="header.css">
 
 <style>
 /* ----------------------------------------
@@ -32,116 +33,9 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  padding-top: 190px; /* espace sous header fixe */
   scroll-behavior: smooth;
 }
 
-/* ----------------------------------------
-   HEADER EFFET VERRE + LOGOS ALIGNÉS
----------------------------------------- */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  backdrop-filter: blur(14px);
-  background: rgba(0,0,0,0.45);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  padding: 20px 0 35px;
-  z-index: 1000;
-  transition: 0.35s ease;
-  display: flex;
-  justify-content: center;
-}
-
-header.shrink {
-  padding: 8px 0 20px;
-  backdrop-filter: blur(20px);
-  background: rgba(0,0,0,0.75);
-}
-
-.header-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-/* LOGO CENTRAL */
-.header-logo {
-  max-width: 260px;
-  transition: var(--transition);
-}
-header.shrink .header-logo {
-  max-width: 130px;
-}
-
-/* LOGO GAUCHE – ALIGNEMENT IDENTIQUE AUX PAGES SECONDAIRES */
-.header-left-logo {
-  position: absolute;
-  left: 20px; /* ← rapproché du centre */
-  top: 50%;
-  transform: translateY(-65%);
-  width: 90px;
-  opacity: 0.85;
-  transition: var(--transition);
-}
-
-header.shrink .header-left-logo {
-  width: 55px;
-  opacity: 0.75;
-  left: 20px; /* cohérence en mode shrink */
-}
-
-
-/* NAVIGATION */
-.top-nav {
-  display: flex;
-  gap: 30px;
-  margin-top: 12px;
-}
-
-.top-nav a {
-  color: var(--text-soft);
-  text-decoration: none;
-  font-size: 1.05em;
-  padding-bottom: 4px;
-  position: relative;
-  transition: var(--transition);
-}
-
-.top-nav a:hover { color: var(--text); }
-
-.top-nav a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  height: 1px;
-  left: 0;
-  width: 0;
-  background: white;
-  transition: width 0.3s ease;
-}
-
-.top-nav a:hover::after {
-  width: 100%;
-}
-
-.insta-menu-link {
-  display: flex;
-  align-items: center;
-}
-
-.insta-menu-logo {
-  width: 24px;
-  opacity: 0.8;
-  transition: var(--transition);
-}
-
-.insta-menu-logo:hover {
-  opacity: 1;
-  transform: scale(1.08);
-}
 
 /* ----------------------------------------
    CARROUSEL
@@ -427,24 +321,22 @@ footer a {
 
 <header id="mainHeader">
   <div class="header-inner">
-
     <img src="logo3.svg" alt="Logo secondaire" class="header-left-logo">
-
     <img src="logo.svg" alt="Logo MLF Agency" class="header-logo">
 
     <nav class="top-nav">
       <a href="index.html">Accueil</a>
       <a href="label-services.html">Label Services</a>
       <a href="programme-mlf.html">Programme MLF</a>
-
       <a href="#" id="openPopupContact">Contactez-nous</a>
 
-      <a href="https://www.instagram.com/mlfagency/" target="_blank" class="insta-menu-link">
-        <img src="logo-insta2.svg" class="insta-menu-logo" alt="Instagram">
+      <a href="https://www.instagram.com/mlfagency/" class="insta-menu-link" target="_blank">
+        <img src="logo-insta2.svg" class="insta-menu-logo">
       </a>
     </nav>
   </div>
 </header>
+
 
 <section class="intro"></section>
 
