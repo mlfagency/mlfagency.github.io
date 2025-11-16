@@ -153,8 +153,3 @@ header.shrink .insta-menu-logo {
   .header-logo {
     max-width: 200px;
   }
-}
-body {
-  padding-top: 210px; /* espace parfait sous le header */
-}
-
