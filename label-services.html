@@ -4,9 +4,14 @@
   <meta charset="UTF-8">
   <title>Label Services – MLF Agency</title>
 
+  <!-- Police -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 
-/* --- BASE --- */
+/* ----------------------------------------
+   BASE
+---------------------------------------- */
 body { 
   font-family: 'Montserrat', sans-serif;
   margin: 0; 
@@ -14,55 +19,62 @@ body {
   background-color: #000;
   color: #fff;
   line-height: 1.6;
+  padding-top: 180px; /* espace sous header verre */
 }
 
-/* --- HEADER --- */
+
+/* ----------------------------------------
+   HEADER GLASS (identique à l’index)
+---------------------------------------- */
 header {
-  background-color: #000;
-  color: white;
-  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  backdrop-filter: blur(14px);
+  background: rgba(0,0,0,0.45);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 22px 0 30px;
   z-index: 1000;
-  padding: 20px 0 35px;
+  transition: 0.35s ease;
   display: flex;
   justify-content: center;
-  align-items: center;
-  transition: 0.4s ease;
 }
 
 header.shrink {
-  padding: 8px 0 20px;
+  padding: 10px 0 14px;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(20px);
 }
 
 .header-inner {
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
 }
 
+
 /* Logo central */
 .header-logo {
   max-width: 260px;
-  transition: 0.3s ease;
+  transition: 0.35s ease;
 }
 
 header.shrink .header-logo {
   max-width: 130px;
 }
 
-/* Logo gauche */
+
+/* Logo gauche — position identique à page secondaire */
 .header-left-logo {
   position: absolute;
-  left: 40px;
+  left: 20px; /* rapproché du centre comme tu le veux */
   top: 50%;
-  transform: translateY(-65%);
+  transform: translateY(-65%); /* EXACT de la page secondaire */
   width: 90px;
   opacity: 0.85;
-  transition: 0.3s ease;
+  transition: 0.35s ease;
 }
 
 header.shrink .header-left-logo {
@@ -70,72 +82,65 @@ header.shrink .header-left-logo {
   opacity: 0.75;
 }
 
-/* Menu */
+
+/* Nav */
 .top-nav {
   margin-top: 12px;
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 30px;
 }
 
 .top-nav a {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.75);
   text-decoration: none;
   font-size: 1.05em;
-  letter-spacing: 0.5px;
   padding-bottom: 4px;
+  letter-spacing: .4px;
   position: relative;
-  transition: 0.3s;
+  transition: 0.35s ease;
+}
+
+.top-nav a:hover {
+  color: white;
 }
 
 .top-nav a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 1px;
-  width: 0%;
-  background: white;
-  transition: width 0.3s ease;
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  height:1px;
+  width:0;
+  background:white;
+  transition:width .3s ease;
 }
 
-.top-nav a:hover { color: #fff; }
-.top-nav a:hover::after { width: 100%; }
+.top-nav a:hover::after { width:100%; }
 
-header.shrink .top-nav a {
-  font-size: 0.9em;
-}
 
-/* Instagram dans le menu */
-.insta-menu-link {
-  display: flex;
-  align-items: center;
-}
-
+/* Instagram */
+.insta-menu-link { display:flex; align-items:center; }
 .insta-menu-logo {
-  width: 22px;
-  height: 22px;
-  opacity: 0.85;
-  transition: 0.3s ease;
+  width:22px;
+  opacity:0.8;
+  transition:.35s ease;
 }
 
 .insta-menu-logo:hover {
-  opacity: 1;
-  transform: scale(1.05);
+  transform:scale(1.08);
+  opacity:1;
 }
 
 header.shrink .insta-menu-logo {
-  width: 18px;
-  height: 18px;
-  opacity: 0.75;
+  width:18px;
+  opacity:.7;
 }
 
-/* ESPACEMENT SOUS LE HEADER */
-body {
-  padding-top: 190px;
-}
 
-/* --- SECTION HERO --- */
+/* ----------------------------------------
+   SECTION HERO
+---------------------------------------- */
 .hero {
   max-width: 1000px;
   margin: 0 auto;
@@ -155,7 +160,10 @@ body {
   margin: auto;
 }
 
-/* --- SERVICE GRID --- */
+
+/* ----------------------------------------
+   GRID SERVICES
+---------------------------------------- */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
@@ -166,17 +174,19 @@ body {
 }
 
 .service-box {
-  background: #0b0b0b;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
   padding: 35px 28px;
   border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 0 25px rgba(255,255,255,0.05);
-  transition: 0.3s;
+  box-shadow: 0 0 25px rgba(0,0,0,0.35);
+  transition: 0.35s ease;
 }
 
 .service-box:hover {
   transform: translateY(-6px);
-  border-color: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.22);
 }
 
 .service-box h3 {
@@ -188,150 +198,152 @@ body {
   color: #bfbfbf;
 }
 
-/* CTA */
+
+/* ----------------------------------------
+   CTA
+---------------------------------------- */
 .cta-section {
   text-align: center;
   margin: 60px 0 100px;
 }
 
 .btn {
-  display: inline-block;
-  color: white;
-  text-decoration: none;
-  font-size: 1.1em;
-  border: 1px solid white;
-  padding: 14px 28px;
-  border-radius: 8px;
-  transition: 0.3s;
+  display:inline-block;
+  padding:14px 28px;
+  border-radius:10px;
+  color:white;
+  font-size:1.1em;
+  text-decoration:none;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.15);
+  backdrop-filter:blur(6px);
+  transition:0.35s ease;
 }
 
 .btn:hover {
-  background: white;
-  color: black;
+  background:rgba(255,255,255,0.12);
+  border-color:rgba(255,255,255,0.4);
+  transform:translateY(-2px);
 }
 
-/* --- POPUP --- */
+
+/* ----------------------------------------
+   POPUP
+---------------------------------------- */
 .popup {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 5000;
-  padding: 20px;
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.75);
+  backdrop-filter:blur(10px);
+  justify-content:center;
+  align-items:center;
+  z-index:5000;
+  padding:20px;
 }
 
 .popup-content {
-  background: #111;
-  padding: 40px;
-  border-radius: 14px;
-  width: 90%;
-  max-width: 520px;
-  box-shadow: 0 0 25px rgba(255,255,255,0.08);
-  position: relative;
-  animation: fadeIn 0.3s ease;
+  background:rgba(20,20,20,0.88);
+  padding:40px;
+  width:90%;
+  max-width:520px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.1);
+  animation:fadeIn .3s ease;
+  position:relative;
+}
+
+@keyframes fadeIn {
+  from { opacity:0; transform:scale(.96); }
+  to   { opacity:1; transform:scale(1); }
 }
 
 .close-btn {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  font-size: 1.8em;
-  cursor: pointer;
-  opacity: 0.7;
+  position:absolute;
+  top:12px;
+  right:18px;
+  font-size:2em;
+  cursor:pointer;
+  opacity:0.6;
 }
 
 .popup-logo {
-  width: 150px;
-  margin-bottom: 20px;
+  width:150px;
+  margin-bottom:20px;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-/* FORM */
 .popup-content input,
 .popup-content select,
 .popup-content textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0 16px;
-  border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.25);
-  background: #1a1a1a;
-  color: white;
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  margin:10px 0 18px;
+  background:#151515;
+  border:1px solid rgba(255,255,255,0.25);
+  color:white;
 }
 
-/* --- FOOTER --- */
+
+
+/* ----------------------------------------
+   FOOTER
+---------------------------------------- */
 footer {
   text-align:center;
-  color: rgba(255,255,255,0.6);
-  padding: 40px 10px;
-  font-size: 0.8em;
+  padding:40px 10px;
+  color:rgba(255,255,255,0.6);
+  font-size:.8em;
 }
 
-footer a {
-  color: rgba(255,255,255,0.6);
-  text-decoration:none;
-}
+footer a { color:rgba(255,255,255,0.6); text-decoration:none; }
+footer a:hover { color:white; }
 
-footer a:hover { color: white; }
 
-/* RESPONSIVE */
-@media (max-width: 850px) {
-
+/* ----------------------------------------
+   RESPONSIVE
+---------------------------------------- */
+@media(max-width:850px) {
   .header-left-logo {
-    left: 15px;
-    width: 70px;
-    transform: translateY(-50%);
+    left:15px;
+    width:70px;
+    transform:translateY(-50%);
   }
-
-  header.shrink .header-left-logo {
-    width: 45px;
-  }
-
-  .insta-menu-logo {
-    width: 32px;
-    height: 32px;
-  }
-
-  header.shrink .insta-menu-logo {
-    width: 26px;
-    height: 26px;
-  }
-
 }
-
 </style>
+
 </head>
 
 <body>
 
-<!-- HEADER COMPLET -->
+<!-- HEADER -->
 <header id="mainHeader">
   <div class="header-inner">
 
-    <img src="logo3.svg" alt="Logo secondaire" class="header-left-logo">
+    <img src="logo3.svg" class="header-left-logo" alt="Logo secondaire">
 
-    <img src="logo.svg" alt="Logo MLF Agency" class="header-logo">
+    <img src="logo.svg" class="header-logo" alt="MLF Agency">
 
     <nav class="top-nav">
       <a href="index.html">Accueil</a>
       <a href="label-services.html">Label Services</a>
       <a href="programme-mlf.html">Programme MLF</a>
 
-      <a href="#" id="openPopupContact" class="contact-link">
-        Contactez-nous
-      </a>
+      <a href="#" id="openPopupContact">Contactez-nous</a>
 
-      <a href="https://www.instagram.com/mlfagency/" 
-         target="_blank" 
+      <a href="https://www.instagram.com/mlfagency/"
+         target="_blank"
          class="insta-menu-link">
-        <img src="logo-insta2.svg" alt="Instagram MLF Agency" class="insta-menu-logo">
+        <img src="logo-insta2.svg" class="insta-menu-logo" alt="Instagram MLF Agency">
       </a>
     </nav>
 
   </div>
 </header>
+
 
 <!-- HERO -->
 <section class="hero">
@@ -339,39 +351,14 @@ footer a:hover { color: white; }
   <p>Des services professionnels pour optimiser, structurer et accélérer le développement de votre projet musical.</p>
 </section>
 
-<!-- GRID DES SERVICES -->
+<!-- SERVICES GRID -->
 <section class="services-grid">
-
-  <div class="service-box">
-    <h3>Stratégie globale</h3>
-    <p>Planification, feuille de route, objectifs, branding.</p>
-  </div>
-
-  <div class="service-box">
-    <h3>Administration</h3>
-    <p>Gestion SACEM, royalties, metadata, dépôts.</p>
-  </div>
-
-  <div class="service-box">
-    <h3>Distribution</h3>
-    <p>DSP, calendrier de sortie, stratégie Spotify.</p>
-  </div>
-
-  <div class="service-box">
-    <h3>Marketing digital</h3>
-    <p>Identité visuelle, réseaux sociaux, stratégie de contenu.</p>
-  </div>
-
-  <div class="service-box">
-    <h3>Promotion</h3>
-    <p>Pitch DSP, dossier de presse, relations médias.</p>
-  </div>
-
-  <div class="service-box">
-    <h3>Accompagnement personnalisé</h3>
-    <p>Coaching, corrections, suivi hebdomadaire.</p>
-  </div>
-
+  <div class="service-box"><h3>Stratégie globale</h3><p>Planification, feuille de route, objectifs, branding.</p></div>
+  <div class="service-box"><h3>Administration</h3><p>Gestion SACEM, royalties, metadata, dépôts.</p></div>
+  <div class="service-box"><h3>Distribution</h3><p>DSP, calendrier de sortie, stratégie Spotify.</p></div>
+  <div class="service-box"><h3>Marketing digital</h3><p>Identité visuelle, réseaux sociaux, stratégie de contenu.</p></div>
+  <div class="service-box"><h3>Promotion</h3><p>Pitch DSP, dossier de presse, relations médias.</p></div>
+  <div class="service-box"><h3>Accompagnement personnalisé</h3><p>Coaching, corrections, suivi hebdomadaire.</p></div>
 </section>
 
 <!-- CTA -->
@@ -379,12 +366,12 @@ footer a:hover { color: white; }
   <a href="#" class="btn" id="openPopupServices">Demander nos services</a>
 </section>
 
-<!-- POPUP CONTACT -->
+<!-- POPUP -->
 <div class="popup" id="contactPopup">
   <div class="popup-content">
     <div class="close-btn" id="closePopup">&times;</div>
 
-    <img src="logo.svg" class="popup-logo">
+    <img src="logo.svg" class="popup-logo" alt="Logo MLF Agency">
 
     <form action="https://formspree.io/f/xanlvwld" method="POST">
       <select name="Objet" required>
