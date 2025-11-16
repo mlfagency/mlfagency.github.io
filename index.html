@@ -79,7 +79,7 @@ header.shrink .header-logo {
 /* LOGO GAUCHE – ALIGNEMENT IDENTIQUE AUX PAGES SECONDAIRES */
 .header-left-logo {
   position: absolute;
-  left: 40px;
+  left: 20px; /* ← rapproché du centre */
   top: 50%;
   transform: translateY(-65%);
   width: 90px;
@@ -90,7 +90,9 @@ header.shrink .header-logo {
 header.shrink .header-left-logo {
   width: 55px;
   opacity: 0.75;
+  left: 20px; /* cohérence en mode shrink */
 }
+
 
 /* NAVIGATION */
 .top-nav {
