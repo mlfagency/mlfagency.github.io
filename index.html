@@ -72,15 +72,17 @@ header.shrink {
   left: 40px;
   top: 50%;
   transform: translateY(-50%);
-  width: 85px;
-  opacity: 0.8;
+  height: 65px; /* stabilisation de la hauteur */
+  width: auto;
+  opacity: 0.9;
   transition: var(--transition);
 }
 
 header.shrink .header-left-logo {
-  width: 55px;
-  opacity: 0.7;
+  height: 42px; /* cohérence avec la réduction du header */
+  opacity: 0.8;
 }
+
 
 .header-logo {
   max-width: 240px;
