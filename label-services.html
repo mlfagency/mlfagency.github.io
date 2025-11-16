@@ -41,6 +41,7 @@ header.shrink {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 /* Logo central */
@@ -68,35 +69,12 @@ header.shrink .header-left-logo {
   width: 55px;
   opacity: 0.75;
 }
-/* Logo Instagram à droite */
-.insta-link {
-  position: absolute;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-65%);
-}
-
-.insta-logo {
-  width: 34px;
-  opacity: 0.85;
-  transition: 0.3s ease;
-}
-
-.insta-logo:hover {
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-/* Shrink */
-header.shrink .insta-logo {
-  width: 24px;
-  opacity: 0.75;
-}
 
 /* Menu */
 .top-nav {
   margin-top: 12px;
   display: flex;
+  align-items: center;
   gap: 28px;
 }
 
@@ -126,6 +104,30 @@ header.shrink .insta-logo {
 
 header.shrink .top-nav a {
   font-size: 0.9em;
+}
+
+/* Instagram dans le menu */
+.insta-menu-link {
+  display: flex;
+  align-items: center;
+}
+
+.insta-menu-logo {
+  width: 22px;
+  height: 22px;
+  opacity: 0.85;
+  transition: 0.3s ease;
+}
+
+.insta-menu-logo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+header.shrink .insta-menu-logo {
+  width: 18px;
+  height: 18px;
+  opacity: 0.75;
 }
 
 /* ESPACEMENT SOUS LE HEADER */
@@ -232,11 +234,6 @@ body {
   animation: fadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity:0; transform: scale(0.95); }
-  to { opacity:1; transform: scale(1); }
-}
-
 .close-btn {
   position: absolute;
   top: 12px;
@@ -245,8 +242,6 @@ body {
   cursor: pointer;
   opacity: 0.7;
 }
-
-.close-btn:hover { opacity: 1; }
 
 .popup-logo {
   width: 150px;
@@ -266,17 +261,6 @@ body {
   color: white;
 }
 
-.popup-content button {
-  width: 100%;
-  background: white;
-  color: black;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 1.1em;
-  border: none;
-  cursor: pointer;
-}
-
 /* --- FOOTER --- */
 footer {
   text-align:center;
@@ -292,30 +276,27 @@ footer a {
 
 footer a:hover { color: white; }
 
-/* --- RESPONSIVE LOGO LEFT --- */
+/* RESPONSIVE */
 @media (max-width: 850px) {
+
   .header-left-logo {
     left: 15px;
     width: 70px;
     transform: translateY(-50%);
   }
+
   header.shrink .header-left-logo {
     width: 45px;
   }
-}
-@media (max-width: 850px) {
 
-  .insta-link {
-    right: 15px;
-    transform: translateY(-50%);
+  .insta-menu-logo {
+    width: 26px;
+    height: 26px;
   }
 
-  .insta-logo {
-    width: 28px;
-  }
-
-  header.shrink .insta-logo {
-    width: 20px;
+  header.shrink .insta-menu-logo {
+    width: 22px;
+    height: 22px;
   }
 
 }
@@ -325,31 +306,32 @@ footer a:hover { color: white; }
 
 <body>
 
+<!-- HEADER COMPLET -->
 <header id="mainHeader">
   <div class="header-inner">
 
-    <!-- Logo gauche -->
     <img src="logo3.svg" alt="Logo secondaire" class="header-left-logo">
 
-    <!-- Logo central -->
     <img src="logo.svg" alt="Logo MLF Agency" class="header-logo">
 
-    <!-- Menu -->
     <nav class="top-nav">
       <a href="index.html">Accueil</a>
       <a href="label-services.html">Label Services</a>
       <a href="programme-mlf.html">Investir en soi-même</a>
-      <a href="#" id="openPopupContact">Contactez-nous</a>
-    </nav>
 
-    <!-- Instagram à droite -->
-    <a href="https://www.instagram.com/mlfagency/" target="_blank" class="insta-link">
-      <img src="logo-insta1.png" alt="Instagram" class="insta-logo">
-    </a>
+      <a href="#" id="openPopupContact" class="contact-link">
+        Contactez-nous
+      </a>
+
+      <a href="https://www.instagram.com/mlfagency/" 
+         target="_blank" 
+         class="insta-menu-link">
+        <img src="logo-insta1.png" alt="Instagram MLF Agency" class="insta-menu-logo">
+      </a>
+    </nav>
 
   </div>
 </header>
-
 
 <!-- HERO -->
 <section class="hero">
@@ -362,32 +344,32 @@ footer a:hover { color: white; }
 
   <div class="service-box">
     <h3>Stratégie globale</h3>
-    <p>Planification, feuille de route, objectifs, branding et structuration de projet.</p>
+    <p>Planification, feuille de route, objectifs, branding.</p>
   </div>
 
   <div class="service-box">
     <h3>Administration</h3>
-    <p>Gestion SACEM, royalties, metadata, dépôts, contrats et suivi administratif.</p>
+    <p>Gestion SACEM, royalties, metadata, dépôts.</p>
   </div>
 
   <div class="service-box">
     <h3>Distribution</h3>
-    <p>Accompagnement sur la distribution DSP, calendriers de sorties et stratégie Spotify.</p>
+    <p>DSP, calendrier de sortie, stratégie Spotify.</p>
   </div>
 
   <div class="service-box">
     <h3>Marketing digital</h3>
-    <p>Identité visuelle, réseaux sociaux, stratégie de contenu, optimisation.</p>
+    <p>Identité visuelle, réseaux sociaux, stratégie de contenu.</p>
   </div>
 
   <div class="service-box">
     <h3>Promotion</h3>
-    <p>Préparation de sorties, pitch DSP, dossiers de presse, accompagnement médias.</p>
+    <p>Pitch DSP, dossier de presse, relations médias.</p>
   </div>
 
   <div class="service-box">
     <h3>Accompagnement personnalisé</h3>
-    <p>Coaching, corrections, suivi hebdomadaire selon vos besoins.</p>
+    <p>Coaching, corrections, suivi hebdomadaire.</p>
   </div>
 
 </section>
@@ -428,23 +410,19 @@ footer a:hover { color: white; }
 </footer>
 
 <script>
-// header shrink
+// Header shrink
 const header = document.getElementById('mainHeader');
 window.addEventListener('scroll', () => {
   header.classList.toggle('shrink', window.scrollY > 150);
 });
 
-// popup
+// Popup
 const popup = document.getElementById('contactPopup');
 const closePopup = document.getElementById('closePopup');
 const selectObjet = document.querySelector('select[name="Objet"]');
 
-function openPopup() {
-  popup.style.display = "flex";
-}
-function closePopupModal() {
-  popup.style.display = "none";
-}
+function openPopup() { popup.style.display = "flex"; }
+function closePopupModal() { popup.style.display = "none"; }
 
 document.getElementById('openPopupContact').onclick = (e) => {
   e.preventDefault();
@@ -467,4 +445,3 @@ window.onclick = (e) => {
 
 </body>
 </html>
-
