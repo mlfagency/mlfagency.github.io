@@ -7,6 +7,7 @@
   <!-- Police -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="popup.css">
 
 <style>
 /* ----------------------------------------
@@ -194,81 +195,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* ----------------------------------------
-   POPUP
----------------------------------------- */
-.popup {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(10px);
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
 
-.popup-content {
-  position: relative;
-  background: rgba(20,20,20,0.88);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 40px;
-  border-radius: var(--radius);
-  width: 90%;
-  max-width: 520px;
-  animation: fadeIn .3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(.96); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.popup-logo {
-  display: block;
-  width: 150px;
-  margin: 0 auto 20px;
-}
-
-.close-btn {
-  position: absolute;
-  top: 14px;
-  right: 18px;
-  font-size: 2em;
-  opacity: 0.6;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.close-btn:hover { opacity: 1; }
-
-.popup-content input,
-.popup-content select,
-.popup-content textarea {
-  width: 100%;
-  background: #151515;
-  border: 1px solid var(--border);
-  padding: 14px;
-  border-radius: 10px;
-  margin: 10px 0 18px;
-  color: white;
-  font-size: 1em;
-}
-
-.popup-content textarea {
-  min-height: 120px;
-}
-
-.popup-content button {
-  background: white;
-  color: black;
-  padding: 14px;
-  border-radius: 10px;
-  border: none;
-  font-size: 1.05em;
-  width: 100%;
-  cursor: pointer;
-}
 
 /* ----------------------------------------
    BOOKING
