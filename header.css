@@ -154,3 +154,7 @@ header.shrink .insta-menu-logo {
     max-width: 200px;
   }
 }
+body {
+  padding-top: 170px; /* espace parfait sous le header */
+}
+
