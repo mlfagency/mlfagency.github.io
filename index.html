@@ -36,81 +36,75 @@ body {
   scroll-behavior: smooth;
 }
 
-/* ----------------------------------------
-   HEADER MODERNE
----------------------------------------- */
+/* --- HEADER UNIFORMISÉ AVEC LA PAGE SECONDAIRE --- */
 header {
+  background-color: #000;
+  color: white;
+  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  backdrop-filter: blur(14px);
-  background: rgba(0,0,0,0.45);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  padding: 22px 0 30px;
   z-index: 1000;
-  transition: var(--transition);
+  padding: 20px 0 35px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  transition: 0.4s ease;
 }
 
 header.shrink {
-  padding: 10px 0 14px;
-  backdrop-filter: blur(20px);
-  background: rgba(0,0,0,0.75);
+  padding: 8px 0 20px;
 }
 
 .header-inner {
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
 }
 
-.header-left-logo {
-  position: absolute;
-  left: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 65px; /* stabilisation de la hauteur */
-  width: auto;
-  opacity: 0.9;
-  transition: var(--transition);
-}
-
-header.shrink .header-left-logo {
-  height: 42px; /* cohérence avec la réduction du header */
-  opacity: 0.8;
-}
-
-
+/* Logo central */
 .header-logo {
-  max-width: 240px;
-  transition: var(--transition);
+  max-width: 260px;
+  transition: 0.3s ease;
 }
 
 header.shrink .header-logo {
   max-width: 130px;
 }
 
-/* NAV */
+/* Logo gauche (PARFAITEMENT ALIGNE) */
+.header-left-logo {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-65%);
+  width: 90px;
+  opacity: 0.85;
+  transition: 0.3s ease;
+}
+
+header.shrink .header-left-logo {
+  width: 55px;
+  opacity: 0.75;
+}
+
+/* Menu */
 .top-nav {
-  display: flex;
-  gap: 30px;
   margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
 }
 
 .top-nav a {
-  color: var(--text-soft);
-  font-size: 1.05em;
+  color: rgba(255,255,255,0.85);
   text-decoration: none;
-  position: relative;
+  font-size: 1.05em;
   padding-bottom: 4px;
-  transition: var(--transition);
-}
-
-.top-nav a:hover {
-  color: white;
+  position: relative;
+  transition: 0.3s;
 }
 
 .top-nav a::after {
@@ -119,30 +113,44 @@ header.shrink .header-logo {
   bottom: 0;
   left: 0;
   height: 1px;
-  width: 0;
+  width: 0%;
   background: white;
-  transition: width .3s ease;
+  transition: width 0.3s ease;
 }
 
-.top-nav a:hover::after {
-  width: 100%;
-}
+.top-nav a:hover { color: #fff; }
+.top-nav a:hover::after { width: 100%; }
 
-.insta-menu-link {
-  display: flex;
-  align-items: center;
+header.shrink .top-nav a {
+  font-size: 0.9em;
 }
 
 .insta-menu-logo {
-  width: 24px;
-  opacity: 0.8;
-  transition: var(--transition);
+  width: 22px;
+  height: 22px;
+  opacity: 0.85;
+  transition: 0.3s ease;
 }
 
-.insta-menu-logo:hover {
-  opacity: 1;
-  transform: scale(1.08);
+header.shrink .insta-menu-logo {
+  width: 18px;
+  height: 18px;
+  opacity: 0.75;
 }
+
+/* Correction alignement mobile */
+@media (max-width: 850px) {
+  .header-left-logo {
+    left: 15px;
+    width: 70px;
+    transform: translateY(-50%);
+  }
+
+  header.shrink .header-left-logo {
+    width: 45px;
+  }
+}
+
 
 /* ----------------------------------------
    INTRO (espace)
