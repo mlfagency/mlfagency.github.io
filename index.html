@@ -132,10 +132,10 @@ body {
   width: 360px;
   padding: 40px 32px;
   background: rgba(255,255,255,0.03);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: var(--radius);
   text-decoration: none;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 0 25px rgba(0,0,0,0.35);
   transition: var(--transition);
 }
 
@@ -151,31 +151,10 @@ body {
 
 .service-card img {
   width: 42px;
-  opacity: 0.9;
-  filter: brightness(100%) saturate(0%) !important;
+  opacity: 0.95;
+  filter: none !important; /* icônes blanches */
 }
 
-.service-card h3 {
-  font-size: 1.7em;
-}
-
-.service-card p {
-  color: var(--text-soft);
-}
-  
-.service-box {
-  background: rgba(255,255,255,0.03) !important;
-  border: 1px solid rgba(255,255,255,0.12) !important;
-  backdrop-filter: blur(8px) !important;
-  box-shadow: 0 0 25px rgba(0,0,0,0.35) !important;
-}
-  .service-icon {
-  width: 48px;
-  height: 48px;
-  opacity: 0.85;
-  margin-bottom: 18px;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.15));
-}
 
 /* ----------------------------------------
    BUTTON GLASS
