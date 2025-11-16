@@ -278,22 +278,34 @@ header.shrink .header-logo {
 .service-card p {
   color: var(--text-soft);
   font-size: 1.05em;
+} 
+  
+.service-card img {
+  width: 42px;
+  opacity: 0.9;
+  filter: brightness(100%) saturate(0%); /* force le blanc */
 }
+
 
 /* ----------------------------------------
    BOUTON
 ---------------------------------------- */
 .btn {
   display: inline-block;
-  border: 1px solid var(--border);
   padding: 14px 28px;
   border-radius: 10px;
-  background: rgba(255,255,255,0.05);
-  color: white;
+  color: #fff !important;
   text-decoration: none;
   font-size: 1.1em;
   transition: var(--transition);
+
+  /* STYLE GLASS PREMIUM */
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
 }
+
+
 
 .btn:hover {
   background: rgba(255,255,255,0.12);
